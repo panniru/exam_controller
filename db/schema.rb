@@ -78,6 +78,7 @@ ActiveRecord::Schema.define(version: 20140402124344) do
     t.datetime "updated_at"
   end
 
+
   create_table "students", force: true do |t|
     t.string   "name"
     t.date     "dob"
@@ -103,6 +104,19 @@ ActiveRecord::Schema.define(version: 20140402124344) do
     t.string   "user_id"
     t.integer  "resource_id"
     t.string   "role"
+
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "notifications", force: true do |t|
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+  
+  create_table "products", force: true do |t|
+    t.string   "name"
+    t.text     "description"
     t.datetime "created_at"
     t.datetime "updated_at"
   end

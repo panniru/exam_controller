@@ -1,0 +1,8 @@
+%p
+  %b Event:
+  = h @notification.event
+%p
+  %b Description:
+  = h @notification.description
+= link_to 'Edit', edit_notification_path(@notification)
+| #{link_to 'Back', notifications_path}

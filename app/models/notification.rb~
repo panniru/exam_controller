@@ -1,0 +1,5 @@
+class Notification < ActiveRecord::Base
+ def change
+    
+ validates_presence_of :event, :description
+end

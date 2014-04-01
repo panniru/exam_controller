@@ -56,4 +56,11 @@ ExamController::Application.routes.draw do
     end
   end
 
+  get "notifications/new"
+  get "notifications/edit"
+  get "notifications/show"
+  get "notifications/destroy"
+  get "notifications/notification"
+  get "home/feedback"
+
 end

@@ -1,0 +1,4 @@
+ExamController::Application.routes.draw do
+  root to: "home#home_page"
+	get "home/feedback"
+end

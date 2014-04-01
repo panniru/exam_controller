@@ -1,0 +1,16 @@
+%h1 Notifications
+%table
+  %tr
+    %th Event
+   
+    %th Description
+  - for notification in @notifications
+    %tr
+      %td= h notification.event
+      %td= h notification.description
+     
+      %td= link_to 'Show', notification
+      %td= link_to 'Edit', edit_notification_path(notification)
+      %td= link_to 'Destroy', notification, :confirm => 'Are you sure?', :method=> :delete
+%br/
+= link_to 'New', new_notification_path
