@@ -41,5 +41,6 @@ ExamController::Application.routes.draw do
   post "employees/:id" => "employees#update"
   get "org_chart" => "employees#hierarchy"
 
+  get "calenders"
 
 end
