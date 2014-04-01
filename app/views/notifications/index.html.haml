@@ -9,8 +9,8 @@
       %td= h notification.event
       %td= h notification.description
      
-      %td= link_to 'Show', notification
-      %td= link_to 'Edit', edit_notification_path(notification)
+      %td= link_to 'Show', notifications_show_path
+      %td= link_to 'Edit', notifications_edit_path(notification)
       %td= link_to 'Destroy', notification, :confirm => 'Are you sure?', :method=> :delete
 %br/
-= link_to 'New', new_notification_path
+= link_to 'New', notifications_new_path

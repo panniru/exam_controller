@@ -1,8 +1,8 @@
 %p
   %b Event:
-  = h @notification.event
+  =  @notification.event
 %p
   %b Description:
-  = h @notification.description
-= link_to 'Edit', edit_notification_path(@notification)
-| #{link_to 'Back', notifications_path}
+  =  @notification.description
+= link_to 'Edit', {:controller => "notifications", :action => "create",:id => notification.id  }, :method => "post"
+= link_to 'Back', notifications_notification_path
