@@ -1,0 +1,9 @@
+= image_tag("index.jpeg", :height => '100', :width => '100', :align => 'left') 
+= image_tag("reddy.jpeg", :height => '100', :width => '100', :align => 'right')
+.container5
+  %h2
+    %center Raja Bahadur Venkat Rama Reddy Women's College
+  %h4
+    %center (Autonomous) Affiliated to Osmania University
+  %h5
+    %center Reaccrediated with grade 'A' by NAAC

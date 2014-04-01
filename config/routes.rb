@@ -41,4 +41,12 @@ ExamController::Application.routes.draw do
   post "employees/:id" => "employees#update"
   get "org_chart" => "employees#hierarchy"
 
+  get "notifications/new"
+  get "notifications/edit"
+  get "notifications/show"
+  get "notifications/destroy"
+  get "notifications/notification"
+  root to: "home#home_page"
+  get "home/feedback"
+
 end

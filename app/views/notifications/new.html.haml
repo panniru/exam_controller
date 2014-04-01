@@ -1,0 +1,15 @@
+%h1 New Notification
+- form_for(@notification) do |f|
+  = f.error_messages
+  %p
+    = f.label :event
+    %br/
+    = f.text_field :event
+
+  %p
+    = f.label :description
+    %br/
+    = f.text_area :description
+  %p
+    = f.submit "Create"
+= link_to 'Back', notifications_path
