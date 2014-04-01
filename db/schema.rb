@@ -110,6 +110,8 @@ ActiveRecord::Schema.define(version: 20140402124344) do
   end
 
   create_table "notifications", force: true do |t|
+    t.string   "event"
+    t.string   "description"
     t.datetime "created_at"
     t.datetime "updated_at"
   end

@@ -1,0 +1,9 @@
+%h3 Notifications
+.row
+  .span6.offset3
+    = form_for @notification do |f|
+    = f.label :event
+    = f.text_field :event
+    = f.label :description
+    = f.text_area :description
+    = f.submit "Create", class: "btn btn-large btn-primary"   
