@@ -1,0 +1,12 @@
+<% if remotipart_submitted? %>
+   <% if @employee.errors.present? %>
+       alert('Name cant be blank')
+   <% else %>
+      $("#employee-model").modal('hide')        
+      location.reload()
+   <% end %> 
+  
+<% else %>
+   $("#employee-model").modal('hide')           
+   location.reload()                              
+<% end %>

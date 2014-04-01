@@ -21,3 +21,13 @@
 
 en:
   hello: "Hello world"
+  employee:
+    create:
+      success: "Employee has been added"
+      fail: "Employee not been added"
+    destroy:
+      success: "Employee has been removed"
+      fail: "Employee has not been removed"
+    update:
+      success: "Employee has been updated"
+      fail: "Employee not been updated"

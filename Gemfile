@@ -31,8 +31,13 @@ gem 'draper'
 gem 'haml-rails'
 gem 'rails3-jquery-autocomplete'
 
+gem 'carrierwave'
+
 gem 'will_paginate', '~> 3.0'
 gem 'bootstrap-will_paginate'
+
+gem 'gon'
+gem 'remotipart', '~> 1.2'    
 
 # Build JSON APIs with ease. Read more: https://github.com/rails/jbuilder
 gem 'jbuilder', '~> 1.2'
@@ -51,5 +56,17 @@ end
 # Use Capistrano for deployment
 # gem 'capistrano', group: :development
 
+#gem "google_visualr", "~> 2.1.0" 
+
 # Use debugger
 # gem 'debugger', group: [:development, :test]
+group :development, :test do
+  gem 'rspec-rails'
+  gem "capybara-webkit", '~> 0.7.2'
+  gem 'activerecord-nulldb-adapter', :git => 'https://github.com/krasio/nulldb.git', :branch => 'activerecord-3.2.1'
+  gem 'launchy'
+  gem 'capybara', '~> 1.1.2'
+  gem 'database_cleaner'
+  gem 'shoulda-matchers'
+  gem 'anticipate'
+end

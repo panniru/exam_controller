@@ -1,0 +1,17 @@
+.container
+  #chart
+%div{:id => "employee-model" ,:class => "modal fade", :tabindex => "-1", :role => "dialog", "aria-labelledby".to_sym => "myLargeModalLabel", "aria-hidden".to_sym => "true", "data-backdrop" => 'static'}
+  .modal-dialog
+    .modal-content
+      .modal-header.btn-primary
+        = button_tag "x", :class => "close", :data => { :dismiss => "modal"},  "aria-hidden".to_sym => "true"
+        %h4.modal-title Edit Employee
+      .modal-body
+        %ul.nav{:id => "errorsList"}
+        .row
+          .col-sm-7
+            = render :partial => "form"
+          .col-sm-5
+            = image_tag("index.jpeg", :height => '200', :width => '150', :class => "img-thumbnail", :id => "employee-avatar") 
+      .modal-footer
+        = submit_tag "Save", :class => 'btn btn-primary', :rel => "submit-employee"
