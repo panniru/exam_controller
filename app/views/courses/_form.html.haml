@@ -1,0 +1,17 @@
+= form_for @course, :html => { :class => "form-horizontal", :role => "form" } do |f|
+  = render "shared/error_messages", :object => f.object
+  .col-sm-10
+    .row
+      .form-group
+        = f.label "Name", :class => 'col-sm-2 control-label'
+        .col-sm-3
+          = f.autocomplete_field :name,
+          auto_search_autocomplete_course_name_path,
+          :placeholder => "Course Name", :class => 'form-control'
+        = f.label "Semester", :class => 'col-sm-2 control-label'
+        .col-sm-3
+          = f.text_field :semester, :class => 'form-control'
+    .row
+      = render "subjects", :f => f  
+  .col-sm-8.pull-right
+    = f.submit "Save", :class => 'btn btn-primary'

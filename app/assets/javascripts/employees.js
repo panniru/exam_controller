@@ -1,5 +1,4 @@
-google.load('visualization', '1', {packages:['orgchart']});
-google.setOnLoadCallback(drawChart);
+
 $(function() {
     $("input[rel = 'submit-employee']").on('click', function(){
         $("form#employee").submit()

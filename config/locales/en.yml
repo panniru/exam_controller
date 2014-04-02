@@ -31,3 +31,26 @@ en:
     update:
       success: "Employee has been updated"
       fail: "Employee not been updated"
+  course:
+    create:
+      success: "Course has been created"
+      fail: "Course not been created"
+    destroy:
+      success: "Course has been removed"
+      fail: "Course has not been removed"
+    update:
+      success: "Course has been updated"
+      fail: "Course not been updated"
+  result:
+    create:
+      success: "Result has been created"
+      fail: "Result not been created"
+    destroy:
+      success: "Result has been removed"
+      fail: "Result has not been removed"
+    update:
+      success: "Result has been updated"
+      fail: "Result not been updated"
+    upload:
+      success: "Results has been uploaded"
+      fail: "Results has not been uploaded"

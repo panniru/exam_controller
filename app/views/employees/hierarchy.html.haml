@@ -1,3 +1,7 @@
+%script 
+  google.load('visualization', '1', {packages:['orgchart']});
+  google.setOnLoadCallback(drawChart);
+
 .container
   #chart
 %div{:id => "employee-model" ,:class => "modal fade", :tabindex => "-1", :role => "dialog", "aria-labelledby".to_sym => "myLargeModalLabel", "aria-hidden".to_sym => "true", "data-backdrop" => 'static'}

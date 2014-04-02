@@ -13,6 +13,9 @@ group :assets do
   gem 'compass-rails'
 end
 
+gem 'roo'
+gem 'virtus'
+
 # See https://github.com/sstephenson/execjs#readme for more supported runtimes
 # gem 'therubyracer', platforms: :ruby
 

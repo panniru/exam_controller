@@ -1,0 +1,27 @@
+.page-header
+  %h2
+    = link_to "Upload Results", "#"
+%p
+  A Csv or Exel can be uploaded. First row should have the column names
+= form_for @results_uploader, :url => upload_results_path, :multipart => true, :html => { :class => "form"} do |f|
+  = render "shared/error_messages", :object => f.object
+  .panel.panel-info
+    .panel-body
+      .form-group
+        = label_tag "Course", nil, :class => "col-sm-2 control-label"
+        .col-sm-3
+          = f.select :course_id, options_from_collection_for_select(Course.all, "id", "name"), {}, :class => "form-control", :id => "result-course"
+        = label_tag "Semester", nil, :class => "col-sm-2 control-label"
+        .col-sm-3
+          = f.select :semester, options_from_collection_for_select(Course.all, "id", "name"), {}, :class => "form-control", :id => "result-course"
+        = label_tag "Academic Year", nil, :class => "col-sm-2 control-label"
+        .col-sm-3
+          = f.select :academic_year, options_from_collection_for_select(Course.all, "id", "name"), {}, :class => "form-control", :id => "result-course"
+        .col-sm-3
+          = f.file_field :file
+        %strong.pull-right
+          = link_to "Download Template", "#", :rel => "results-template"
+      %br
+      %br
+        .col-sm-4
+          = f.submit "Upload", :class => "btn btn-primary pull-right"
