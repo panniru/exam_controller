@@ -1,0 +1,34 @@
+= form_for @calendar, :html => { :class => "form-horizontal", :role => "form"} do |f|
+  - if @calendar.errors.any?
+    #error_explanation
+      %h2
+        = pluralize(@calendar.errors.count, "error")
+        prohibited this calendar from being saved:
+      %ul
+        - @calendar.errors.full_messages.each do |msg|
+          %li= msg
+  .col-sm-4
+    .form-group
+      = f.label "Course", :class => 'col-sm-6 control-label'
+    .col-sm-8
+      = f.text_field :course, :class => 'form-control'
+    .form-group
+      = f.label "semester", :class => 'col-sm-6 control-label'
+    .col-sm-8
+      = f.text_field :semester, :class => 'form-control'
+    .form-group
+      = f.label "Event", :class => 'col-sm-6 control-label'
+    .col-sm-8
+      = f.text_field :event, :class => 'form-control'
+    .form-group
+      = f.label "From Date", :class => 'col-sm-6 control-label'
+      .col-sm-8
+        = f.text_field :from, :class => 'datepicker form-control'
+    .form-group
+      = f.label "To Date", :class => 'col-sm-6 control-label'
+      .col-sm-8
+        = f.text_field :to, :class => 'datepicker form-control'
+    %br/
+    = f.submit
+
+    

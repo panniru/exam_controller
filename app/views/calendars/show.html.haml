@@ -1,0 +1,20 @@
+%p#notice= notice
+%p
+  %strong Course:
+  = @calendar.course
+%p
+  %strong Semester:
+  = @calendar.semester
+%p
+  %strong Event:
+  = @calendar.event
+%p
+  %strong From:
+  = @calendar.from
+%p
+  %strong To:
+  = @calendar.to
+
+= link_to 'Edit', edit_calendar_path(@calendar)
+|
+\#{link_to 'Back', calendars_path}
