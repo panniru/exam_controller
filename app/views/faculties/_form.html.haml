@@ -11,7 +11,7 @@
     .form-group
       = f.label "Department", :class => 'col-sm-2 control-label'
       .col-sm-8
-        = f.select :department_ids, options_for_select(courses, @faculty.selected_courses),{}, :multiple => true, :class => 'form-control'
+        = f.select :department_ids, options_for_select(Course.grouped_courses.map{|c| c.name}, @faculty.selected_courses),{}, :multiple => true, :class => 'form-control'
     .form-group
       = f.label "Designation", :class => 'col-sm-2 control-label'
       .col-sm-8

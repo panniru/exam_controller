@@ -7,18 +7,15 @@
   = render "shared/error_messages", :object => f.object
   .panel.panel-info
     .panel-body
-      %strong Columns Required: &nbsp;
-      name, dob, joining_date, semester, email, roll_number
-      %strong.pull-right
-        = link_to "Download Template", new_upload_students_path(:format => :xls)
-      %br
-      %br
       .form-group
         .col-sm-2
           = f.label "Course", :class => 'control-label'
         .col-sm-3
-          = f.select :course_id, courses,{}, :class => 'form-control'
+          = f.select :dept_name, Course.grouped_courses.map{|c| c.name},{}, :class => 'form-control'
         .col-sm-3
           = f.file_field :file
+        .col-sm-2.pull-right
+          = link_to "Download Template", new_upload_students_path(:format => :xls)
+      .form-group
         .col-sm-2
           = f.submit "Upload", :class => "btn btn-primary pull-right"

@@ -1,5 +1,5 @@
 class ApplicationController < ActionController::Base
-  before_action :authenticate_user!, :unless => "HomeController"
+  #before_action :authenticate_user!, :unless => :devise_controller? #"HomeController"
 
   before_action :store_location
   #check_authorization :unless => :devise_controller?

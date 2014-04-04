@@ -4,7 +4,7 @@ class StudentsController < ApplicationController
 
   def new
     @student.build_user
-    @student.user.role_id = Role.student_role.id
+    @student.user.role= "student"
   end
 
   def index
@@ -79,11 +79,11 @@ class StudentsController < ApplicationController
   private
 
   def student_params
-    params.require(:student).permit(:name, :dob, :joining_date, :email, :course_id, :semester, :roll_number, :user_attributes => [:user_id, :email, :password, :password_confirmation, :role_id])
+    params.require(:student).permit(:name, :dob, :joining_date, :email, :course_name, :roll_number, :user_attributes => [:user_id, :email, :password, :password_confirmation, :role_id])
   end
 
   def student_update_params
-    params.require(:student).permit(:name, :dob, :joining_date, :email, :course_id, :semester, :roll_number)
+   params.require(:student).permit(:name, :dob, :joining_date, :email, :course_name, :roll_number)
   end
 
 end

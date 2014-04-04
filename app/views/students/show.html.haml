@@ -10,13 +10,11 @@
     %thead
       %th Roll Number
       %th Name
-      %th Course
-      %th Semester
+      %th Department
       %th Email
     %tbody
       %tr
         %td= @student.roll_number
         %td= @student.name
-        %td= @student.course_name
-        %td= @student.semester
+        %td= @student.dept_name
         %td= @student.user.try(:email)

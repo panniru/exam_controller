@@ -13,7 +13,7 @@ class FacultiesController < ApplicationController
 
   def new
     @faculty.build_user
-    @faculty.user.role = Role.faculty_role
+    @faculty.user = Faculty.role
   end
 
   def show

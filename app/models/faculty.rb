@@ -1,6 +1,4 @@
 class Faculty < ActiveRecord::Base
-  include PgSearch
-  multisearchable :against => [:name, :designation]
 
   validates :name, :presence => true
   after_save :insert_faculty_course
@@ -17,7 +15,7 @@ class Faculty < ActiveRecord::Base
 
   def selected_courses
     if self.courses.present?
-      courses.map{|c| c.id }
+      courses.map{|c| c.course.name }
     else
       []
     end
@@ -27,13 +25,17 @@ class Faculty < ActiveRecord::Base
     courses.map{|c| c.name}.join(", ")
   end
 
+  def self.role
+    "faculty"
+  end
+
   private
 
   def insert_faculty_course
     courses = []
     unlink_courses = []
     if self.courses.present?
-      courses = self.courses.map{ |course| course.id}
+      courses = self.courses.map{ |c| c.course.name}
     end
     department_ids.delete("")
     courses.each do |id|
@@ -57,4 +59,5 @@ class Faculty < ActiveRecord::Base
       end
     end
   end
+
 end

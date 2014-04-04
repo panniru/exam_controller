@@ -22,14 +22,9 @@
       .col-sm-8
         = f.text_field :joining_date, :class => 'datepicker form-control'
     .form-group
-      = f.label :course, :class => 'col-sm-2 control-label'
+      = f.label :Department, :class => 'col-sm-2 control-label'
       .col-sm-8
-        = f.select :course_id, courses,{}, :class => 'form-control'
-    .form-group
-      = f.label :semester, :class => 'col-sm-2 control-label'
-      .col-sm-8
-        = f.text_field :semester, :class => 'form-control'
-
+        = f.select :dept_name, distinct_courses,{}, :class => 'form-control'
   .col-sm-8.pull-right
     - unless @student.id.present?
       = f.submit "Create", :class => 'btn btn-primary'

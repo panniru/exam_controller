@@ -4,8 +4,4 @@ class SessionsController  < Devise::SessionsController
     super
   end
 
-  def new
-    super
-  end
-
 end

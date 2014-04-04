@@ -17,7 +17,19 @@ ExamController::Application.routes.draw do
     end
   end
 
+  resources :faculties
+
+  resources :students do
+    collection do
+      get "new_upload"
+      post "upload"
+    end
+  end
+
   get 'auto_search/autocomplete_course_name'
+  get 'auto_search/autocomplete_faculty_name'
+  get 'auto_search/autocomplete_student_by_roll_no_and_name'
+  
   post "employees/:id" => "employees#update"
 
 end
