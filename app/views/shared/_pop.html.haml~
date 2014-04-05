@@ -1,0 +1,26 @@
+.container
+  .row
+    %a.btn.btn-warning.btn-lg{"data-original-title" => "", "data-target" => "#event", "data-toggle" => "modal"}
+      Edit
+    #event.modal.fade{"aria-hidden" => "true", "aria-labelledby" => "editLabel", role: "dialog", tabindex: "-1"}
+      .modal-dialog
+        .panel.panel-primary
+          .panel-heading
+            %button.close{"aria-hidden" => "true", "data-dismiss" => "modal", type: "button"} ×
+            %h4#editLabel.panel-title
+              %span.glyphicon.glyphicon-info-sign
+              Notifications
+            = form_for @notification do |f|
+           
+            .row
+            .col-lg-6.col-md-6.col-sm-6
+            = f.text_field "event", :placeholder => "event"
+            .row
+            .col-lg-12.col-md-12.col-sm-12
+            = f.text_area "description", :placeholder => "Message...", required: "", rows: "6", style: "resize:vertical"
+            .panel-footer
+            = f.submit "Submit", :class =>'btn.btn-success'
+            / <span class="glyphicon glyphicon-ok"></span>
+            = f.reset "Clear", :class =>'btn.btn-danger'
+            / <span class="glyphicon glyphicon-remove"></span>
+            %button.btn.btn-default.btn-close{"data-dismiss" => "modal", style: "float: right;", type: "button"} Close

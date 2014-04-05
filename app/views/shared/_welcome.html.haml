@@ -1,0 +1,28 @@
+.container
+  .row
+    %a.btn.btn-primary.btn-lg{"data-original-title" => "", "data-target" => "#heading", "data-toggle" => "modal"} Edit
+    #event.modal.fade{"aria-hidden" => "true", "aria-labelledby" => "headingLabel", role: "dialog", tabindex: "-1"}
+      .modal-dialog
+        .panel.panel-primary
+          .panel-heading
+            %button.close{"aria-hidden" => "true", "data-dismiss" => "modal", type: "button"} ×
+            %h4#headingLabel.panel-title
+              %span.glyphicon.glyphicon-info-sign
+              Welcome Screen
+              = form_for Welcome.new, :html => { :class => "form-horizontal", :role => "form" } do |f|
+              
+                .row 
+                  .col-lg-6.col-md-6.col-sm-6
+                    = f.label "Heading", :class => 'col-sm-2 control-label'
+                 
+                    = f.text_field :heading, :placeholder => "Heading", :class => 'form-control'
+                  .col-lg-6.col-md-6.col-sm-6
+                
+                    = f.label "Message", :class => 'col-sm-2 control-label'
+                
+                    = f.text_area :message, :class => 'form-control'
+                  .col-sm-10.pull-right
+                    = f.submit "Save", :class => 'btn btn-primary'
+                          
+                    
+

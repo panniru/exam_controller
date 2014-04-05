@@ -1,0 +1,12 @@
+%p
+  %b Name:
+  =  @feedback.name
+%p
+  %b Email id:
+  =  @feedback.email
+%p
+  %b Description:
+  =  @feedback.description
+
+= link_to 'Edit', {:controller => "feedback", :action => "create",:id => feedback.id}, :method => "post"
+= link_to 'Back', root_path
