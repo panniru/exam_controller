@@ -49,4 +49,24 @@ ExamController::Application.routes.draw do
   root to: "home#home_page"
   get "home/feedback"
 
+  get "notifications/preview"
+  get "welcomes/edit"
+  get "welcomes/show"
+  get "home/adminhome"
+  get "feedbacks/show"
+
+ resources :notifications do
+    collection do 
+      post "preview"
+      end
+    member do
+      end
+    end
+  resources :feedbacks do
+    collection do 
+      end
+    member do
+      end
+    end
+   
 end

@@ -1,0 +1,33 @@
+<div class = "container">
+<h2>Suggestions</h2>
+<!--<table class="table table-striped table-bordered table-condensed table-hover">-->
+<table class="table table-Responsive table-bordered table-condensed">
+ <tr>
+    <th>Event</th><br>
+    <th>Description</th>
+    
+ </tr>
+<% Notification.all.each do |notification| %>
+<tr>
+<td><%= notification.event %></td>
+<td><%= notification.description %></td>
+</tr>
+
+<% end %>
+</table>
+
+<br>
+	<!--<%= button_tag(type: 'submit', class: "btn btn-primary") do %>
+  <i class="icon-ok icon-white"></i> no
+  <% end %>-->
+  <!-- <center><%= button_tag(type: 'submit', class: "btn btn-primary") do %> -->
+  <!-- <i class="icon-ok icon-white"></i> done -->
+  <!-- <% end %> -->
+  <%= render "notifications/tests" %><br>
+
+ <!-- <%= submit_tag 'no', :name => 'no' %>
+      <%= submit_tag 'yes', :name => 'yes' %>
+      <%= submit_tag 'cancel', :name => 'cancel' %>-->
+
+
+</div>

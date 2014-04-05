@@ -1,0 +1,26 @@
+.container
+  %h2 previous notifications
+  %table.table.table-Responsive.table-bordered.table-condensed
+    %tr
+      %th Event
+      
+      %th Description
+      - Notification.all.each do |notification|
+        %tr
+          %td= @notification.event
+          %td= @notification.description
+  %h1 Current notifications
+  %br/
+  %table.table.table-striped.table-bordered.table-condensed.table-hover
+    %tr
+      %th Event
+      %th Description
+      %td
+      = @notification.event
+      %td
+        = @notification.description
+        %br/
+        = render "shared/pop"
+        %br/
+  
+<h1>hello</h1>
