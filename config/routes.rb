@@ -46,7 +46,6 @@ ExamController::Application.routes.draw do
   get "notifications/show"
   get "notifications/destroy"
   get "notifications/notification"
-  root to: "home#home_page"
   get "home/feedback"
 
   get "notifications/preview"

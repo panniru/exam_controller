@@ -1,0 +1,22 @@
+.container
+  .row
+    .col-md-6
+      .panel.panel-primary
+        .panel-heading
+          %h3.panel-title Notifications
+ %marquee{bgcolor: "#DEE2E3", direction: "up", height: "100%", loop: "true", onmouseout: "this.scrollAmount=2", onmouseover: "this.scrollAmount=0", scrollamount: "2", width: "100%"}
+          
+        .panel-body
+
+        %table#dev-table.table.table-hover
+          %thead
+            %tr
+              %th Event
+              %th Description
+              %th 
+              %th
+          %tbody
+            - @notifications.each do |notification|
+              %tr
+                %td= notification.event
+                %td= notification.description

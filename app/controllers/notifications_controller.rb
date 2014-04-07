@@ -10,10 +10,7 @@ class NotificationsController < ApplicationController
       render "new"
     end
   end
-  private
-  def notification_params
-    params.require(:notification).permit(:event, :description)
-  end
+
   def show
     @notification = Notification.find(params[:id])
   end
@@ -26,5 +23,11 @@ class NotificationsController < ApplicationController
   def edit
     @notification = Notification.find(params[:id])
   end
+
+  private
+  def notification_params
+    params.require(:notification).permit(:event, :description)
+  end
+
 end
 
