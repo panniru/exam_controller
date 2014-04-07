@@ -1,0 +1,45 @@
+.navbar.navbar-default
+  .container-fluid
+    .navbar-header
+      %button{:type => "button", :class => "navbar-toggle", :data => {:toggle => "collapse", :target => "#bs-example-navbar-collapse-1"}}
+        %span.sr-only Toggle navigation
+        %span.icon-bar 
+        %span.icon-bar 
+        %span.icon-bar 
+      = link_to "Home", "#", :class => "navbar-brand brand"
+    #bs-example-navbar-collapse-1.collapse.navbar-collapse
+      %ul.nav.navbar-nav
+        %li
+          = link_to "Calander", "#", :class => "menu-item"
+        %li
+          = link_to "Org-chart", org_chart_path, :class => "menu-item"
+        %li
+          = link_to "Exam Schedule", "#", :class => "menu-item"
+        %li
+          = link_to "Notifications", "#", :class => "menu-item"
+        %li
+          = link_to "Results", results_path, :class => "menu-item"
+        - if current_user.present? and current_user.admin?
+          %li.dropdown
+            = link_to raw("Uploads&nbsp;<b class= 'caret'></b>"), "#", :class => "dropdown-toggle menu-item", :data => {:toggle =>"dropdown"}
+            %ul.dropdown-menu
+              %li
+                = link_to "Students", students_path
+              %li.divider
+              %li
+                = link_to "Faculties", faculties_path
+              %li.divider
+              %li
+                = link_to "Courses", courses_path
+      - if current_user.present?
+        %ul.nav.navbar-nav.navbar-right
+          %li.dropdown
+            = link_to raw("#{current_user.user_id}<b class= 'caret'></b>"), "#", :class => "dropdown-toggle", :data => {:toggle =>"dropdown"}
+            %ul.dropdown-menu
+              %li
+                = link_to "Sign out", destroy_user_session_path, :data => {:method => :delete}
+              %li.divider
+              %li
+                = link_to "Change Password", "#"
+      - else
+        = render "shared/custom_login"

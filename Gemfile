@@ -26,7 +26,6 @@ gem 'jquery-rails'
 gem 'turbolinks'
 
 gem 'pg'
-gem 'jquery-rails'
 gem 'jquery-ui-rails', '4.1.0'
 gem 'cancan', '1.6.7'
 gem 'devise'

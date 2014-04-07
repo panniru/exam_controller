@@ -1,6 +1,6 @@
 class CoursesController < ApplicationController
   before_action :load_resource, :only => [:show, :update, :edit, :destroy, :new, :heirarchy]
-  # authorize_resource
+  authorize_resource
   
   def index
     page = params[:page].present? ? params[:page] : 1
@@ -41,6 +41,31 @@ class CoursesController < ApplicationController
       render "show"
     end
   end
+
+  def course_sems
+    respond_to do |format|
+      format.json do
+        data = [""]
+        data = Course.belongs_to_course(params[:course])
+        data = data.map do |c|
+          [c.semester, c.id]
+        end
+        render :json => data
+      end
+    end
+  end
+
+  def course_subjects
+    respond_to do |format|
+      format.json do
+        data = []
+        data = Course.find(params[:id])
+        render :json => data.defined_subject_headers
+      end
+    end
+  end
+
+
 
   private
 

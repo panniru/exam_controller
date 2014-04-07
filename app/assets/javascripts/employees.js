@@ -3,12 +3,15 @@ $(function() {
     $("input[rel = 'submit-employee']").on('click', function(){
         $("form#employee").submit()
     })
+
+    
 })
 
 
 function drawChart() {
     
     var data = new google.visualization.DataTable();
+    
     data.addColumn('string', 'Name');
     data.addColumn('string', 'Manager');
     data.addColumn('string', 'ToolTip');
@@ -26,6 +29,7 @@ function drawChart() {
     
     data.addRows(emps)
     var chart = new google.visualization.OrgChart(document.getElementById('chart'));
+    
     chart.draw(data, {allowHtml:true, nodeClass: "custom-node"});
     google.visualization.events.addListener(chart, 'select', function(event){
         $("bidy").popover({html:true,placement: "right"});
@@ -55,7 +59,9 @@ function popOver(name, dept, design, imgUrl,id,mngr){
     var data = "<span class= 'left-field'>Name:</span><span class='right-field'>&nbsp;&nbsp;&nbsp;"+name+"</span><br/>"+
         "<span class= 'left-field'>Designation:</span><span class='right-field'>&nbsp;&nbsp;&nbsp;"+design+"</span><br/>"+
         "<span class= 'left-field'>Department:</span><span class='right-field'>&nbsp;&nbsp;&nbsp;"+dept+"</span><br/>"
-    data +=  "<a class = 'btn btn-danger btn-xs' href='javascript:addChild("+id+")'>Add Child</a>&nbsp;&nbsp;&nbsp;<a class = 'btn btn-success btn-xs' href='javascript:editEmployee("+id+")'>Edit</a>"
+    if(gon.user_role == 'admin'){
+        data +=  "<a class = 'btn btn-danger btn-xs' href='javascript:addChild("+id+")'>Add Child</a>&nbsp;&nbsp;&nbsp;<a class = 'btn btn-success btn-xs' href='javascript:editEmployee("+id+")'>Edit</a>"
+    }
     var content = "data-container='body' data-toggle='popover' data-content= \" "+data+"\""
     return content
 }

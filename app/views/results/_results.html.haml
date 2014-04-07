@@ -1,0 +1,14 @@
+%table.table.table-bordered
+  %thead
+    %th Roll No
+    %th Name
+    - @course.defined_subject_headers.each do |header|
+      %th= header
+  %tbody
+    - results.each do |result|
+      %tr
+        %td= link_to result.student.roll_number, result
+        %td= result.student.name
+        - result.result_row.each do |cel|
+          %td= cel
+

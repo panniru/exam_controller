@@ -1,4 +1,5 @@
 class EmployeesController < ApplicationController
+  skip_authorization_check 
 
   def hierarchy
     @employees = Employee.all.map{|e| {:id => e.id, :name => e.name, :designation => e.designation, :department => e.department, :manager => e.manager.present? ? e.manager : '', :avatar => e.avatar_url}}

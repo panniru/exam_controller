@@ -1,0 +1,4 @@
+.list-group
+  - navigation_left.each do |item|
+    = link_to item.item, item.link, :class => "list-group-item #{item.class}"
+

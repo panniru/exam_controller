@@ -1,0 +1,9 @@
+= form_tag session_path(:user), :class => "navbar-form navbar-right form-inline" do
+  .form-group
+    .col-sm-4
+      = text_field_tag 'user[user_id]', nil, :class => "form-control", :placeholder => "User Id"
+    .col-sm-4
+      = password_field_tag 'user[password]', nil, :class => " col-sm-2 form-control", :placeholder => "password"
+    = submit_tag "Sign in", :class => "btn btn-default"
+    %br
+    = link_to "Forgot your password?", new_password_path(:user)

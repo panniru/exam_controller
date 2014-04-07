@@ -1,0 +1,14 @@
+= form_tag results_path, :method => 'get' , :class => "form" do
+  .form-group
+    .col-sm-3
+      = label_tag "Course", nil
+      = select_tag :course_name, options_from_collection_for_select(Course.all, "name", "name", params[:course_name]), :include_blank => '', :class => "form-control", :rel => "result-course"
+    .col-sm-3
+      = label_tag "Semester", nil
+      = select_tag :semester, options_for_select([], params[:semester]), :class => "form-control", :rel => "result-semester"
+    .col-sm-3
+      = label_tag "Academic Year", nil
+      = select_tag :year,options_for_select((Date.today.year-5..Date.today.year).to_a.map{|s| ["#{s}", s]}, params[:year]), :class => "form-control"
+    .col-sm-3
+      %br
+      = submit_tag "Search", :name => nil, :class => "btn-primary btn"

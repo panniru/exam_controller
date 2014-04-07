@@ -4,11 +4,18 @@ ExamController::Application.routes.draw do
 
   resources :employees do
     collection do
-      get "hierarchy"
+
     end
   end
 
-  resources :courses
+  resources :courses do
+    member do
+      get "course_subjects"
+    end
+    collection do
+      get "course_sems"
+    end
+  end
 
   resources :results do
     collection do
@@ -29,7 +36,9 @@ ExamController::Application.routes.draw do
   get 'auto_search/autocomplete_course_name'
   get 'auto_search/autocomplete_faculty_name'
   get 'auto_search/autocomplete_student_by_roll_no_and_name'
+
   
   post "employees/:id" => "employees#update"
+  get "org_chart" => "employees#hierarchy"
 
 end

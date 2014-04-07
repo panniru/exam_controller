@@ -13,7 +13,7 @@ class FacultiesController < ApplicationController
 
   def new
     @faculty.build_user
-    @faculty.user = Faculty.role
+    @faculty.user.role = Faculty.role
   end
 
   def show
@@ -55,11 +55,11 @@ class FacultiesController < ApplicationController
   private
 
   def faculty_params
-    fac_params = params.require(:faculty).permit(:name , :designation, :user_attributes => [:user_id, :email, :password, :password_confirmation, :role_id], :department_ids => [])
+    fac_params = params.require(:faculty).permit(:name , :designation, :user_attributes => [:user_id, :email, :password, :password_confirmation, :role_id], :department_names => [])
   end
 
   def faculty_update_params
-    fac_params = params.require(:faculty).permit(:name , :designation, :department_ids => [])
+    fac_params = params.require(:faculty).permit(:name , :designation, :department_names => [])
   end
 
 end

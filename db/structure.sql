@@ -176,10 +176,6 @@ ALTER SEQUENCE faculty_courses_id_seq OWNED BY faculty_courses.id;
 
 CREATE TABLE results (
     id integer NOT NULL,
-    student_name character varying(255),
-    student_roll_no character varying(255),
-    course character varying(255),
-    semester character varying(255),
     subject_1 double precision,
     subject_2 double precision,
     subject_3 double precision,
@@ -192,7 +188,9 @@ CREATE TABLE results (
     subject_10 double precision,
     year integer,
     created_at timestamp without time zone,
-    updated_at timestamp without time zone
+    updated_at timestamp without time zone,
+    student_id integer,
+    course_id integer
 );
 
 
@@ -452,3 +450,7 @@ INSERT INTO schema_migrations (version) VALUES ('20140402122236');
 INSERT INTO schema_migrations (version) VALUES ('20140402124344');
 
 INSERT INTO schema_migrations (version) VALUES ('20140404051633');
+
+INSERT INTO schema_migrations (version) VALUES ('20140404113827');
+
+INSERT INTO schema_migrations (version) VALUES ('20140404125645');

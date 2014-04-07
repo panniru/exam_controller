@@ -24,7 +24,7 @@
     .form-group
       = f.label :Department, :class => 'col-sm-2 control-label'
       .col-sm-8
-        = f.select :dept_name, distinct_courses,{}, :class => 'form-control'
+        = f.select :dept_name, options_for_select(Course.grouped_courses.map{|c| c.name}),{}, :class => 'form-control'
   .col-sm-8.pull-right
     - unless @student.id.present?
       = f.submit "Create", :class => 'btn btn-primary'

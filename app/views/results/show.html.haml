@@ -1,27 +1,45 @@
 .page-header
   %h3
-    = @student.name
-    .pull-right
-      = link_to "Edit", edit_student_path(@student), :class => "btn btn-success"
-      = link_to "Delete", student_path(@student), :class => "btn btn-danger", :data => {:confirm => "Are You Sure?", :method => :delete}
+    = @result.student.name
+
 .col-md-12
   %table.table.table-bordered
     %thead
       %th Roll Number
-      %th Name
       %th Date Of Birth
-      %th Father Name
-      %th Mother Name
-      %th Parent Mail
-      %th Mobile Number
-      %th Joining Date
+      %th Course
+      %th Semester
     %tbody
       %tr
-        %td= @student.roll_number
-        %td= @student.name
-        %td= @student.dob
-        %td= @student.father_name
-        %td= @student.mother_name
-        %td= @student.parent_email
-        %td= @student.mobile_number
-        %td= @student.joining_date
+        %td= @result.student.roll_number
+        %td= @result.student.dob
+        %td= @result.course.name
+        %td= @result.course.semester
+.col-md-5
+  %table.table.table-bordered
+    %thead
+      %th Subject
+      %th Marks
+    %tbody
+      - @result.subject_headers.take(5).each_with_index do |val, index|
+        %tr
+          %td.active= val
+          %td= @result.result_row[index]
+
+- if @result.subject_headers.length > 5
+  .col-md-5
+    %table.table.table-bordered
+      %thead
+        %th Subject
+        %th Marks
+      %tbody
+        - @result.subject_headers.drop(5).each_with_index do |val, index|
+          %tr
+            %td.active= val
+            %td= @result.result_row[index]
+            
+.col-md-5
+  %table.table.table-bordered
+    %tr
+      %th.success Total
+      %td= @result.total_marks     

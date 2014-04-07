@@ -1,6 +1,8 @@
-= render "search"
+= render "search_by_course"
+-#= render "students/search"
 %br
 %br
-= render :partial => "students", :locals => {:students => @students}
-
-= will_paginate @students, param_name: "page", previous_label: h("<"), next_label: h(">")
+- if @course.present?
+  = render :partial => "results", :locals => {:results => @results}
+  
+  = will_paginate @results, param_name: "page", previous_label: h("<"), next_label: h(">")

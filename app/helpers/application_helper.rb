@@ -28,4 +28,25 @@ module ApplicationHelper
     alert_class.join(" ")
   end
 
+  def navigation_left
+    list = []
+    if current_user.present? and current_user.admin?
+      if controller.controller_name == "students"
+        list << Struct.new(:item, :class, :link).new("Students", "active", students_path)
+      elsif controller.controller_name == "faculties"
+        list << Struct.new(:item, :class, :link).new("Faculties", "active", faculties_path)
+      elsif controller.controller_name == "courses"
+        list << Struct.new(:item, :class, :link).new("Courses", "active", courses_path)
+      elsif controller.controller_name == "results"
+        list << Struct.new(:item, :class, :link).new("Results", controller.action_name != "result_upload"? "active" : "", results_path)
+        list << Struct.new(:item, :class, :link).new("Upload Results", controller.action_name == "result_upload"? "active" : "", result_upload_results_path)
+        
+      end
+    end
+  end
+
+  def navigation_present?
+    current_user.present? and (controller.controller_name == "students" or controller.controller_name == "courses" or controller.controller_name == "results" or controller.controller_name == "faculties")
+  end
+
 end

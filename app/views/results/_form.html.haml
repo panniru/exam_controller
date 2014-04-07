@@ -1,43 +1,28 @@
-= form_for @student, :html => { :class => "form-horizontal", :role => "form" } do |f|
+= form_for @result, :html => { :class => "form-horizontal", :role => "form" } do |f|
   = render "shared/error_messages", :object => f.object
-  .col-sm-8
-    .form-group
-      = f.label "Roll No", :class => 'col-sm-2 control-label'
-      .col-sm-8
-        = f.text_field :roll_number, :class => 'form-control'
-    .form-group
-      = f.label "Name", :class => 'col-sm-2 control-label'
-      .col-sm-8
-        = f.text_field :name, :class => 'form-control'
-    .form-group
-      = f.label "Date Of Birth", :class => 'col-sm-2 control-label'
-      .col-sm-8
-        = f.text_field :dob, :class => 'datepicker form-control'
-    .form-group
-      = f.label "Joining Date", :class => 'col-sm-2 control-label'
-      .col-sm-8
-        = f.text_field :joining_date, :class => 'datepicker form-control'
-    .form-group
-      = f.label :father_name, :class => 'col-sm-2 control-label'
-      .col-sm-8
-        = f.text_field :father_name, :class => 'form-control'
-    .form-group
-      = f.label :mother_name, :class => 'col-sm-2 control-label'
-      .col-sm-8
-        = f.text_field :mother_name, :class => 'form-control'
-    .form-group
-      = f.label :mobile_number, :class => 'col-sm-2 control-label'
-      .col-sm-8
-        = f.text_field :mobile_number, :class => 'form-control'
-    .form-group
-      = f.label :parent_email, :class => 'col-sm-2 control-label'
-      .col-sm-8
-        = f.text_field :parent_email, :class => 'form-control'
-
-
+  .form-group
+    = f.label "Name", :class => 'col-sm-2 control-label'
+    .col-sm-5
+      = autocomplete_field_tag :search_term,
+      '',
+      auto_search_autocomplete_student_by_roll_no_and_name_path,
+      :placeholder => "Student Roll No/Name", :class => 'form-control',
+        :id_element => "#student"
+      = f.hidden_field :student_id, :id => "student"
+  .form-group
+    = f.label "Course", :class => 'col-sm-2 control-label'
+    .col-sm-5
+      = f.select :course_name, options_from_collection_for_select(Course.all, "name", "name"), {}, :class => "form-control", :rel => "result-course"
+  .form-group
+    = label_tag "Semester", nil, :class => "col-sm-2 control-label"
+    .col-sm-5
+      = f.select :semester,[], {}, :class => "form-control", :rel => "result-semester", :id => "result-new-semester"
+      = f.hidden_field :course_id, :id => "course_id"
+  .form-group
+    = label_tag "Academic Year", nil, :class => "col-sm-2 control-label"
+    .col-sm-5
+      = f.select :year,(Date.today.year..Date.today.year), {}, :class => "form-control"
+  #result-subjects
 
   .col-sm-8.pull-right
-    - unless @student.id.present?
-      = f.submit "Create", :class => 'btn btn-primary'
-    - else
-      = f.submit "Update", :class => 'btn btn-primary'
+    = f.submit "Save", :class => 'btn btn-primary'
