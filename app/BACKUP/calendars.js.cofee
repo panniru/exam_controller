@@ -1,4 +1,10 @@
-$ ->
+ $ ->
+  
+  # Activating Best In Place 
+  jQuery(".best_in_place").best_in_place()
+
+
+
    $('.datepicker').datepicker({
         changeMonth: true,
         changeYear: true,
@@ -8,3 +14,4 @@ $ ->
 
    dt = new Date($.now())
    $('#application-timer').html(dt.getDate()+"/"+dt.getMonth()+"/"+dt.getFullYear()+" "+dt.getHours()+":"+dt.getMinutes())
+

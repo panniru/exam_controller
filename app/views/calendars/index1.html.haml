@@ -1,0 +1,14 @@
+%form{action: "/calendars/pick"}
+ Select your Course
+ %br/
+= form_for Calendar.new  do |f|
+ = f.select :course, Calendar.all.map{|c| [c.course, c.id]}
+%br/
+%br/
+%input{type: "submit"}/
+%h1 Reading data from select controls
+%br/
+%br/
+You selected #{@data}
+%br/
+%br/

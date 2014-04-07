@@ -42,6 +42,14 @@ ExamController::Application.routes.draw do
   get "org_chart" => "employees#hierarchy"
 
   get "calenders"
-  resources :calendars
+
+  resources :calendars do
+  	collection do
+  	get "index1"
+  	get "index2"
+  	get "result"
+  	get "index3"
+  	end
+  end
 
 end

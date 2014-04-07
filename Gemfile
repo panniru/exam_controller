@@ -11,6 +11,7 @@ group :assets do
   gem 'uglifier', '>= 1.3.0'
   gem 'coffee-rails', '~> 4.0.0'
   gem 'compass-rails'
+
 end
 
 gem 'roo'
@@ -26,7 +27,11 @@ gem 'jquery-rails'
 gem 'turbolinks'
 
 gem 'pg'
+
 gem 'jquery-ui-rails', '4.1.0'
+gem 'best_in_place', github: 'aaronchi/best_in_place'
+
+
 gem 'cancan', '1.6.7'
 gem 'devise'
 gem 'draper'
@@ -48,6 +53,8 @@ group :doc do
   # bundle exec rake doc:rails generates the API under doc/api.
   gem 'sdoc', require: false
 end
+
+
 
 # Use ActiveModel has_secure_password
 # gem 'bcrypt-ruby', '~> 3.1.2'

@@ -6,13 +6,13 @@ class CalendarsController < ApplicationController
     end
   	
     def show
+
          @calendar = Calendar.find(params[:id])
 
     end
 
     def new
         @calendar=Calendar.new
-
     end
 
     def create
@@ -67,5 +67,19 @@ class CalendarsController < ApplicationController
         def calendar_params
           params.require(:calendar).permit(:course, :semester, :event, :from, :to)
         end
+        
+        def pick
+           @data = params[:course]
+          
+        end
+        def index1
+        end
+        def index2
+        end
+        def index3
+            @calendars = Calendar.all
+            
+        end
+
 
 end

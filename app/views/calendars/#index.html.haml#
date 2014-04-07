@@ -1,0 +1,31 @@
+.container
+ .row
+  .col-md-4
+    = form_for Calendar.new  do |f|
+     = f.select. :course, Calendar.all.map{|c| [c.course, c.id]}
+  .col-md-8
+  %h1 Academic events
+     %table.table.table-striped.table-bordered.table-condensed.table-hover
+     %thead
+     %tr
+     %th Course
+     %th Semester
+     %th Event
+     %th From
+     %th To
+%th
+%th
+    %br/
+    %tbody
+    - @calendars.each do |calendar|
+    %tr
+     %td= calendar.course
+     %td= calendar.semester
+     %td= calendar.event
+  %td= calendar.from
+  %td= calendar.to
+  %td= link_to 'Edit', edit_calendar_path(calendar)
+  %td= link_to 'Delete', calendar, method: :delete,data: { confirm: 'Are you sure?' }
+  %br/
+%br/
+= link_to 'Add Event', new_calendar_path
