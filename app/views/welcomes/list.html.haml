@@ -1,0 +1,31 @@
+.container
+  .row
+    .col-md-6
+      .panel.panel-primary
+        .panel-heading
+          %h3.panel-title Welcome Screen
+          .pull-right
+            %span.clickable.filter{"data-container" => "body", "data-toggle" => "tooltip", title: "Toggle table filter"}
+              %i.glyphicon.glyphicon-filter
+        .panel-body
+          %input#dev-table-filter.form-control{"data-action" => "filter", "data-filters" => "#dev-table", placeholder: "Filter Developers", type: "text"}/
+        %table#dev-table.table.table-hover
+          %thead
+            %tr
+              %th Heading
+              %th Message
+              %th 
+              %th
+          %tbody
+            - @welcomes.each do |welcome|
+              %tr
+                %td= welcome.heading
+                %td= welcome.message
+   
+                %td= link_to 'Edit', edit_welcome_path(welcome)
+                %td= link_to 'Delete', welcome, method: :delete,data: { confirm: 'Are you sure?' }
+                %br/
+                %br/
+                = link_to 'Add Event', new_welcome_path
+          
+

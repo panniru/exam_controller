@@ -1,25 +1,18 @@
-%div
-%div
-= form_for Notification.new  do |f|
-  = f.select :event, Notification.all.map{|e| [e.event, e.id]}
-%div
 %h1 Notifications
 %table
-%thead
-%tr
-%th Event
-%th Description
-%th
-%th
-%br/
-%tbody
-- @notifications.each do |notification|
-  %tr
-    %td= notification.event
-    %td= notification.description
-   
-    %td= link_to 'Edit', edit_notification_path(notification)
-    %td= link_to 'Delete', notification, method: :delete,data: { confirm: 'Are you sure?' }
-  %br/
-%br/
+  %thead
+    %tr
+      %th Event
+      %th Description
+      %th
+      %th
+  %tbody
+    - @notifications.each do |notification|
+      %tr
+        %td= notification.event
+        %td= notification.description
+        
+        %td= link_to 'Edit', edit_notification_path(notification)
+        %td= link_to 'Delete', notification, method: :delete,data: { confirm: 'Are you sure?' }
+
 = link_to 'Add', new_notification_path

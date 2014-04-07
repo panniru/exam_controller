@@ -1,0 +1,13 @@
+= form_for Notification.new do |f|
+  .col-sm-4
+    .form-group
+      = f.label "Event", :class => 'col-sm-6 control-label'
+    .col-sm-8
+      = f.text_field :event, :class => 'form-control'
+    .form-group
+      = f.label "Description", :class => 'col-sm-6 control-label'
+    .col-sm-8
+      = f.text_area :description, :class => 'form-control'
+      
+      %br/
+      = f.submit
