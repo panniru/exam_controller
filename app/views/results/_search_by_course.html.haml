@@ -2,7 +2,7 @@
   .form-group
     .col-sm-3
       = label_tag "Course", nil
-      = select_tag :course_name, options_from_collection_for_select(Course.all, "name", "name", params[:course_name]), :include_blank => '', :class => "form-control", :rel => "result-course"
+      = select_tag :course_name, options_for_select(CoursesHelper::courses_belongs_user(current_user), params[:course_name]), :include_blank => '', :class => "form-control", :rel => "result-course"
     .col-sm-3
       = label_tag "Semester", nil
       = select_tag :semester, options_for_select([], params[:semester]), :class => "form-control", :rel => "result-semester"
@@ -12,3 +12,5 @@
     .col-sm-3
       %br
       = submit_tag "Search", :name => nil, :class => "btn-primary btn"
+      - unless current_user.student?
+        = link_to "Add Result", new_result_path, :class => "btn-primary btn"

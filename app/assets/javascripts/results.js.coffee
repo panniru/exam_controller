@@ -24,7 +24,6 @@ $ ->
             parent = $("#result-subjects")
             parent.empty()
             $.getJSON(url, (data)->
-                alert(JSON.stringify(data))
                 $.each(data, (index, item) ->
                         parent.append(buildFormElement("result[subject_"+(index+1)+"]", item))
                         )
