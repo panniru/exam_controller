@@ -11,23 +11,3 @@
 <%=best_in_place @calendar, :course,type: :checkbox, collection:[["male,"male"],[],[]]%>
 </p>
 
- b.tech
- B.E
- Computers
- EEE
- End Semester Exam
- B.Sc
- q
- p
- m.sc
- CSC
- Physics
- B.Tech
- Biotech
- Sessional
- M.Tech
- aa
- B.Com
- M.Sc
-(18 rows)
-
