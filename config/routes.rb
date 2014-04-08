@@ -24,6 +24,14 @@ ExamController::Application.routes.draw do
     end
   end
 
+  resources :documents do
+  member do
+      get "download"
+      
+    end
+  end
+
+  
   resources :faculties
 
   resources :students do
@@ -41,4 +49,5 @@ ExamController::Application.routes.draw do
   post "employees/:id" => "employees#update"
   get "org_chart" => "employees#hierarchy"
 
+  get 'auto_search/autocomplete_document_filename'
 end

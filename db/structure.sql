@@ -71,6 +71,38 @@ ALTER SEQUENCE courses_id_seq OWNED BY courses.id;
 
 
 --
+-- Name: documents; Type: TABLE; Schema: public; Owner: -; Tablespace: 
+--
+
+CREATE TABLE documents (
+    id integer NOT NULL,
+    filename character varying(255),
+    file_path character varying(255),
+    created_at timestamp without time zone,
+    updated_at timestamp without time zone
+);
+
+
+--
+-- Name: documents_id_seq; Type: SEQUENCE; Schema: public; Owner: -
+--
+
+CREATE SEQUENCE documents_id_seq
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+--
+-- Name: documents_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: -
+--
+
+ALTER SEQUENCE documents_id_seq OWNED BY documents.id;
+
+
+--
 -- Name: employees; Type: TABLE; Schema: public; Owner: -; Tablespace: 
 --
 
@@ -103,6 +135,42 @@ CREATE SEQUENCE employees_id_seq
 --
 
 ALTER SEQUENCE employees_id_seq OWNED BY employees.id;
+
+
+--
+-- Name: examschedules; Type: TABLE; Schema: public; Owner: -; Tablespace: 
+--
+
+CREATE TABLE examschedules (
+    id integer NOT NULL,
+    event character varying(255),
+    courses character varying(255),
+    subjects character varying(255),
+    academic_year character varying(255),
+    date integer,
+    timings integer,
+    created_at timestamp without time zone,
+    updated_at timestamp without time zone
+);
+
+
+--
+-- Name: examschedules_id_seq; Type: SEQUENCE; Schema: public; Owner: -
+--
+
+CREATE SEQUENCE examschedules_id_seq
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+--
+-- Name: examschedules_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: -
+--
+
+ALTER SEQUENCE examschedules_id_seq OWNED BY examschedules.id;
 
 
 --
@@ -168,6 +236,36 @@ CREATE SEQUENCE faculty_courses_id_seq
 --
 
 ALTER SEQUENCE faculty_courses_id_seq OWNED BY faculty_courses.id;
+
+
+--
+-- Name: notifications; Type: TABLE; Schema: public; Owner: -; Tablespace: 
+--
+
+CREATE TABLE notifications (
+    id integer NOT NULL,
+    created_at timestamp without time zone,
+    updated_at timestamp without time zone
+);
+
+
+--
+-- Name: notifications_id_seq; Type: SEQUENCE; Schema: public; Owner: -
+--
+
+CREATE SEQUENCE notifications_id_seq
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+--
+-- Name: notifications_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: -
+--
+
+ALTER SEQUENCE notifications_id_seq OWNED BY notifications.id;
 
 
 --
@@ -274,9 +372,6 @@ CREATE TABLE users (
     last_sign_in_at timestamp without time zone,
     current_sign_in_ip character varying(255),
     last_sign_in_ip character varying(255),
-    user_id character varying(255),
-    resource_id integer,
-    role character varying(255),
     created_at timestamp without time zone,
     updated_at timestamp without time zone
 );
@@ -312,7 +407,21 @@ ALTER TABLE ONLY courses ALTER COLUMN id SET DEFAULT nextval('courses_id_seq'::r
 -- Name: id; Type: DEFAULT; Schema: public; Owner: -
 --
 
+ALTER TABLE ONLY documents ALTER COLUMN id SET DEFAULT nextval('documents_id_seq'::regclass);
+
+
+--
+-- Name: id; Type: DEFAULT; Schema: public; Owner: -
+--
+
 ALTER TABLE ONLY employees ALTER COLUMN id SET DEFAULT nextval('employees_id_seq'::regclass);
+
+
+--
+-- Name: id; Type: DEFAULT; Schema: public; Owner: -
+--
+
+ALTER TABLE ONLY examschedules ALTER COLUMN id SET DEFAULT nextval('examschedules_id_seq'::regclass);
 
 
 --
@@ -327,6 +436,13 @@ ALTER TABLE ONLY faculties ALTER COLUMN id SET DEFAULT nextval('faculties_id_seq
 --
 
 ALTER TABLE ONLY faculty_courses ALTER COLUMN id SET DEFAULT nextval('faculty_courses_id_seq'::regclass);
+
+
+--
+-- Name: id; Type: DEFAULT; Schema: public; Owner: -
+--
+
+ALTER TABLE ONLY notifications ALTER COLUMN id SET DEFAULT nextval('notifications_id_seq'::regclass);
 
 
 --
@@ -359,11 +475,27 @@ ALTER TABLE ONLY courses
 
 
 --
+-- Name: documents_pkey; Type: CONSTRAINT; Schema: public; Owner: -; Tablespace: 
+--
+
+ALTER TABLE ONLY documents
+    ADD CONSTRAINT documents_pkey PRIMARY KEY (id);
+
+
+--
 -- Name: employees_pkey; Type: CONSTRAINT; Schema: public; Owner: -; Tablespace: 
 --
 
 ALTER TABLE ONLY employees
     ADD CONSTRAINT employees_pkey PRIMARY KEY (id);
+
+
+--
+-- Name: examschedules_pkey; Type: CONSTRAINT; Schema: public; Owner: -; Tablespace: 
+--
+
+ALTER TABLE ONLY examschedules
+    ADD CONSTRAINT examschedules_pkey PRIMARY KEY (id);
 
 
 --
@@ -380,6 +512,14 @@ ALTER TABLE ONLY faculties
 
 ALTER TABLE ONLY faculty_courses
     ADD CONSTRAINT faculty_courses_pkey PRIMARY KEY (id);
+
+
+--
+-- Name: notifications_pkey; Type: CONSTRAINT; Schema: public; Owner: -; Tablespace: 
+--
+
+ALTER TABLE ONLY notifications
+    ADD CONSTRAINT notifications_pkey PRIMARY KEY (id);
 
 
 --
@@ -435,7 +575,13 @@ SET search_path TO "$user",public;
 
 INSERT INTO schema_migrations (version) VALUES ('20140328105229');
 
+INSERT INTO schema_migrations (version) VALUES ('20140328121344');
+
 INSERT INTO schema_migrations (version) VALUES ('20140329061840');
+
+INSERT INTO schema_migrations (version) VALUES ('20140401060114');
+
+INSERT INTO schema_migrations (version) VALUES ('20140401095514');
 
 INSERT INTO schema_migrations (version) VALUES ('20140402054703');
 
@@ -447,9 +593,9 @@ INSERT INTO schema_migrations (version) VALUES ('20140402122129');
 
 INSERT INTO schema_migrations (version) VALUES ('20140402122236');
 
-INSERT INTO schema_migrations (version) VALUES ('20140402124344');
-
 INSERT INTO schema_migrations (version) VALUES ('20140404051633');
+
+INSERT INTO schema_migrations (version) VALUES ('20140404092419');
 
 INSERT INTO schema_migrations (version) VALUES ('20140404113827');
 

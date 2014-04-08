@@ -1,0 +1,22 @@
+.container12
+  %table.table.table-striped.table-bordered.table-condensed.table-hover
+    %tr
+      %th event
+      %th courses
+      %th subjects
+      %th academic_year
+      %th date
+      %th timings
+      %td
+        = @examschedule.event
+        %td
+          = @examschedule.courses
+          %td
+            = @examschedule.subjects
+            %td
+              = @examschedule.academic_year
+              %td
+                = @examschedule.date
+                %td
+                  = @examschedule.timings
+                  %br

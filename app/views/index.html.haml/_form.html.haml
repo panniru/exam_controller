@@ -1,0 +1,14 @@
+= form_tag employees_path, :class => "form-horizontal", :name => "employee", :id=> 'employee', :remote => true, :multipart => true do 
+  .form-group
+    = label_tag "Name",nil,:class => 'col-sm-2 control-label'
+    .col-sm-10
+      = text_field_tag "employee[name]",nil, :class => 'form-control', :id => "employee-name"
+      .form-group
+        = label_tag "Designation",nil, :class => 'col-sm-2 control-label'
+        .col-sm-10
+          = text_field_tag "employee[designation]",nil, :class => 'form-control', :id => "employee-designation"
+          .form-group
+            = label_tag "Department",nil, :class => 'col-sm-2 control-label'
+            .col-sm-10
+              = text_field_tag "employee[department]", nil, :class => 'form-control', :id => "employee-department"
+          

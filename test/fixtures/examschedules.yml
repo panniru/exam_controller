@@ -1,0 +1,17 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  event: MyString
+  courses: MyString
+  subjects: MyString
+  academic_year: MyString
+  date: 1
+  timings: 1
+
+two:
+  event: MyString
+  courses: MyString
+  subjects: MyString
+  academic_year: MyString
+  date: 1
+  timings: 1

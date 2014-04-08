@@ -1,0 +1,22 @@
+= render "search"
+%br
+.col-md-8
+  %table.table.table-striped.table-bordered.table-condensed.table-hover
+    %thead
+      %center
+        %th{:bgcolor => "red"} filename
+        %tbody
+          - @documents.each do |document|
+            %tr
+              %td
+                = document.filename
+                .pull-right
+                  = link_to "Download", download_document_path(document), :class => "btn btn-success"
+                  /  = link_to "Edit", edit_document_path(document), :class => "btn btn-success"
+                
+                      
+
+
+
+
+

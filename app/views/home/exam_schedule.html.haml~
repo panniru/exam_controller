@@ -1,0 +1,30 @@
+.container11
+  %center
+    = form_for Examschedule.new do |f|
+      .form-group
+        = f.label "event", :class => 'col-sm-2 control-label'
+        .col-sm-8
+          = f.select :event, options_for_select([['anual'],['final']]),{}, :multiple => true, :class => 'form-control'
+          %br
+          = f.label :courses
+          \&nbsp&nbsp
+          \#{f.select :courses, options_for_select([['B.sc'],['B.com'],[''],['B.A'],['B.B.M.T']]), { :include_blank=>true }}
+          %br
+          = f.label :subjects
+          \&nbsp&nbsp&nbsp
+          \#{f.select :subjects, options_for_select([['chemistry'],['Physics'],['Mathematics']]), { :include_blank=>true }}
+          %br
+          = f.label :academic_year
+          = f.select :academic_year, options_for_select([['2014'],['2013'],['2012']]), { :include_blank=>true }
+          %br
+          %br
+          %br
+          = f.label :date
+          = f.select :date, options_for_select([['1'],['2'],['3']]), { :include_blank=>true }
+          %br
+          = f.label :timings
+          = f.select :timings, options_for_select([['1'],['2'],['3']]), { :include_blank=>true }
+          %br
+          = f.submit "submit"
+      
+      

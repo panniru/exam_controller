@@ -1,0 +1,81 @@
+.container11
+  %center
+    %form.form-horizontal.center{:role => "form"}
+    = form_for Examschedule.new, url:preview_examshedules_path  do |f|
+      .col-ms-2
+      .form-group
+        %label{for: "event" } Event
+        %select#event.form-control{name: "event", required: "required"}
+          %option{selected: "selected", value: "na"} Choose
+          %option{value: "anual"}Anual.
+          %option{value: "bscem"} Halfhearly. 
+          %option{value: "baemtm"} Finalsem. 
+        %br/ 
+            
+          
+         
+      .form-group
+        %label{for: "Courses"} Courses
+        %select#courses.form-control{name: "courses", required: "required"}
+          %option{selected: "selected", value: "na"} Choose
+          %option{value: "bscemtm"}B.Sc. (E.M & T.M) 
+          %option{value: "bscem"} B.Sc. (EM)
+          %option{value: "baemtm"} B.A. (EM & TM)
+          %option{value: "bcom"} B.Com., (EM & TM) 
+          %option{value: "bcomcs"} B.Com. Comp.Sc. (EM only)
+          %option{value: "bbmtit"} Bachelor of Business Management and Technology (B.B.M.T)
+        %br/
+      .form-group
+        %label{for: "subjects"} Subjects
+        %select#subjects.form-control{name: "subjects", required: "required"}
+          %option{selected: "selected", value: "na"} Choose
+          %option{value: "bzc"} Botany, Zoology & Chemistry
+          %option{value: "mpc"} Mathematics, Physics & Chemistry
+          %option{value: "mpcs"} Mathematics, Physics & Computer Science
+          %option{value: "mscs"} Mathematics, Statistics & Computer Science
+          %option{value: "mecs"} Mathematics, Electronics & Computer Science
+          %option{value: "mbc"} Microbiology, Botany & Chemistry
+          %option{value: "mzc"} Microbiology, Zoology & Chemistry
+          %option{value: "btbic"} Bio Technology, Bio Informatics & Chemistry
+          %option{value: "bccm"} Bio-Chemistry, Chemistry & Microbiology
+          %option{value: "bccsc"} Bio-Chemistry, Computer Science & Chemistry
+          %option{value: "epspa"} Economics, Political Science & Public Administration
+          %option{value: "ellhs"} English Language Literature, History & Sociology
+          %option{value: "tlhs"} Telugu Literature, History & Sociology
+          %option{value: "cc"} Commerce with Computer Science
+          %option{value: "bbmit"} BBM with Information Technology
+          %option{value: "msccs"} MSc (CS)
+          %option{value: "mba"} MBA
+          %option{value: "mscc"} M.Sc(Chemistry)
+          %option{value: "mscm"} M.Sc(Maths)
+        %br
+      .form-group
+        %label{for: "academic_year"} AcademicYear
+        %select#academic_year.form-control{name: "academic_year", required: "required"}
+          %option{selected: "selected", value: "na"} Choose
+          %option{value: "anual"}2014.
+          %option{value: "bscem"} 2013. 
+          %option{value: "baemtm"} 2012. 
+        %br
+      .form-group
+        %label{for: "date" }
+        = render 'shared/date'
+          
+        %br
+      .form-group
+        %label{for: "timings" } Time
+        %select#timings.form-control{name: "timings", required: "required"}
+          %option{selected: "selected", value: "na"} Choose
+          %option{value: "anual"}12.00.
+          %option{value: "bscem"}13.00. 
+          %option{value: "baemtm"} 14.00. 
+        %br
+          = f.submit "submit",:class => "btn btn-primary"
+        %br
+   
+      / = link_to "submit", preview_examshedules_path, :class => "btn btn-primary"
+
+
+
+
+

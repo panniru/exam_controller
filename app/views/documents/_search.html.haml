@@ -1,0 +1,14 @@
+= form_tag documents_path, :method => 'get' , :class => "form-inline" do
+  .form-group.col-md-6
+    = autocomplete_field_tag :search_term,
+    '',
+    auto_search_autocomplete_document_filename_path,
+    :placeholder => "Search", 
+    :type => "text",
+    :class => "form-control",
+    :id_element => "#search"
+    = hidden_field_tag :search, :id => "search"
+    %button.btn.btn-default{:type => "submit",:class => "btn btn-primary"}Search!
+%br
+
+

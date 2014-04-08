@@ -1,0 +1,19 @@
+// Place all the styles related to the examschedules controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: http://sass-lang.com/
+.container11 {
+
+   background-color: #CCFFCC;
+    width: 50%;
+       height: 400px;
+    float: left;
+   padding-top: 30px;
+      padding-bottom: 20px;
+      padding-left: 50px;	
+
+   margin-right: 10px;
+   border-radius: 15px;
+   moz-border-radius: 15px;
+   border: 2px solid;
+       border-color:#ff9900;
+}
