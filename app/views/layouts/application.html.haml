@@ -10,10 +10,16 @@
     #body
       = render 'shared/banner'
       = render 'shared/menu'
+      .top-margin
+        = render "shared/photo_show"
       .container
         #content-container
+          -# .top-margin
+          -#   = render "shared/photo_show"
           - if navigation_present?
             .col-sm-3
               = render "shared/navigation_left"
-          .col-sm-9
+            .col-sm-9
+              = yield
+          - else
             = yield

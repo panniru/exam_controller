@@ -1,0 +1,14 @@
+#rbvrr-gallery.carousel.slide{:data => {:ride => "carousel"}}
+  %ol.carousel-indicators
+    %li{:data => {:target => "#rbvrr-gallery", "slide-to".to_sym => "0"} , :class => "active"}
+    %li{:data => {:target => "#rbvrr-gallery", "slide-to".to_sym => "1"}}
+    %li{:data => {:target => "#rbvrr-gallery", "slide-to".to_sym => "2"}}
+  .carousel-inner
+    .item.active
+      = image_tag("1.JPG")
+    .item
+      = image_tag("2.JPG")
+    .item
+      = image_tag("3.JPG")
+  = link_to raw("<span class='glyphicon glyphicon-chevron-left'></span>"), "#rbvrr-gallery", :class => "left carousel-control", :data => {:slide => "prev"}
+  = link_to raw("<span class='glyphicon glyphicon-chevron-right'></span>"), "#rbvrr-gallery", :class => "right carousel-control", :data => {:slide => "next"}

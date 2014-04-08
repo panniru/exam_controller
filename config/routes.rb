@@ -49,8 +49,6 @@ ExamController::Application.routes.draw do
   get "home/feedback"
 
   get "notifications/preview"
-  get "welcomes/edit"
-  get "welcomes/show"
   get "home/adminhome"
   get "feedbacks/show"
 
@@ -67,5 +65,7 @@ ExamController::Application.routes.draw do
     member do
       end
     end
+
+  resources :welcomes
    
 end
