@@ -21,14 +21,23 @@
             %th Event
             %th From
             %th To
-            %th
+            - if current_user.admin?  
+              %th
         %tbody
           - @calendars.each do |calendar|
-            %tr
-              %td= best_in_place calendar, :course 
-              %td= best_in_place calendar, :semester
-              %td= best_in_place calendar, :event, type: :textarea
-              %td= best_in_place calendar, :from
-              %td= best_in_place calendar, :to
-              %td= link_to 'Delete', calendar, method: :delete,data: { confirm: 'Are you sure?' }
+            - if current_user.admin?
+              %tr
+                %td= best_in_place calendar, :course,html_attrs: { "data-autocomplete" => auto_search_autocomplete_calendar_course_path, :class => "form-control col-sm-3" } 
+                %td= best_in_place calendar, :semester
+                %td= best_in_place calendar, :event, type: :textarea
+                %td= best_in_place calendar, :from
+                %td= best_in_place calendar, :to
+                %td= link_to 'Delete', calendar, method: :delete,data: { confirm: 'Are you sure?' }
+            - else
+              %tr
+                %td= best_in_place calendar, :course,html_attrs: { "data-autocomplete" => auto_search_autocomplete_calendar_course_path, :class => "form-control col-sm-3" } 
+                %td= calendar.semester
+                %td= calendar.event
+                %td= calendar.from
+                %td= calendar.to
       %br
