@@ -7,20 +7,20 @@
   = include_gon
   = csrf_meta_tags
   %body
-    #body
+    .row
       = render 'shared/banner'
-      = render 'shared/menu'
-      - if controller.controller_name == "home"
-        .top-margin
-          = render "shared/photo_show"
-      - else
-        .top-margin
-      .container
-        #content-container
-          - if navigation_present?
-            .col-sm-3
-              = render "shared/navigation_left"
-            .col-sm-9
-              = yield
-          - else
+    = render 'shared/menu'
+    - if controller.controller_name == "home"
+      .top-margin
+        = render "shared/photo_show"
+    - else
+      .top-margin
+    .container
+      #content-container
+        - if navigation_present?
+          .col-sm-3
+            = render "shared/navigation_left"
+          .col-sm-9
             = yield
+        - else
+          = yield
