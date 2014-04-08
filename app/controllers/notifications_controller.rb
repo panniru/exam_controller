@@ -12,10 +12,11 @@ class NotificationsController < ApplicationController
   end
 
   def show
-    @notification = Notification.find(params[:id])
+
   end
   def index
     @notifications = Notification.all
+    
   end
   def new
     @notification=Notification.new
@@ -23,7 +24,13 @@ class NotificationsController < ApplicationController
   def edit
     @notification = Notification.find(params[:id])
   end
-
+  def destroy
+    @notification = Notification.find(params[:id])
+    @notification.destroy
+    respond_to do |format|
+      format.html { redirect_to notifications_url }
+      end
+  end
   private
   def notification_params
     params.require(:notification).permit(:event, :description)

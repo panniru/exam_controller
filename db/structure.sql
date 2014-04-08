@@ -337,6 +337,7 @@ CREATE TABLE products (
 );
 
 
+--
 -- Name: products_id_seq; Type: SEQUENCE; Schema: public; Owner: -
 --
 
@@ -347,8 +348,7 @@ CREATE SEQUENCE products_id_seq
     NO MAXVALUE
     CACHE 1;
 
-
-
+--
 -- Name: products_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: -
 --
 
@@ -492,8 +492,8 @@ ALTER SEQUENCE users_id_seq OWNED BY users.id;
 
 CREATE TABLE welcomes (
     id integer NOT NULL,
-    heading character varying(255),
-    message character varying(255),
+    heading text,
+    message text,
     created_at timestamp without time zone,
     updated_at timestamp without time zone
 );
@@ -575,6 +575,13 @@ ALTER TABLE ONLY feedbacks ALTER COLUMN id SET DEFAULT nextval('feedbacks_id_seq
 ALTER TABLE ONLY how_tos ALTER COLUMN id SET DEFAULT nextval('how_tos_id_seq'::regclass);
 
 ALTER TABLE ONLY notifications ALTER COLUMN id SET DEFAULT nextval('notifications_id_seq'::regclass);
+
+
+--
+-- Name: id; Type: DEFAULT; Schema: public; Owner: -
+--
+
+ALTER TABLE ONLY products ALTER COLUMN id SET DEFAULT nextval('products_id_seq'::regclass);
 
 
 --
@@ -677,6 +684,14 @@ ALTER TABLE ONLY how_tos
 ALTER TABLE ONLY notifications
     ADD CONSTRAINT notifications_pkey PRIMARY KEY (id);
 --
+-- Name: products_pkey; Type: CONSTRAINT; Schema: public; Owner: -; Tablespace: 
+--
+
+ALTER TABLE ONLY products
+    ADD CONSTRAINT products_pkey PRIMARY KEY (id);
+
+
+--
 -- Name: results_pkey; Type: CONSTRAINT; Schema: public; Owner: -; Tablespace: 
 --
 
@@ -759,6 +774,8 @@ INSERT INTO schema_migrations (version) VALUES ('20140402122236');
 
 INSERT INTO schema_migrations (version) VALUES ('20140402124344');
 
+INSERT INTO schema_migrations (version) VALUES ('20140403061229');
+
 INSERT INTO schema_migrations (version) VALUES ('20140404050646');
 
 INSERT INTO schema_migrations (version) VALUES ('20140404051633');
@@ -774,3 +791,6 @@ INSERT INTO schema_migrations (version) VALUES ('20140405103818');
 INSERT INTO schema_migrations (version) VALUES ('20140408135054');
 
 INSERT INTO schema_migrations (version) VALUES ('20140409063808');
+
+INSERT INTO schema_migrations (version) VALUES ('20140408063625');
+

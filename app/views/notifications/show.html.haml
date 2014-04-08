@@ -1,8 +1,14 @@
-%p
-  %strong Event:
-  = @notification.event
-%p
-  %b Description:
-  =  @notification.description
-= link_to 'Edit', {:controller => "notifications", :action => "create",:id => notification.id  }, :method => "post"
-= link_to 'Back', notifications_notification_path
+%table.table.table.striped
+  %thead
+    %tr
+      %th Events
+      %th
+%marquee{ direction: "up", height: "100%", loop: "true", onmouseout: "this.scrollAmount=1", onmouseover: "this.scrollAmount=0", scrollamount: "1", width: "100%"}
+  %tbody
+    - Notification.all.each do |notification|
+      %tr
+        %td= notification.event
+        %td
+          %img{src: "/assets/newi.gif",alt: "Don't Blink"}/
+      %br  
+      %br
