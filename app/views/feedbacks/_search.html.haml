@@ -1,0 +1,4 @@
+= form_tag feedbacks_path, :method => 'get' , :class => "form-inline" do
+  .form-group.col-md-6
+    = text_field_tag :date, params[:date], :id => "date", :class => 'form-control datepicker', :placeholder => "Dated On"
+  = submit_tag "Search", :name => nil, :class => "btn-primary btn"

@@ -26,8 +26,17 @@ def seed_user
   end
 end
 
+def seed_employee
+  emp = Employee.first
+  unless emp.present?
+    emp = Employee.new(:name => "Root", :designation => "Root", :department => "Root")
+    emp.save!
+  end
+end
+
 def seed_all
   seed_user
+  seed_employee
 end
 
 
