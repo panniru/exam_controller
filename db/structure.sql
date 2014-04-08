@@ -236,6 +236,38 @@ ALTER SEQUENCE notifications_id_seq OWNED BY notifications.id;
 
 
 --
+-- Name: products; Type: TABLE; Schema: public; Owner: -; Tablespace: 
+--
+
+CREATE TABLE products (
+    id integer NOT NULL,
+    name character varying(255),
+    description text,
+    created_at timestamp without time zone,
+    updated_at timestamp without time zone
+);
+
+
+--
+-- Name: products_id_seq; Type: SEQUENCE; Schema: public; Owner: -
+--
+
+CREATE SEQUENCE products_id_seq
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+--
+-- Name: products_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: -
+--
+
+ALTER SEQUENCE products_id_seq OWNED BY products.id;
+
+
+--
 -- Name: results; Type: TABLE; Schema: public; Owner: -; Tablespace: 
 --
 
@@ -372,8 +404,8 @@ ALTER SEQUENCE users_id_seq OWNED BY users.id;
 
 CREATE TABLE welcomes (
     id integer NOT NULL,
-    heading character varying(255),
-    message character varying(255),
+    heading text,
+    message text,
     created_at timestamp without time zone,
     updated_at timestamp without time zone
 );
@@ -438,6 +470,13 @@ ALTER TABLE ONLY feedbacks ALTER COLUMN id SET DEFAULT nextval('feedbacks_id_seq
 --
 
 ALTER TABLE ONLY notifications ALTER COLUMN id SET DEFAULT nextval('notifications_id_seq'::regclass);
+
+
+--
+-- Name: id; Type: DEFAULT; Schema: public; Owner: -
+--
+
+ALTER TABLE ONLY products ALTER COLUMN id SET DEFAULT nextval('products_id_seq'::regclass);
 
 
 --
@@ -517,6 +556,14 @@ ALTER TABLE ONLY notifications
 
 
 --
+-- Name: products_pkey; Type: CONSTRAINT; Schema: public; Owner: -; Tablespace: 
+--
+
+ALTER TABLE ONLY products
+    ADD CONSTRAINT products_pkey PRIMARY KEY (id);
+
+
+--
 -- Name: results_pkey; Type: CONSTRAINT; Schema: public; Owner: -; Tablespace: 
 --
 
@@ -579,6 +626,12 @@ INSERT INTO schema_migrations (version) VALUES ('20140328105229');
 
 INSERT INTO schema_migrations (version) VALUES ('20140329061840');
 
+INSERT INTO schema_migrations (version) VALUES ('20140401055855');
+
+INSERT INTO schema_migrations (version) VALUES ('20140401060807');
+
+INSERT INTO schema_migrations (version) VALUES ('20140401101057');
+
 INSERT INTO schema_migrations (version) VALUES ('20140402054703');
 
 INSERT INTO schema_migrations (version) VALUES ('20140402054917');
@@ -591,6 +644,8 @@ INSERT INTO schema_migrations (version) VALUES ('20140402122236');
 
 INSERT INTO schema_migrations (version) VALUES ('20140402124344');
 
+INSERT INTO schema_migrations (version) VALUES ('20140403061229');
+
 INSERT INTO schema_migrations (version) VALUES ('20140404050646');
 
 INSERT INTO schema_migrations (version) VALUES ('20140404051633');
@@ -602,3 +657,5 @@ INSERT INTO schema_migrations (version) VALUES ('20140404125645');
 INSERT INTO schema_migrations (version) VALUES ('20140404130322');
 
 INSERT INTO schema_migrations (version) VALUES ('20140405103818');
+
+INSERT INTO schema_migrations (version) VALUES ('20140408063625');

@@ -1,5 +1,4 @@
-%h1 Notifications
-%table
+%table.table.table.striped
   %thead
     %tr
       %th Event
@@ -11,7 +10,6 @@
       %tr
         %td= notification.event
         %td= notification.description
-        
         %td= link_to 'Edit', edit_notification_path(notification)
         %td= link_to 'Delete', notification, method: :delete,data: { confirm: 'Are you sure?' }
 

@@ -1,29 +1,19 @@
-.container
-  .row
-    .col-md-6
-      .panel.panel-primary
-        .panel-heading
-          %h3.panel-title Welcome Screen
-        
-        .panel-body
-        
-        %table#dev-table.table.table-hover
-          %thead
-            %tr
-              %th Heading
-              %th Message
-              %th 
-              %th
-          %tbody
-            - @welcomes.each do |welcome|
-              %tr
-                %td= welcome.heading
-                %td= welcome.message
-   
-                %td= link_to 'Edit', edit_welcome_path(welcome)
-                %td= link_to 'Delete', welcome, method: :delete,data: { confirm: 'Are you sure?' }
-                %br/
-                %br/
-        = link_to 'Add Event', new_welcome_path
+%table.table.table-striped
+  %thead
+    %tr
+      %th Heading
+      %th Message
+      %th 
+      %th
+  %tbody
+    - @welcomes.each do |welcome|
+      %tr
+        %td= welcome.heading
+        %td= welcome.message
+        %td= link_to 'Edit', edit_welcome_path(welcome)
+        %td= link_to 'Delete', welcome, method: :delete,data: { confirm: 'Are you sure?' }
+        %br/
+        %br/
+= link_to 'Add', new_welcome_path
           
 

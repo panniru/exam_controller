@@ -1,7 +1,7 @@
 ExamController::Application.routes.draw do
   devise_for :users, :controllers => { :sessions => 'sessions'}
   root to: "home#home_page"
-
+  
   resources :employees do
     collection do
 
@@ -45,7 +45,7 @@ ExamController::Application.routes.draw do
   get "notifications/edit"
   get "notifications/show"
   get "notifications/destroy"
-  get "notifications/notification"
+ 
   get "home/feedback"
 
   get "notifications/preview"
@@ -54,7 +54,7 @@ ExamController::Application.routes.draw do
 
  resources :notifications do
     collection do 
-      post "preview"
+     
       end
     member do
       end

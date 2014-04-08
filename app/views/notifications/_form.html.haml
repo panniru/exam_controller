@@ -1,13 +1,13 @@
-= form_for Notification.new do |f|
-  .col-sm-4
+= form_for @notification, :html => { :class => "form-horizontal", :role => "form" } do |f|
+  = render "shared/error_messages", :object => f.object
+  .col-sm-8
     .form-group
-      = f.label "Event", :class => 'col-sm-6 control-label'
-    .col-sm-8
-      = f.text_field :event, :class => 'form-control'
-    .form-group
-      = f.label "Description", :class => 'col-sm-6 control-label'
-    .col-sm-8
-      = f.text_area :description, :class => 'form-control'
+      = f.label "Event", :class => 'col-sm-1 control-label'
       
-      %br/
-      = f.submit
+      = f.text_field :event, :class => ' form-control'
+    .form-group
+      = f.label "Description", :class => 'col-sm-1 control-label'
+      
+      = f.text_area :description, :class => ' form-control'
+    
+    = f.submit "Save", :class => "btn-primary btn"

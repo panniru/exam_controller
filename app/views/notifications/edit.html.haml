@@ -1,16 +1,2 @@
 %h1 Editing Notifications
-- form_for(@notification) do |f|
-  = f.error_messages
-  %p
-    = f.label :event
-    %br/
-    = f.text_field :event
-  %p
-    = f.label :description
-    %br/
-    = f.text_area :description
-  %p
-    = f.submit "Update"
-= link_to 'Show', notifications_show_path
-|
-\#{link_to 'Back', notifications_notification_path}
+= render 'form'
