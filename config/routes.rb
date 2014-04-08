@@ -36,6 +36,7 @@ ExamController::Application.routes.draw do
   get 'auto_search/autocomplete_course_name'
   get 'auto_search/autocomplete_faculty_name'
   get 'auto_search/autocomplete_student_by_roll_no_and_name'
+  get 'auto_search/autocomplete_calendar_course'
 
   
   post "employees/:id" => "employees#update"
@@ -43,10 +44,7 @@ ExamController::Application.routes.draw do
 
   resources :calendars do
     collection do
-      get "index1"
-      get "index2"
-      get "result"
-      get "index3"
+      
     end
   end
 

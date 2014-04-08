@@ -15,3 +15,6 @@
  %input{name: "dept", type: "checkbox", :data => {:value => "#{object.course}"}}>/
 
 @calendars = Calendar.all.order("course")
+=Calendar.grouped_calendars.sort_by { |x| x.course.downcase }
+
+ = f.text_field :course, :class => 'form-control'
