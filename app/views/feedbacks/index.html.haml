@@ -1,0 +1,13 @@
+= render "search"
+%br
+%br
+- @feedbacks.each do |fb|
+  .panel.panel-info
+    .panel-heading
+      = raw("#{fb.name}-#{fb.email}")
+      .pull-right
+        = link_to raw("<span class='glyphicon glyphicon-trash'></span>"), feedback_path(fb), :data => {:confirm => "Are You Sure?", :method => :delete }
+    .panel-body
+      =  fb.description
+
+= will_paginate @feedbacks, param_name: "page", previous_label: h("<"), next_label: h(">")

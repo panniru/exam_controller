@@ -1,5 +1,13 @@
-= image_tag "index.jpeg", :height => '35', :width => '50', :align => 'left', :class => "img-circle img-thumbnail"
-= image_tag "reddy.jpeg", :height => '35', :width => '50', :align => 'right', :class => "img-circle img-thumbnail"
+= image_tag "index.jpeg", :height => '50', :width => '50', :align => 'left', :class => "img-circle img-thumbnail"
+= image_tag "reddy.jpeg", :height => '50', :width => '50', :align => 'right', :class => "img-circle img-thumbnail"
 .container5
-  %h3
-    %center Raja Bahadur Venkat Rama Reddy Women's College - Controller Of Examination
+  %h2
+    %center Raja Bahadur Venkat Rama Reddy Women's College
+  .col-sm-6
+    .pull-right
+      %center (Autonomous) Affiliated to Osmania University
+      %center Reaccrediated with grade 'A' by NAAC
+  - unless current_user.present?
+    .col-sm-4.col-sm-offset-1
+      #id{:style => "padding-left:80px;"}
+        = render "shared/custom_login"

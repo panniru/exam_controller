@@ -6,7 +6,7 @@
         %span.icon-bar 
         %span.icon-bar 
         %span.icon-bar 
-      = link_to "Home", "#", :class => "navbar-brand brand"
+      = link_to "Home", root_path, :class => "navbar-brand brand"
     #bs-example-navbar-collapse-1.collapse.navbar-collapse
       %ul.nav.navbar-nav
         %li
@@ -31,6 +31,8 @@
               %li.divider
               %li
                 = link_to "Courses", courses_path
+          %li
+            = link_to "Feedbacks", feedbacks_path, :class => "menu-item"
       - if current_user.present?
         %ul.nav.navbar-nav.navbar-right
           %li.dropdown
@@ -42,4 +44,4 @@
               %li
                 = link_to "Change Password", "#"
       - else
-        = render "shared/custom_login"
+        -#

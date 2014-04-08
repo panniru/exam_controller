@@ -10,12 +10,13 @@
     #body
       = render 'shared/banner'
       = render 'shared/menu'
-      .top-margin
-        = render "shared/photo_show"
+      - if controller.controller_name == "home"
+        .top-margin
+          = render "shared/photo_show"
+      - else
+        .top-margin
       .container
         #content-container
-          -# .top-margin
-          -#   = render "shared/photo_show"
           - if navigation_present?
             .col-sm-3
               = render "shared/navigation_left"
