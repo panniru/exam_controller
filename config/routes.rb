@@ -41,15 +41,13 @@ ExamController::Application.routes.draw do
   post "employees/:id" => "employees#update"
   get "org_chart" => "employees#hierarchy"
 
-  get "calenders"
-
   resources :calendars do
-  	collection do
-  	get "index1"
-  	get "index2"
-  	get "result"
-  	get "index3"
-  	end
+    collection do
+      get "index1"
+      get "index2"
+      get "result"
+      get "index3"
+    end
   end
 
 end

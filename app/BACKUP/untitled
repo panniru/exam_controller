@@ -11,3 +11,7 @@
 <%=best_in_place @calendar, :course,type: :checkbox, collection:[["male,"male"],[],[]]%>
 </p>
 
+%label{for: "dept"} #{object.course}
+ %input{name: "dept", type: "checkbox", :data => {:value => "#{object.course}"}}>/
+
+@calendars = Calendar.all.order("course")

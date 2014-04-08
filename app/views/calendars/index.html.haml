@@ -1,14 +1,13 @@
 .container
   .row
-    .col-md-4
+    .col-md-3
       %h1 Departments
       %table 
         - Calendar.grouped_calendars.each do |object|
           %tr
             %td
-              %input{name: "dept", type: "checkbox", :data => {:value => "#{object.course}"}}>/
               = link_to object.course, calendars_path(:course => object.course)
-    .col-md-8
+    .col-md-9
       
       %h1 Academic events 
       = link_to 'Add Event', new_calendar_path
@@ -26,9 +25,9 @@
             %tr
               %td= best_in_place calendar, :course 
               %td= best_in_place calendar, :semester
-              %td= best_in_place calendar, :event
+              %td= best_in_place calendar, :event, type: :textarea
               %td= best_in_place calendar, :from
               %td= best_in_place calendar, :to
-              %td= link_to 'Delete', calendar, method: :delete,data: { confirm: 'Are you sure?' }
+              %td= link_to 'Delete', calendar, method: :delete,data: { confirm: 'Are you sure?' } 
       %br
 
