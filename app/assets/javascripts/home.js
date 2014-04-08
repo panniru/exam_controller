@@ -5,4 +5,3 @@ $(document ).ready(function() {
         yearRange: "-100:+0",
         dateFormat: 'dd/mm/yy'
     });
-});

@@ -581,13 +581,6 @@ ALTER TABLE ONLY notifications ALTER COLUMN id SET DEFAULT nextval('notification
 -- Name: id; Type: DEFAULT; Schema: public; Owner: -
 --
 
-ALTER TABLE ONLY products ALTER COLUMN id SET DEFAULT nextval('products_id_seq'::regclass);
-
-
---
--- Name: id; Type: DEFAULT; Schema: public; Owner: -
---
-
 ALTER TABLE ONLY results ALTER COLUMN id SET DEFAULT nextval('results_id_seq'::regclass);
 
 
@@ -684,14 +677,6 @@ ALTER TABLE ONLY how_tos
 ALTER TABLE ONLY notifications
     ADD CONSTRAINT notifications_pkey PRIMARY KEY (id);
 --
--- Name: products_pkey; Type: CONSTRAINT; Schema: public; Owner: -; Tablespace: 
---
-
-ALTER TABLE ONLY products
-    ADD CONSTRAINT products_pkey PRIMARY KEY (id);
-
-
---
 -- Name: results_pkey; Type: CONSTRAINT; Schema: public; Owner: -; Tablespace: 
 --
 
@@ -773,8 +758,6 @@ INSERT INTO schema_migrations (version) VALUES ('20140402122129');
 INSERT INTO schema_migrations (version) VALUES ('20140402122236');
 
 INSERT INTO schema_migrations (version) VALUES ('20140402124344');
-
-INSERT INTO schema_migrations (version) VALUES ('20140403061229');
 
 INSERT INTO schema_migrations (version) VALUES ('20140404050646');
 

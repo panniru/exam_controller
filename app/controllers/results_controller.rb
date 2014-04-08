@@ -1,5 +1,5 @@
 class ResultsController < ApplicationController
-  load_resource :only => [:show, :update, :edit, :destroy, :new,]
+  load_resource :only => [:show, :update, :edit, :destroy, :new]
   authorize_resource
 
   def index

@@ -1,15 +1,15 @@
-= form_for Welcome.new do |f|
-  .col-sm-4
+= form_for @welcome, :html => { :class => "form-horizontal", :role => "form" } do |f|
+  = render "shared/error_messages", :object => f.object
+  .col-sm-8
     .form-group
-      = f.label "Heading", :class => 'col-sm-6 control-label'
-    .col-sm-8
-      = f.text_field :heading, :class => 'form-control'
+      = f.label "Heading", :class => 'col-sm-2 control-label'
+      .col-sm-6
+        = f.text_field :heading, :class => 'form-control'
     .form-group
-      = f.label "message", :class => 'col-sm-6 control-label'
-    .col-sm-8
-      = f.text_area :message, :class => 'form-control'
-   
-    %br/
-    = f.submit
-
+      = f.label "message", :class => 'col-sm-2 control-label'
+      .col-sm-6
+        = f.text_area :message, :class => 'form-control'
+  .col-sm-8.col-sm-offset-2
+    = f.submit "Save", :class => "btn-primary btn"
+    
     
