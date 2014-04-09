@@ -10,21 +10,21 @@
   %body
     .row
       = render 'shared/banner'
-      = render 'shared/menu'
-      - if controller.controller_name == "home"
-        .top-margin
-          = render "shared/photo_show"
-      - else
-        .top-margin
-      .container
+    = render 'shared/menu'
+    - if controller.controller_name == "home"
+      .top-margin
+        = render "shared/photo_show"
         #content-container
-          - if navigation_present?
-            .col-sm-3
-              = render "shared/navigation_left"
+          = yield
+    - else
+      .top-margin
+        .container
+          #content-container1
+            - if navigation_present?
+              .col-sm-3
+                = render "shared/navigation_left"
               .col-sm-9
-                %section
-                  - flash.each do |key, value|
-                    = content_tag(:div,value,:class => "#{flash_alert_class(key)}")
                 = yield
-          - else
-            = yield
+            - else
+              = yield
+
