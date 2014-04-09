@@ -1,0 +1,41 @@
+= form_for @exam, :html => { :class => "form-horizontal", :role => "form"} do |f|
+  - if @exam.errors.any?
+    #error_explanation
+      %h2
+        = pluralize(@calendar.errors.count, "error")
+        prohibited this exam from being saved:
+      %ul
+        - @exam.errors.full_messages.each do |msg|
+          %li= msg
+  .col-sm-8
+    .form-group
+      = f.label "Department", :class => 'col-sm-2 control-label'
+      .col-sm-8
+        = f.autocomplete_field :dept,
+          auto_search_autocomplete_calendar_course_path,
+          :placeholder => "Course Name", :class => 'form-control'
+    .form-group
+      = f.label "Semester", :class => 'col-sm-2 control-label'
+      .col-sm-8
+        = f.text_field :semester, :class => 'form-control'
+    .form-group
+      = f.label "Subject", :class => 'col-sm-2 control-label'
+      .col-sm-8
+        = f.text_field :subject, :class => 'form-control'
+    .form-group
+      = f.label "Date", :class => 'col-sm-2 control-label'
+      .col-sm-8
+        = f.text_field :date, :class => 'datepicker form-control'
+    .form-group
+      = f.label "From", :class => 'col-sm-2 control-label'
+      .col-sm-8
+        = f.text_field :from, :class => 'form-control'
+    .form-group
+      = f.label "To", :class => 'col-sm-2 control-label'
+      .col-sm-8
+        = f.text_field :to, :class => 'form-control'
+    %br/
+    = f.submit "Create", :class => 'btn btn-primary'
+    = link_to 'Back', exams_path,:class => 'btn btn-primary'
+    - if @exam.id.present?
+      = link_to 'Show', @exam,:class => 'btn btn-primary'

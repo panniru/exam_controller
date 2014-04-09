@@ -48,4 +48,11 @@ ExamController::Application.routes.draw do
     end
   end
 
+  resources :exams do
+    collection do
+      get 'index1'
+    end
+  end
+
+
 end

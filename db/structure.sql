@@ -142,6 +142,42 @@ ALTER SEQUENCE employees_id_seq OWNED BY employees.id;
 
 
 --
+-- Name: exams; Type: TABLE; Schema: public; Owner: -; Tablespace: 
+--
+
+CREATE TABLE exams (
+    id integer NOT NULL,
+    dept character varying(255),
+    semester character varying(255),
+    subject character varying(255),
+    date date,
+    "from" time without time zone,
+    "to" time without time zone,
+    created_at timestamp without time zone,
+    updated_at timestamp without time zone
+);
+
+
+--
+-- Name: exams_id_seq; Type: SEQUENCE; Schema: public; Owner: -
+--
+
+CREATE SEQUENCE exams_id_seq
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+--
+-- Name: exams_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: -
+--
+
+ALTER SEQUENCE exams_id_seq OWNED BY exams.id;
+
+
+--
 -- Name: faculties; Type: TABLE; Schema: public; Owner: -; Tablespace: 
 --
 
@@ -362,6 +398,13 @@ ALTER TABLE ONLY employees ALTER COLUMN id SET DEFAULT nextval('employees_id_seq
 -- Name: id; Type: DEFAULT; Schema: public; Owner: -
 --
 
+ALTER TABLE ONLY exams ALTER COLUMN id SET DEFAULT nextval('exams_id_seq'::regclass);
+
+
+--
+-- Name: id; Type: DEFAULT; Schema: public; Owner: -
+--
+
 ALTER TABLE ONLY faculties ALTER COLUMN id SET DEFAULT nextval('faculties_id_seq'::regclass);
 
 
@@ -415,6 +458,14 @@ ALTER TABLE ONLY courses
 
 ALTER TABLE ONLY employees
     ADD CONSTRAINT employees_pkey PRIMARY KEY (id);
+
+
+--
+-- Name: exams_pkey; Type: CONSTRAINT; Schema: public; Owner: -; Tablespace: 
+--
+
+ALTER TABLE ONLY exams
+    ADD CONSTRAINT exams_pkey PRIMARY KEY (id);
 
 
 --
@@ -507,3 +558,5 @@ INSERT INTO schema_migrations (version) VALUES ('20140404051633');
 INSERT INTO schema_migrations (version) VALUES ('20140404113827');
 
 INSERT INTO schema_migrations (version) VALUES ('20140404125645');
+
+INSERT INTO schema_migrations (version) VALUES ('20140409063315');
