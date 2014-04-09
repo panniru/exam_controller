@@ -1,7 +1,7 @@
 class DocumentsController < ApplicationController
   load_resource :only => [:show, :update, :edit, :destroy, :new]
   def index
-   # @documents = Document.all
+    # @documents = Document.all
     page = params[:page].present? ? params[:page] : 1
     if params[:search].present?
       @documents = Document.search(params[:search])
@@ -33,9 +33,15 @@ class DocumentsController < ApplicationController
   
   def download
     @document = Document.find(params[:id])
-    send_file "#{Rails.root}/public"+@document.file_path_url
-    
+    if @document.file_path.present?
+      send_file "#{Rails.root}/public"+@document.file_path_url
+    else
+      flash.now[:fail]
+      redirect_to documents_path
+    end
   end
+
+
   def edit
     @document = Document.find(params[:id]) 
     # @documentfilename = params[:file]
