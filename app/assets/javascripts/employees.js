@@ -1,5 +1,5 @@
 
-$(function() {
+$(document ).ready(function() {
     $("input[rel = 'submit-employee']").on('click', function(){
         $("form#employee").submit()
     })

@@ -1,0 +1,17 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  course: MyString
+  semester: MyString
+  event: MyString
+  from: 2014-04-01
+  to: MyString
+  date: MyString
+
+two:
+  course: MyString
+  semester: MyString
+  event: MyString
+  from: 2014-04-01
+  to: MyString
+  date: MyString

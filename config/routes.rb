@@ -45,8 +45,15 @@ ExamController::Application.routes.draw do
   get 'auto_search/autocomplete_student_by_roll_no_and_name'
   get 'auto_search/autocomplete_how_to_name'
   get 'auto_search/autocomplete_document_filename'
+  get 'auto_search/autocomplete_calendar_course'
   
   post "employees/:id" => "employees#update"
   get "org_chart" => "employees#hierarchy"
+
+  resources :calendars do
+    collection do
+      
+    end
+  end
 
 end

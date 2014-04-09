@@ -1,0 +1,43 @@
+.container
+  .row
+    .col-md-2
+      %h2 Departments
+      #calendar1
+        /= render "search"
+        = link_to 'AllDepts', calendars_path(:course=> "AllDepts")
+        %table.table-striped
+          - Calendar.grouped_calendars.sort_by { |x| x.course.downcase }.each do |object|
+            %tr
+              %td
+                = link_to object.course, calendars_path(:course => object.course)    
+    .col-md-10      
+      %h1 Academic events 
+      = link_to 'Add Event', new_calendar_path
+      %table.table.table-striped.table-bordered.table-condensed.table-hover
+        %thead
+          %tr
+            %th Course
+            %th Semester
+            %th Event
+            %th From
+            %th To
+            - if current_user.present? and current_user.admin?  
+              %th
+        %tbody
+          - @calendars.each do |calendar|
+            - if current_user.present? and current_user.admin?  
+              %tr
+                %td= best_in_place calendar, :course,html_attrs: { "data-autocomplete" => auto_search_autocomplete_calendar_course_path, :class => "form-control col-sm-3" } 
+                %td= best_in_place calendar, :semester,html_attrs: {:class => "form-control col-sm-3" } 
+                %td= best_in_place calendar, :event, type: :textarea,html_attrs: {:class => "form-control col-sm-3" } 
+                %td= best_in_place calendar, :from,html_attrs: {:class => "form-control col-sm-3" } 
+                %td= best_in_place calendar, :to,html_attrs: {:class => "form-control col-sm-3" } 
+                %td= link_to 'Delete', calendar, method: :delete,data: { confirm: 'Are you sure?' }
+            - else
+              %tr
+                %td= calendar.course
+                %td= calendar.semester
+                %td= calendar.event
+                %td= calendar.from
+                %td= calendar.to
+      %br
