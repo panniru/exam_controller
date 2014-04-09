@@ -29,6 +29,41 @@ SET default_tablespace = '';
 SET default_with_oids = false;
 
 --
+-- Name: calendars; Type: TABLE; Schema: public; Owner: -; Tablespace: 
+--
+
+CREATE TABLE calendars (
+    id integer NOT NULL,
+    course character varying(255),
+    semester character varying(255),
+    event character varying(255),
+    "from" date,
+    "to" date,
+    created_at timestamp without time zone,
+    updated_at timestamp without time zone
+);
+
+
+--
+-- Name: calendars_id_seq; Type: SEQUENCE; Schema: public; Owner: -
+--
+
+CREATE SEQUENCE calendars_id_seq
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+--
+-- Name: calendars_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: -
+--
+
+ALTER SEQUENCE calendars_id_seq OWNED BY calendars.id;
+
+
+--
 -- Name: courses; Type: TABLE; Schema: public; Owner: -; Tablespace: 
 --
 
@@ -68,6 +103,38 @@ CREATE SEQUENCE courses_id_seq
 --
 
 ALTER SEQUENCE courses_id_seq OWNED BY courses.id;
+
+
+--
+-- Name: documents; Type: TABLE; Schema: public; Owner: -; Tablespace: 
+--
+
+CREATE TABLE documents (
+    id integer NOT NULL,
+    filename character varying(255),
+    file_path character varying(255),
+    created_at timestamp without time zone,
+    updated_at timestamp without time zone
+);
+
+
+--
+-- Name: documents_id_seq; Type: SEQUENCE; Schema: public; Owner: -
+--
+
+CREATE SEQUENCE documents_id_seq
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+--
+-- Name: documents_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: -
+--
+
+ALTER SEQUENCE documents_id_seq OWNED BY documents.id;
 
 
 --
@@ -203,24 +270,23 @@ CREATE SEQUENCE feedbacks_id_seq
 ALTER SEQUENCE feedbacks_id_seq OWNED BY feedbacks.id;
 
 
---
--- Name: notifications; Type: TABLE; Schema: public; Owner: -; Tablespace: 
+-- Name: how_tos; Type: TABLE; Schema: public; Owner: -; Tablespace: 
 --
 
-CREATE TABLE notifications (
+CREATE TABLE how_tos (
     id integer NOT NULL,
-    event character varying(255),
-    description character varying(255),
+    name character varying(255),
+    description text,
+    fee double precision,
     created_at timestamp without time zone,
     updated_at timestamp without time zone
 );
 
 
---
--- Name: notifications_id_seq; Type: SEQUENCE; Schema: public; Owner: -
+-- Name: how_tos_id_seq; Type: SEQUENCE; Schema: public; Owner: -
 --
 
-CREATE SEQUENCE notifications_id_seq
+CREATE SEQUENCE how_tos_id_seq
     START WITH 1
     INCREMENT BY 1
     NO MINVALUE
@@ -228,11 +294,10 @@ CREATE SEQUENCE notifications_id_seq
     CACHE 1;
 
 
---
--- Name: notifications_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: -
+-- Name: how_tos_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: -
 --
 
-ALTER SEQUENCE notifications_id_seq OWNED BY notifications.id;
+ALTER SEQUENCE how_tos_id_seq OWNED BY how_tos.id;
 
 
 --
@@ -246,26 +311,37 @@ CREATE TABLE products (
     created_at timestamp without time zone,
     updated_at timestamp without time zone
 );
-
-
---
--- Name: products_id_seq; Type: SEQUENCE; Schema: public; Owner: -
 --
 
-CREATE SEQUENCE products_id_seq
+--
+-- Name: notifications; Type: TABLE; Schema: public; Owner: -; Tablespace: 
+--
+
+CREATE TABLE notifications (
+    id integer NOT NULL,
+    event character varying(255),
+    description character varying(255),
+    created_at timestamp without time zone,
+    updated_at timestamp without time zone
+);
+
+
+
+-- Name: notifications_id_seq; Type: SEQUENCE; Schema: public; Owner: -
+--
+
+CREATE SEQUENCE notifications_id_seq
     START WITH 1
     INCREMENT BY 1
     NO MINVALUE
     NO MAXVALUE
     CACHE 1;
 
-
 --
--- Name: products_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: -
+-- Name: notifications_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: -
 --
 
-ALTER SEQUENCE products_id_seq OWNED BY products.id;
-
+ALTER SEQUENCE notifications_id_seq OWNED BY notifications.id;
 
 --
 -- Name: results; Type: TABLE; Schema: public; Owner: -; Tablespace: 
@@ -434,7 +510,21 @@ ALTER SEQUENCE welcomes_id_seq OWNED BY welcomes.id;
 -- Name: id; Type: DEFAULT; Schema: public; Owner: -
 --
 
+ALTER TABLE ONLY calendars ALTER COLUMN id SET DEFAULT nextval('calendars_id_seq'::regclass);
+
+
+--
+-- Name: id; Type: DEFAULT; Schema: public; Owner: -
+--
+
 ALTER TABLE ONLY courses ALTER COLUMN id SET DEFAULT nextval('courses_id_seq'::regclass);
+
+
+--
+-- Name: id; Type: DEFAULT; Schema: public; Owner: -
+--
+
+ALTER TABLE ONLY documents ALTER COLUMN id SET DEFAULT nextval('documents_id_seq'::regclass);
 
 
 --
@@ -471,6 +561,7 @@ ALTER TABLE ONLY feedbacks ALTER COLUMN id SET DEFAULT nextval('feedbacks_id_seq
 
 ALTER TABLE ONLY notifications ALTER COLUMN id SET DEFAULT nextval('notifications_id_seq'::regclass);
 
+ALTER TABLE ONLY how_tos ALTER COLUMN id SET DEFAULT nextval('how_tos_id_seq'::regclass);
 
 --
 -- Name: id; Type: DEFAULT; Schema: public; Owner: -
@@ -508,11 +599,27 @@ ALTER TABLE ONLY welcomes ALTER COLUMN id SET DEFAULT nextval('welcomes_id_seq':
 
 
 --
+-- Name: calendars_pkey; Type: CONSTRAINT; Schema: public; Owner: -; Tablespace: 
+--
+
+ALTER TABLE ONLY calendars
+    ADD CONSTRAINT calendars_pkey PRIMARY KEY (id);
+
+
+--
 -- Name: courses_pkey; Type: CONSTRAINT; Schema: public; Owner: -; Tablespace: 
 --
 
 ALTER TABLE ONLY courses
     ADD CONSTRAINT courses_pkey PRIMARY KEY (id);
+
+
+--
+-- Name: documents_pkey; Type: CONSTRAINT; Schema: public; Owner: -; Tablespace: 
+--
+
+ALTER TABLE ONLY documents
+    ADD CONSTRAINT documents_pkey PRIMARY KEY (id);
 
 
 --
@@ -548,12 +655,19 @@ ALTER TABLE ONLY feedbacks
 
 
 --
+-- Name: how_tos_pkey; Type: CONSTRAINT; Schema: public; Owner: -; Tablespace: 
+--
+
+ALTER TABLE ONLY how_tos
+    ADD CONSTRAINT how_tos_pkey PRIMARY KEY (id);
+
+
+--
 -- Name: notifications_pkey; Type: CONSTRAINT; Schema: public; Owner: -; Tablespace: 
 --
 
 ALTER TABLE ONLY notifications
     ADD CONSTRAINT notifications_pkey PRIMARY KEY (id);
-
 
 --
 -- Name: products_pkey; Type: CONSTRAINT; Schema: public; Owner: -; Tablespace: 
@@ -561,7 +675,6 @@ ALTER TABLE ONLY notifications
 
 ALTER TABLE ONLY products
     ADD CONSTRAINT products_pkey PRIMARY KEY (id);
-
 
 --
 -- Name: results_pkey; Type: CONSTRAINT; Schema: public; Owner: -; Tablespace: 
@@ -632,6 +745,8 @@ INSERT INTO schema_migrations (version) VALUES ('20140401060807');
 
 INSERT INTO schema_migrations (version) VALUES ('20140401101057');
 
+INSERT INTO schema_migrations (version) VALUES ('20140401052120');
+
 INSERT INTO schema_migrations (version) VALUES ('20140402054703');
 
 INSERT INTO schema_migrations (version) VALUES ('20140402054917');
@@ -659,3 +774,9 @@ INSERT INTO schema_migrations (version) VALUES ('20140404130322');
 INSERT INTO schema_migrations (version) VALUES ('20140405103818');
 
 INSERT INTO schema_migrations (version) VALUES ('20140408063625');
+
+INSERT INTO schema_migrations (version) VALUES ('20140408135054');
+
+INSERT INTO schema_migrations (version) VALUES ('20140409063808');
+
+

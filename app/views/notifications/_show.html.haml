@@ -1,0 +1,19 @@
+%table.table.table.striped
+  %thead
+    %tr
+      %center
+        %th Notifications
+        %th
+          = link_to "<<More>>", notifications_more_path
+%marquee{ direction: "up", height: "100%", loop: "true", onmouseout: "this.scrollAmount=2", onmouseover: "this.scrollAmount=0", scrollamount: "1", width: "100%"}
+  %tbody
+    - @notifications.each do |notification|
+      %tr
+        %td
+        %a{title: "#{ notification.description}"} 
+        
+          = notification.event
+        %td
+          %img{src: "/assets/newi.gif",alt: "New"}/
+      %br  
+      

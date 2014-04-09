@@ -19,3 +19,4 @@ public/stylesheets/
 public/uploads/
 app/assets/stylesheets/.sass-cache/
 public/assets/
+config/database.yml

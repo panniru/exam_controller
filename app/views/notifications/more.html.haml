@@ -1,0 +1,12 @@
+%table.table.table.striped
+  %thead
+    %tr
+      %th Event
+      %th Description
+  %tbody
+    - Notification.all.each do |notification|
+      %tr
+        %td= notification.event
+        %td= notification.description
+%center
+  = link_to 'Back', root_path, :class => 'btn btn-primary'

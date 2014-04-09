@@ -1,4 +1,12 @@
 GIT
+  remote: git://github.com/aaronchi/best_in_place.git
+  revision: 1152e2256afd485e66602833fd99d09d60994841
+  specs:
+    best_in_place (2.1.0)
+      jquery-rails
+      rails (>= 3.1)
+
+GIT
   remote: https://github.com/krasio/nulldb.git
   revision: e954748d46bf9b0d91eaa83d35d7181fa6c233f1
   branch: activerecord-3.2.1
@@ -234,6 +242,7 @@ PLATFORMS
 DEPENDENCIES
   activerecord-nulldb-adapter!
   anticipate
+  best_in_place!
   bootstrap-sass (~> 3.0.3.0)
   bootstrap-will_paginate
   cancan (= 1.6.7)

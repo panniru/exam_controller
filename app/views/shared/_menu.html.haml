@@ -9,15 +9,19 @@
       = link_to "Home", root_path, :class => "navbar-brand brand"
     #bs-example-navbar-collapse-1.collapse.navbar-collapse
       %ul.nav.navbar-nav
-        %li
-          = link_to "Calander", "#", :class => "menu-item"
-        %li
+        %li{:class => controller.controller_name == "calendar" ? "active" : ""}
+          = link_to "Calander", "#", :class => "menu-item "
+        %li{:class => controller.controller_name == "employee" ? "active" : ""}
           = link_to "Org-chart", org_chart_path, :class => "menu-item"
-        %li
+        %li{:class => controller.controller_name == "schedule" ? "active" : ""}
           = link_to "Exam Schedule", "#", :class => "menu-item"
+        %li{:class => controller.controller_name == "notifications" ? "active" : ""}
+          = link_to "Notifications", notifications_path, :class => "menu-item"
+        %li{:class => controller.controller_name == "how_tos" ? "active" : ""}
+          = link_to "How To Apply?", how_tos_path, :class => "menu-item"
         %li
-          = link_to "Notifications", "#", :class => "menu-item"
-        %li
+          = link_to "Documents", documents_path, :class => "menu-item"
+        %li{:class => controller.controller_name == "results" ? "active" : ""}
           = link_to "Results", results_path, :class => "menu-item"
         - if current_user.present? and current_user.admin?
           %li.dropdown
@@ -42,6 +46,6 @@
                 = link_to "Sign out", destroy_user_session_path, :data => {:method => :delete}
               %li.divider
               %li
-                = link_to "Change Password", "#"
+                = link_to "Change Password", edit_user_registration_path(current_user)
       - else
         -#

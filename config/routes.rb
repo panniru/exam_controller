@@ -25,6 +25,7 @@ ExamController::Application.routes.draw do
   end
 
   resources :faculties
+  resources :how_tos
 
   resources :students do
     collection do
@@ -33,10 +34,18 @@ ExamController::Application.routes.draw do
     end
   end
 
+  resources :documents do
+    member do
+      get "download"
+    end
+  end
+
   get 'auto_search/autocomplete_course_name'
   get 'auto_search/autocomplete_faculty_name'
   get 'auto_search/autocomplete_student_by_roll_no_and_name'
-
+  get 'auto_search/autocomplete_how_to_name'
+  get 'auto_search/autocomplete_document_filename'
+  get 'auto_search/autocomplete_calendar_course'
   
   post "employees/:id" => "employees#update"
   get "org_chart" => "employees#hierarchy"
@@ -47,8 +56,8 @@ ExamController::Application.routes.draw do
   get "notifications/destroy"
  
   get "home/feedback"
-
   get "notifications/preview"
+  get "notifications/more"
   get "home/adminhome"
   get "feedbacks/show"
 
@@ -67,5 +76,11 @@ ExamController::Application.routes.draw do
     end
 
   resources :welcomes
-   
+
+  resources :calendars do
+    collection do
+      
+    end
+  end
+
 end

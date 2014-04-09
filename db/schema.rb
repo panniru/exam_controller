@@ -126,6 +126,16 @@ ActiveRecord::Schema.define(version: 20140402124344) do
   add_index "users", ["email"], name: "index_users_on_email", unique: true, using: :btree
   add_index "users", ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true, using: :btree
 
+  create_table "calendars", force: true do |t|
+    t.string   "course"
+    t.string   "semester"
+    t.string   "event"
+    t.date     "from"
+    t.date     "to"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
   create_table "welcomes", force: true do |t|
     t.string   "heading"
     t.string   "message"

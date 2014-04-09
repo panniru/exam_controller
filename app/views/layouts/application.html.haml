@@ -2,6 +2,7 @@
 %html
   %head
     %title RBVRR
+  = javascript_include_tag "https://www.google.com/jsapi"
   = stylesheet_link_tag "application", media: "all", "data-turbolinks-track" => true
   = javascript_include_tag "application", media: "all", "data-turbolinks-track" => true
   = include_gon
@@ -23,6 +24,9 @@
               .col-sm-3
                 = render "shared/navigation_left"
               .col-sm-9
+                %section
+                  - flash.each do |key, value|
+                    = content_tag(:div,value,:class => "#{flash_alert_class(key)}")
                 = yield
             - else
               = yield

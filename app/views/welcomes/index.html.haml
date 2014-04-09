@@ -4,16 +4,16 @@
       %th Heading
       %th Message
       %th 
-      %th
   %tbody
     - @welcomes.each do |welcome|
       %tr
         %td= welcome.heading
         %td= welcome.message
         %td= link_to 'Edit', edit_welcome_path(welcome)
-        %td= link_to 'Delete', welcome, method: :delete,data: { confirm: 'Are you sure?' }
         %br/
         %br/
-= link_to 'Add', new_welcome_path
+%center
+ 
+  = link_to 'Cancel', root_path, :class => 'btn btn-primary'
           
 

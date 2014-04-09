@@ -55,4 +55,5 @@ module ApplicationHelper
     current_user.present? and (controller.controller_name == "students" or controller.controller_name == "courses" or controller.controller_name == "results" or controller.controller_name == "faculties")
   end
 
+
 end
