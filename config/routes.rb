@@ -25,6 +25,7 @@ ExamController::Application.routes.draw do
   end
 
   resources :faculties
+  resources :how_tos
 
   resources :students do
     collection do
@@ -36,7 +37,7 @@ ExamController::Application.routes.draw do
   get 'auto_search/autocomplete_course_name'
   get 'auto_search/autocomplete_faculty_name'
   get 'auto_search/autocomplete_student_by_roll_no_and_name'
-
+  get 'auto_search/autocomplete_how_to_name'
   
   post "employees/:id" => "employees#update"
   get "org_chart" => "employees#hierarchy"

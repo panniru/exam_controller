@@ -1,0 +1,21 @@
+= render "search"
+%br
+
+- @how_tos.each do |ht|
+  .panel.panel-info
+    .panel-heading
+      - if current_user.present? and current_user.admin?
+        .col-sm-10
+          = ht.name
+        .col-sm-offset-10
+          = link_to raw("<span class='glyphicon glyphicon-edit'></span>"), edit_how_to_path(ht), :class => "btn btn-warning btn-sm", :title => "Edit"
+          = link_to raw("<span class='glyphicon glyphicon-trash'></span>"), how_to_path(ht), :class => "btn btn-danger btn-sm", :data => {:confirm => "Are You Sure?", :method => :delete }, :title => "Delete"
+      - else
+        = ht.name
+
+    .panel-body
+      = ht.description
+      %br
+      %strong= "Fee: #{ht.fee}/-"   
+        
+= will_paginate @how_tos, param_name: "page", previous_label: h("<"), next_label: h(">")

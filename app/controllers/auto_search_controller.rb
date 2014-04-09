@@ -2,6 +2,7 @@ class AutoSearchController < ApplicationController
   skip_authorization_check
 
   autocomplete :course, :name, :full => true
+  autocomplete :how_to, :name, :full => true
   autocomplete :faculty, :name, :full => true
 
   def autocomplete_student_by_roll_no_and_name
