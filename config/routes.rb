@@ -33,10 +33,16 @@ ExamController::Application.routes.draw do
     end
   end
 
+  resources :documents do
+    member do
+      get "download"
+    end
+  end
+
   get 'auto_search/autocomplete_course_name'
   get 'auto_search/autocomplete_faculty_name'
   get 'auto_search/autocomplete_student_by_roll_no_and_name'
-
+  get 'auto_search/autocomplete_document_filename'
   
   post "employees/:id" => "employees#update"
   get "org_chart" => "employees#hierarchy"

@@ -18,6 +18,8 @@
         %li
           = link_to "Notifications", "#", :class => "menu-item"
         %li
+          = link_to "Documents", documents_path, :class => "menu-item"
+        %li
           = link_to "Results", results_path, :class => "menu-item"
         - if current_user.present? and current_user.admin?
           %li.dropdown
