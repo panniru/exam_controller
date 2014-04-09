@@ -44,6 +44,6 @@
                 = link_to "Sign out", destroy_user_session_path, :data => {:method => :delete}
               %li.divider
               %li
-                = link_to "Change Password", "#"
+                = link_to "Change Password", edit_user_registration_path(current_user)
       - else
         = render "shared/custom_login"
