@@ -13,14 +13,16 @@
     - if controller.controller_name == "home"
       .top-margin
         = render "shared/photo_show"
+        #content-container
+          = yield
     - else
       .top-margin
-    .container
-      #content-container
-        - if navigation_present?
-          .col-sm-3
-            = render "shared/navigation_left"
-          .col-sm-9
-            = yield
-        - else
-          = yield
+        .container
+          #content-container1
+            - if navigation_present?
+              .col-sm-3
+                = render "shared/navigation_left"
+              .col-sm-9
+                = yield
+            - else
+              = yield
