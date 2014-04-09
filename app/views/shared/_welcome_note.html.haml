@@ -1,5 +1,6 @@
-.welcome-note
-  %center 
-    = @welcome.heading
-  %br
-  = @welcome.message
+- if @welcome.present?
+  .welcome-note
+    %center 
+      = @welcome.heading
+    %br
+      = @welcome.message
