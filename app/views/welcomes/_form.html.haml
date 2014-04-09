@@ -11,5 +11,7 @@
         = f.text_area :message, :class => 'form-control'
   .col-sm-8.col-sm-offset-2
     = f.submit "Save", :class => "btn-primary btn"
+    = link_to 'Show', root_path, :class => 'btn btn-info'
+    = link_to 'Cancel', welcomes_path, :class => 'btn btn-primary'
     
     

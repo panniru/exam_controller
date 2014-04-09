@@ -16,7 +16,7 @@
         %li{:class => controller.controller_name == "schedule" ? "active" : ""}
           = link_to "Exam Schedule", "#", :class => "menu-item"
         %li{:class => controller.controller_name == "notifications" ? "active" : ""}
-          = link_to "Notifications", "#", :class => "menu-item"
+          = link_to "Notifications", notifications_path, :class => "menu-item"
         %li{:class => controller.controller_name == "how_tos" ? "active" : ""}
           = link_to "How To Apply?", how_tos_path, :class => "menu-item"
         %li

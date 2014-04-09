@@ -135,12 +135,13 @@ ActiveRecord::Schema.define(version: 20140402124344) do
     t.datetime "created_at"
     t.datetime "updated_at"
   end
-  
+
   create_table "welcomes", force: true do |t|
     t.string   "heading"
     t.string   "message"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
+
 
 end

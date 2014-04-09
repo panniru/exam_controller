@@ -12,5 +12,7 @@
         %td= notification.description
         %td= link_to 'Edit', edit_notification_path(notification)
         %td= link_to 'Delete', notification, method: :delete,data: { confirm: 'Are you sure?' }
+%center
+  = link_to 'Add', new_notification_path, :class => 'btn btn-primary'
+  = link_to 'Cancel', root_path, :class => 'btn btn-primary'
 
-= link_to 'Add', new_notification_path

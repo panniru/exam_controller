@@ -19,7 +19,20 @@ class WelcomesController < ApplicationController
   def edit
     @welcome = Welcome.find(params[:id])
   end
-
+  def update
+    @welcome = Welcome.find(params[:id])
+    respond_to do |format|
+      if @welcome.update(welcome_params)
+        format.html { redirect_to root_path, notice: 'Welcome Screen was successfully updated.' }
+        
+      else
+        format.html { render action: 'edit' }
+        
+      end
+    end
+  end
+  
+ 
   def destroy
     @welcome = Welcome.find(params[:id])
     @welcome.destroy

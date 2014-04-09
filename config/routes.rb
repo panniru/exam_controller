@@ -50,12 +50,6 @@ ExamController::Application.routes.draw do
   post "employees/:id" => "employees#update"
   get "org_chart" => "employees#hierarchy"
 
-  resources :calendars do
-    collection do
-      
-    end
-  end
-
   get "notifications/new"
   get "notifications/edit"
   get "notifications/show"
@@ -63,7 +57,7 @@ ExamController::Application.routes.draw do
  
   get "home/feedback"
 
-  get "notifications/preview"
+  get "notifications/more"
   get "home/adminhome"
   get "feedbacks/show"
 
@@ -83,4 +77,12 @@ ExamController::Application.routes.draw do
 
   resources :welcomes
    
+
+  resources :calendars do
+    collection do
+      
+    end
+  end
+
+
 end
