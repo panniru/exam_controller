@@ -38,20 +38,7 @@ function drawChart() {
 }
 
 function createNode(name, dept, design, imgUrl,id,mngr,avatar){
-    // node = "<table width='100%' class='table-node' "+popOver(name, dept, design, imgUrl,id,mngr)+">"
-    // node += "<tr>"
-    // node += "<td width = '60%'>"
-    // node += "<table>"
-    // node += "<tr><td><span class = 'm-data'>Name</span></td><td><span class = 'data'><a href='/#'>"+name+"</a></span></td></tr>"
-    // node += "<tr><td><span class = 'm-data'>Designation</span></td><td><span class = 'data'>"+design+"</span></td></tr>"
-    // node += "<tr><td><span class = 'm-data'>Department</span></td><td><span class = 'data'>"+dept+"</span></td></tr>"
-    // node += "</table>"
-    // node += "</td>"
-    // node += "<td width = '40%'>"
     node = "<img id = 'pop' class = 'img-circle img-thumbnail table-node' src = '"+avatar+"' alt = '"+name+"' width='75px' height='75px' "+popOver(name, dept, design, imgUrl,id,mngr)+"/>"
-    // node += "</td>"
-    // node += "</tr>"
-    // node += "</table>"
     return node
 }
 
