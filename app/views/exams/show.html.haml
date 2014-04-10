@@ -1,0 +1,23 @@
+%p#notice= notice
+%p
+  %strong Department:
+  = @exam.dept
+%p
+  %strong Semester:
+  = @exam.semester
+%p
+  %strong Subject:
+  = @exam.subject
+%p
+  %strong Date:
+  = @exam.date
+%p
+  %strong From:
+  = @exam.from
+%p
+  %strong To:
+  = @exam.to
+
+= link_to 'Edit', edit_exam_path(@exam),:class => "btn btn-success"
+/= link_to 'Back', edit_exam_path(@exam),:class => 'btn btn-primary'
+= link_to 'Back', exams_path,:class => 'btn btn-primary'
