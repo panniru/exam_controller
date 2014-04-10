@@ -320,6 +320,7 @@ CREATE TABLE how_tos (
 );
 
 
+--
 -- Name: how_tos_id_seq; Type: SEQUENCE; Schema: public; Owner: -
 --
 
@@ -338,19 +339,6 @@ ALTER SEQUENCE how_tos_id_seq OWNED BY how_tos.id;
 
 
 --
--- Name: products; Type: TABLE; Schema: public; Owner: -; Tablespace: 
---
-
-CREATE TABLE products (
-    id integer NOT NULL,
-    name character varying(255),
-    description text,
-    created_at timestamp without time zone,
-    updated_at timestamp without time zone
-);
---
-
---
 -- Name: notifications; Type: TABLE; Schema: public; Owner: -; Tablespace: 
 --
 
@@ -363,7 +351,7 @@ CREATE TABLE notifications (
 );
 
 
-
+--
 -- Name: notifications_id_seq; Type: SEQUENCE; Schema: public; Owner: -
 --
 
@@ -374,11 +362,43 @@ CREATE SEQUENCE notifications_id_seq
     NO MAXVALUE
     CACHE 1;
 
+
 --
 -- Name: notifications_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: -
 --
 
 ALTER SEQUENCE notifications_id_seq OWNED BY notifications.id;
+
+
+--
+-- Name: products; Type: TABLE; Schema: public; Owner: -; Tablespace: 
+--
+
+CREATE TABLE products (
+    id integer NOT NULL,
+    name character varying(255),
+    description text,
+    created_at timestamp without time zone,
+    updated_at timestamp without time zone
+);
+
+--
+-- Name: products_id_seq; Type: SEQUENCE; Schema: public; Owner: -
+--
+
+CREATE SEQUENCE products_id_seq
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+--
+-- Name: products_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: -
+--
+
+ALTER SEQUENCE products_id_seq OWNED BY products.id;
+
 
 --
 -- Name: results; Type: TABLE; Schema: public; Owner: -; Tablespace: 
@@ -603,9 +623,14 @@ ALTER TABLE ONLY feedbacks ALTER COLUMN id SET DEFAULT nextval('feedbacks_id_seq
 -- Name: id; Type: DEFAULT; Schema: public; Owner: -
 --
 
+ALTER TABLE ONLY how_tos ALTER COLUMN id SET DEFAULT nextval('how_tos_id_seq'::regclass);
+
+--
+-- Name: id; Type: DEFAULT; Schema: public; Owner: -
+--
+
 ALTER TABLE ONLY notifications ALTER COLUMN id SET DEFAULT nextval('notifications_id_seq'::regclass);
 
-ALTER TABLE ONLY how_tos ALTER COLUMN id SET DEFAULT nextval('how_tos_id_seq'::regclass);
 
 --
 -- Name: id; Type: DEFAULT; Schema: public; Owner: -
