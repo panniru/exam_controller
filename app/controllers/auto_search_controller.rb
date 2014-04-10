@@ -6,6 +6,7 @@ class AutoSearchController < ApplicationController
   autocomplete :faculty, :name, :full => true
   autocomplete :document,:filename, :full => true
   autocomplete :calendar, :course, :full => true
+  autocomplete :exam, :dept, :full => true
 
   def autocomplete_student_by_roll_no_and_name
     term = params[:term]

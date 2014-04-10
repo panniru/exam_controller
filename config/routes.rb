@@ -50,6 +50,7 @@ ExamController::Application.routes.draw do
   get 'auto_search/autocomplete_how_to_name'
   get 'auto_search/autocomplete_document_filename'
   get 'auto_search/autocomplete_calendar_course'
+  get 'auto_search/autocomplete_exam_dept'
   
   post "employees/:id" => "employees#update"
   get "org_chart" => "employees#hierarchy"
@@ -89,7 +90,7 @@ ExamController::Application.routes.draw do
 
   resources :exams do
     collection do
-      get 'index1'
+      
     end
   end
 

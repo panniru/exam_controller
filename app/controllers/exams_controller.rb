@@ -2,19 +2,13 @@ class ExamsController < ApplicationController
 	before_action :set_exam, only: [ :show, :edit, :update, :destroy]
 
 	def index
-    if params[:dept].present? && params[:dept] != "AllDepts"
+    if params[:dept].present?
         @exams = Exam.where(:dept => params[:dept])
       else
-         @exams = Exam.all.order("date")
+        @exams = Exam.first.present? ? Exam.where(:dept => Exam.order("dept asc").first.dept) : ""
      end
 	end
-  def index1
-    if params[:dept].present? && params[:dept] != "AllDepts"
-        @exams = Exam.where(:dept => params[:dept])
-      else
-         @exams = Exam.all.order("date")
-     end
-  end
+  
   def show
     
   end
@@ -56,7 +50,7 @@ class ExamsController < ApplicationController
 
 
     def destroy
-        
+
         @exam.destroy
         respond_to do |format|
           format.html { redirect_to exams_url }
