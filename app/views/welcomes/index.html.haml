@@ -9,9 +9,9 @@
       %tr
         %td= welcome.heading
         %td= welcome.message
-        %td= link_to 'Edit', edit_welcome_path(welcome)
-        %br/
-        %br/
+        %td= link_to raw("<span class= 'glyphicon glyphicon-edit'></span>"),edit_welcome_path(welcome), :class => "btn btn-warning btn-sm", :title => "Edit"
+       
+        %br/  
 %center
  
   = link_to 'Cancel', root_path, :class => 'btn btn-primary'

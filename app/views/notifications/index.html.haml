@@ -3,16 +3,21 @@
     %tr
       %th Event
       %th Description
-      %th
-      %th
+      %th Created at
+      - if can? :create, Notification
+        %th
+        %th
   %tbody
     - @notifications.each do |notification|
       %tr
         %td= notification.event
         %td= notification.description
-        %td= link_to 'Edit', edit_notification_path(notification)
-        %td= link_to 'Delete', notification, method: :delete,data: { confirm: 'Are you sure?' }
+        %td= notification.created_at
+        - if can? :create, Notification
+          %td= link_to raw("<span class='glyphicon glyphicon-edit'></span>"), edit_notification_path(notification), :class => "btn btn-warning btn-sm", :title => "Edit"
+          %td= link_to raw("<span class='glyphicon glyphicon-trash'></span>"), notification, :class => "btn btn-danger btn-sm", :data=> {:confirm => "Are you sure?", method: :delete}, :title => "Delete"
 %center
-  = link_to 'Add', new_notification_path, :class => 'btn btn-primary'
+  - if can? :create, Notification
+    = link_to 'Add', new_notification_path, :class => 'btn btn-primary'
   = link_to 'Cancel', root_path, :class => 'btn btn-primary'
 
