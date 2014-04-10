@@ -1,0 +1,2 @@
+module SeatAllotmentsHelper
+end

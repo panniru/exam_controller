@@ -87,4 +87,6 @@ ExamController::Application.routes.draw do
     end
   end
 
+  resources :seat_allotments
+
 end

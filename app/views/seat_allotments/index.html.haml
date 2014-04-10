@@ -1,0 +1,6 @@
+= render "courses/search"
+%br
+%br
+= render :partial => "courses/courses", :locals => {:courses => @courses}
+
+= will_paginate @courses, param_name: "page", previous_label: h("<"), next_label: h(">")
