@@ -1,0 +1,32 @@
+= form_for @seat_allotment, :html => { :class => "form-horizontal", :role => "form" } do |f|
+  = render "shared/error_messages", :object => f.object
+  .col-sm-10
+    .form-group
+      = f.label "Department", :class => 'col-sm-2 control-label'
+      .col-sm-2
+        = f.select :dept, options_from_collection_for_select(Course.all, "name", "name"), {}, :class => "form-control", :rel => "result-course"
+      = f.label "Semester", :class => "col-sm-2 control-label"
+      .col-sm-2
+        = f.select :semester,[], {}, :class => "form-control", :rel => "result-semester"
+      = f.label "Exam Date", :class => "col-sm-2 control-label"
+      .col-sm-2
+        = f.text_field :exam_date, :class => "datepicker form-control"
+    .form-group
+      .col-sm-4
+        = f.text_field :roll_from, :class => "form-control", :placeholder => "RollNo From"
+      .col-sm-4
+        = f.text_field :roll_to, :class => "form-control", :placeholder => "RollNo To"
+      .col-sm-4
+        = f.text_field :room_no, :class => "form-control", :placeholder => "Room Number"
+    - (1..4).each do |i|
+      .form-group
+        .col-sm-4
+          = f.text_field "roll_from_#{i}", :class => "form-control", :placeholder => "RollNo From"
+        .col-sm-4
+          = f.text_field "roll_to_#{i}", :class => "form-control", :placeholder => "RollNo To"
+        .col-sm-4
+          = f.text_field "room_no_#{i}", :class => "form-control", :placeholder => "Room Number"
+      
+    
+  .col-sm-8.pull-right
+    = f.submit "Save", :class => 'btn btn-primary'

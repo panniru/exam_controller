@@ -1,0 +1,5 @@
+%table.table.table-stripped
+  - courses.each do |course|
+    %tr
+      %td.well1.panel-title
+        = link_to course.name, course
