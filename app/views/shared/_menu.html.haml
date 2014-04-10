@@ -21,8 +21,9 @@
           = link_to "How To Apply?", how_tos_path, :class => "menu-item"
         %li
           = link_to "Documents", documents_path, :class => "menu-item"
-        %li{:class => controller.controller_name == "results" ? "active" : ""}
-          = link_to "Results", results_path, :class => "menu-item"
+        - if current_user.present?
+          %li{:class => controller.controller_name == "results" ? "active" : ""}
+            = link_to "Results", results_path, :class => "menu-item"
         - if current_user.present? and current_user.admin?
           %li.dropdown
             = link_to raw("Uploads&nbsp;<b class= 'caret'></b>"), "#", :class => "dropdown-toggle menu-item", :data => {:toggle =>"dropdown"}

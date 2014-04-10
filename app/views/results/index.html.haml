@@ -4,5 +4,5 @@
 %br
 - if @course.present?
   = render :partial => "results", :locals => {:results => @results}
-  
-  = will_paginate @results, param_name: "page", previous_label: h("<"), next_label: h(">")
+  .pull-right
+    = will_paginate @results, param_name: "page", previous_label: h("<"), next_label: h(">")

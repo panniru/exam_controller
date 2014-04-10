@@ -35,6 +35,10 @@ ExamController::Application.routes.draw do
   end
 
   resources :documents do
+    collection do
+      get "manage_gallery"
+      post "upload_gallery"
+    end
     member do
       get "download"
     end

@@ -1,6 +1,6 @@
 class HowTosController < ApplicationController
   load_resource :only => [:show, :update, :edit, :destroy, :new]
-  
+  authorize_resource
   def index
     page = params[:page].present? ? params[:page] : 1
     if params[:search].present?

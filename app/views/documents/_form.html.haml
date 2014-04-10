@@ -1,9 +1,9 @@
-= form_for @document, :multipart =>true do |f|
+= form_for @document, :multipart =>true, :class => "form-horizontal" do |f|
   .form-group
-    = f.label :filename,:class => 'col-md-0 control-label'
-    = f.text_field :filename,:class => 'form-control'
-    %br
-    %center
+    = f.label :filename,:class => 'col-sm-2 control-label'
+    .col-sm-6
+      = f.text_field :filename,:class => 'form-control'
+  .form-group
     = f.file_field :file_path
     %br
     = f.submit "submit",:class => 'btn btn-primary'

@@ -1,0 +1,9 @@
+- @images.each_with_index do |img, index|
+  .col-sm-3
+    = image_tag(img.file_path_url, :class => "img-thumbnail", :alt => "img-#{index}")
+    .col-sm-offset-3
+      = link_to raw("<span class='glyphicon glyphicon-trash'></span>"), document_path(img), :class => "label label-info", :data => {:method => :delete }, :title => "Delete"
+    %br
+
+%br
+= render "upload_pics"

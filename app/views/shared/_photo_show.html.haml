@@ -1,24 +1,36 @@
 #rbvrr-gallery.carousel.slide{:data => {:ride => "carousel"}}
+  
   %ol.carousel-indicators
-    %li{:data => {:target => "#rbvrr-gallery", "slide-to".to_sym => "0"} , :class => "active"}
-    %li{:data => {:target => "#rbvrr-gallery", "slide-to".to_sym => "1"}}
-    %li{:data => {:target => "#rbvrr-gallery", "slide-to".to_sym => "2"}}
-  .carousel-inner
-    .item.active
-      .col-sm-6
-        = link_to image_tag("1.JPG", :class => "img-responsive"),"#"
-      .col-sm-6
-        = link_to image_tag("2.JPG", :class => "img-responsive"), "#"
-    .item
-      .col-sm-6
-        = link_to image_tag("2.JPG", :class => "img-responsive"), "#"
-      .col-sm-6
-        = link_to image_tag("3.JPG", :class => "img-responsive"), "#"
-    .item
-      .col-sm-6
-        = link_to image_tag("2.JPG", :class => "img-responsive"), "#"
-      .col-sm-6
-        = link_to image_tag("2.JPG", :class => "img-responsive"), "#"
+    - count = 0 
+    - (0..@images.length-1).step(2).each do |index|
+      %li{:data => {:target => "#rbvrr-gallery", "slide-to".to_sym => "#{count}"} , :class => index == 0 ? "active" : ""}
+      - count += 1
 
+  .carousel-inner
+    - if @images.present?
+      - (0..@images.length-1).step(2).each do |index|
+        - if index == 0 
+          .item.active
+        - else
+          .item
+            .col-sm-4
+              = link_to image_tag(@images[index].file_path_url, :class => "img-responsive"),"#", :class => "thumbnail"
+            .col-sm-4
+              - if @images[index+1].present?
+                = link_to image_tag(@images[index+1].file_path_url, :class => "img-responsive"),"#", :class => "thumbnail"
+              - else
+                = link_to image_tag(@images[0].file_path_url, :class => "img-responsive"),"#", :class => "thumbnail"
+    - else
+      .item.active
+        .col-sm-4
+          = link_to image_tag("", :alt => "Add Images", :height => "200px", :width => "200px"),"#", :class => "thumbnail"
+        .col-sm-4
+          = link_to image_tag("", :alt => "Add Images", :height => "200px", :width => "200px"),"#", :class => "thumbnail"
+          
+      
   = link_to raw("<span class='glyphicon glyphicon-chevron-left'></span>"), "#rbvrr-gallery", :class => "left carousel-control", :data => {:slide => "prev"}
   = link_to raw("<span class='glyphicon glyphicon-chevron-right'></span>"), "#rbvrr-gallery", :class => "right carousel-control", :data => {:slide => "next"}
+  - if current_user.present? and current_user.admin?
+    .col-sm-offset-11
+      = link_to "Manage Gallery..", manage_gallery_documents_path, :class => "right custom-link"
+  

@@ -1,0 +1,12 @@
+= form_for Document.new, :url => upload_gallery_documents_path, :multipart =>true, :class => "form-horizontal" do |f|
+  = render "shared/error_messages", :object => f.object
+  = f.hidden_field :file_type, :value => 'image'
+  = f.hidden_field :filename, :value => 'image'
+  .form-group
+    = f.label "Upload Gallery", :class => 'col-sm-2 control-label'
+    .col-sm-4
+      = f.file_field :file_path, :multiple => true, :name => "document[file_path][]"
+      %i (You can select multiple photos at a time)
+      %br
+      = f.submit "Save", :class => 'btn btn-primary'
+
