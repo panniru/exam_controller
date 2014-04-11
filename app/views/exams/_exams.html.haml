@@ -14,38 +14,39 @@
       - @exams.each do |exam|
         - exam_dept = Exam.where(:dept => exam.dept)
         - @s=exam_dept.map {|e| e.semester}.to_set.sort
-      %br  
-      - @s.each do |sem|
-        %h4.custom-heading Semester-#{sem}
-        %table.table.table-striped.table-bordered.table-condensed.table-hover
-          %theada
-            %tr 
-              /%th Dept
-              %th semester
-              %th Subject
-              %th Date
-              %th From
-              %th To
-              - if current_user.present? and current_user.admin?
-                %th
-          %tbody
-            - @exams.each do |exam|
-              - if exam.semester == sem
+      %br
+      - if @s.present?
+        - @s.each do |sem|
+          %h4.custom-heading Semester-#{sem}
+          %table.table.table-striped.table-bordered.table-condensed.table-hover
+            %theada
+              %tr 
+                /%th Dept
+                %th semester
+                %th Subject
+                %th Date
+                %th From
+                %th To
                 - if current_user.present? and current_user.admin?
-                  %tr
-                    /%td= best_in_place exam, :dept,html_attrs: { "data-autocomplete" => auto_search_autocomplete_exam_dept_path, :class => "form-control col-sm-3" } 
-                    %td= best_in_place exam, :semester,html_attrs: {:class => "form-control col-sm-3" } 
-                    %td= best_in_place exam, :subject, type: :textarea,html_attrs: {:class => "form-control col-sm-3" } 
-                    %td= best_in_place exam, :date,html_attrs: {:class => "datepicker form-control" } 
-                    %td= best_in_place exam, :from,html_attrs: {:class => "form-control col-sm-3" } 
-                    %td= best_in_place exam, :to,html_attrs: {:class => "form-control col-sm-3" } 
-                    %td= link_to 'Delete', exam, method: :delete,data: { confirm: 'Are you sure?' }
-                - else
-                  %tr
-                    /%td= exam.dept
-                    %td= exam.semester
-                    %td= exam.subject
-                    %td= exam.date
-                    %td= exam.from
-                    %td= exam.to
-%br
+                  %th
+            %tbody
+              - @exams.each do |exam|
+                - if exam.semester == sem
+                  - if current_user.present? and current_user.admin?
+                    %tr
+                      /%td= best_in_place exam, :dept,html_attrs: { "data-autocomplete" => auto_search_autocomplete_exam_dept_path, :class => "form-control col-sm-3" } 
+                      %td= best_in_place exam, :semester,html_attrs: {:class => "form-control col-sm-3" } 
+                      %td= best_in_place exam, :subject, type: :textarea,html_attrs: {:class => "form-control col-sm-3" } 
+                      %td= best_in_place exam, :date,html_attrs: {:class => "datepicker form-control" } 
+                      %td= best_in_place exam, :from,html_attrs: {:class => "form-control col-sm-3" } 
+                      %td= best_in_place exam, :to,html_attrs: {:class => "form-control col-sm-3" } 
+                      %td= link_to 'Delete', exam, method: :delete,data: { confirm: 'Are you sure?' }
+                  - else
+                    %tr
+                      /%td= exam.dept
+                      %td= exam.semester
+                      %td= exam.subject
+                      %td= exam.date
+                      %td= exam.from
+                      %td= exam.to
+                        

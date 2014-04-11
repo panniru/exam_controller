@@ -5,7 +5,7 @@ class CalendarsController < ApplicationController
      if params[:course].present? && params[:course] != "AllDepts"
         @calendars = Calendar.where(:course => params[:course])
       else
-         @calendars = Calendar.first.present? ? Calendar.all.order("course") : ""
+         @calendars = Calendar.first.present? ? Calendar.all.order("course") : []
      end
     end
   	

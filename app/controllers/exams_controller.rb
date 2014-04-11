@@ -6,7 +6,7 @@ class ExamsController < ApplicationController
     if params[:dept].present?
         @exams = Exam.where(:dept => params[:dept])
       else
-        @exams = Exam.first.present? ? Exam.where(:dept => Exam.order("dept asc").first.dept) : ""
+        @exams = Exam.first.present? ? Exam.where(:dept => Exam.order("dept asc").first.dept) : []
      end
 	end
   
