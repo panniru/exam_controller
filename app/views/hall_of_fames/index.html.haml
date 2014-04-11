@@ -1,18 +1,28 @@
-%h2
-HallofFames
-%br
-- @hall_of_fames.each do |hall_of_fame,index|
-  = image_tag(hall_of_fame.avatar_url, :class => "img-thumbnail", :alt => "img-#{index}")
-  %br
-  = hall_of_fame.name
-  %br
-  = hall_of_fame.department
-  %br
-  = hall_of_fame.year_of_passing
-  
- 
-
-   
-    
-     
-
+.pull-right
+  = link_to "Add Hall Of Fame", new_hall_of_fame_path, :class => "btn btn-primary"
+- @hall_of_fames.each do |hall_of_fame|
+  .col-sm-4
+    .thumbnail
+      = image_tag(hall_of_fame.avatar_url, :class => "img-thumbnail")
+      .caption
+        %center
+          %table
+            %tr
+              %td{:align => 'right'}
+                = raw "<strong > Name :</strong>"
+              %td
+                = raw "<strong class = 'custom-heading'> #{hall_of_fame.name}</strong> "
+            %tr
+              %td{:align => 'right'}
+                = raw "<strong > Department :</strong>"
+              %td
+                = raw "<strong class = 'custom-heading'> #{hall_of_fame.department}</strong> "
+            %tr
+              %td{:align => 'right'}
+                = raw "<strong > Year Of Passing :</strong>"
+              %td
+                = raw "<strong class = 'custom-heading'> #{hall_of_fame.year_of_passing}</strong> "
+        - if can? :create, HallOfFame
+          .col-sm-offset-9
+            = link_to raw("<span class='glyphicon glyphicon-edit'></span>"), edit_hall_of_fame_path(hall_of_fame), :class => "btn btn-warning btn-sm", :title => "Edit"
+            = link_to raw("<span class='glyphicon glyphicon-trash'></span>"), hall_of_fame_path(hall_of_fame), :class => "btn btn-info btn-sm", :data => {:confirm => "Are You Sure?", :method => :delete }, :title => "Delete"
