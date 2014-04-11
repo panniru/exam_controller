@@ -10,15 +10,15 @@ class Ability
     alias_action :manage_gallery, :to => :create
     alias_action :upload_gallery, :to => :create
     
-    if user.present? and user.admin?
+    if user.admin?
       can :manage, :all
-    elsif user.present? and user.faculty?
+    elsif user.faculty?
       can :manage, [Result]
-      can :read, [Course, HowTo]
-    elsif user.present? and user.student?
-      can :read, [Result, Course, HowTo]
+      can :read, [Course, HowTo,Exam,Calendar]
+    elsif user.student?
+      can :read, [Result, Course, HowTo,Exam,Calendar]
     else
-      can :read, [Document]
+      can :read, [Document,HowTo,Exam,Calendar]
       can :create, [Feedback]
     end
 

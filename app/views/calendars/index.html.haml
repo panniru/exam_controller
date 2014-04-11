@@ -2,17 +2,18 @@
   .row
     .col-md-2
       %br
-      .btn-primary Departments
-      #calendar1
+      %h4.custom-heading Departments
+      #custom-left-panel
         .list-group
           = link_to 'AllDepts', calendars_path(:course=> "AllDepts"),:class => "list-group-item"
           - Calendar.grouped_calendars.sort_by { |x| x.course.downcase }.each do |object|
             = link_to object.course, calendars_path(:course => object.course),:class => "list-group-item #{object.course == params[:course] ? "active" : ''}" 
     .col-md-10
       %br
-      .btn-primary Academic events 
+      %h4.custom-heading Academic Events 
       - if current_user.present? and current_user.admin?
-        = link_to 'Add Event', new_calendar_path
+        .pull-right
+          = link_to 'Add Event', new_calendar_path,:class => 'btn btn-primary'      
       %table.table.table-striped.table-bordered.table-condensed.table-hover
         %thead
           %tr

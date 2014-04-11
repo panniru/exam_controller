@@ -1,5 +1,6 @@
 class ExamsController < ApplicationController
 	before_action :set_exam, only: [ :show, :edit, :update, :destroy]
+  authorize_resource
 
 	def index
     if params[:dept].present?

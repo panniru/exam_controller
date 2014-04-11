@@ -1,11 +1,11 @@
 class CalendarsController < ApplicationController
-	 
+	 authorize_resource
   #respond_to :html,:jason
     def index
      if params[:course].present? && params[:course] != "AllDepts"
         @calendars = Calendar.where(:course => params[:course])
       else
-         @calendars = Calendar.all.order("course")
+         @calendars = Calendar.first.present? ? Calendar.all.order("course") : ""
      end
     end
   	
