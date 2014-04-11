@@ -4,10 +4,12 @@ $ ->
         window.location = url
     )
 
-   $("select[rel='result-course']").on('change', (event) ->
+   $('body').on('change', 'select[rel="result-course"]', (event) ->
         if $(this).val().length > 0
             url = "/courses/course_sems.json?course="+$(this).val()
             parent = $("select[rel = 'result-semester']")
+            if typeof $(this).data('target') != 'undefined' and $(this).data('target') != ''
+                parent = $("#"+$(this).data('target'))
             parent.empty()
             $.getJSON(url, (data)->
                 $("<option>").val('').text('').appendTo(parent)

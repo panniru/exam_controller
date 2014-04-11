@@ -94,6 +94,11 @@ ExamController::Application.routes.draw do
     end
   end
 
-  resources :seat_allotments
+  resources :seat_allotments do
+    collection do
+      get "new_allotment_upload"
+      post "upload"
+    end
+  end
 
 end

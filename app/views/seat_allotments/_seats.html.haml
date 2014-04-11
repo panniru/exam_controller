@@ -1,0 +1,20 @@
+%tr
+  - if can? :create, SeatAllotment
+    %td= best_in_place seat_allotment, :dept, html_attrs: {:class => "form-control" } 
+    %td= best_in_place seat_allotment, :semester, html_attrs: {:class => "form-control" } 
+    %td= best_in_place seat_allotment, :exam_date, html_attrs: {:class => "form-control datepicker" } 
+    %td= best_in_place seat_allotment, :roll_from, html_attrs: {:class => "form-control" } 
+    %td= best_in_place seat_allotment, :roll_to, html_attrs: {:class => "form-control" } 
+    %td= best_in_place seat_allotment, :room_no, html_attrs: {:class => "form-control" } 
+    %td= best_in_place seat_allotment, :teacher, html_attrs: {:class => "form-control" } 
+  - else
+    %td= seat_allotment.dept
+    %td= seat_allotment.semester
+    %td= seat_allotment.exam_date
+    %td= seat_allotment.roll_from
+    %td= seat_allotment.roll_to
+    %td= seat_allotment.room_no
+    %td= seat_allotment.teacher
+  - if can? :destroy, SeatAllotment
+    %td= link_to raw("<span class='glyphicon glyphicon-trash'></span>"), seat_allotment_path(seat_allotment), :data => {:confirm => "Are You Sure?", :method => :delete }, :title => "Delete"
+      

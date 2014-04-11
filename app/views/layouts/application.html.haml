@@ -29,5 +29,8 @@
                     = content_tag(:div,value,:class => "#{flash_alert_class(key)}")
                 = yield
             - else
+              .col-sm-offset-3
+                -# - flash.each do |key, value|
+                -#   = content_tag(:div,value,:class => "#{flash_alert_class(key)}")
               = yield
     = render "shared/footer"

@@ -1,32 +1,39 @@
-= form_for @seat_allotment, :html => { :class => "form-horizontal", :role => "form" } do |f|
-  = render "shared/error_messages", :object => f.object
-  .col-sm-10
-    .form-group
-      = f.label "Department", :class => 'col-sm-2 control-label'
+= form_tag SeatAllotment.new, :method => 'post' , :class => "form-inline" do
+  #row-content
+    .row
       .col-sm-2
-        = f.select :dept, options_from_collection_for_select(Course.all, "name", "name"), {}, :class => "form-control", :rel => "result-course"
-      = f.label "Semester", :class => "col-sm-2 control-label"
+        %strong Department
+      .col-sm-1
+        %strong Semster
       .col-sm-2
-        = f.select :semester,[], {}, :class => "form-control", :rel => "result-semester"
-      = f.label "Exam Date", :class => "col-sm-2 control-label"
+        %strong Exam Date
       .col-sm-2
-        = f.text_field :exam_date, :class => "datepicker form-control"
-    .form-group
-      .col-sm-4
-        = f.text_field :roll_from, :class => "form-control", :placeholder => "RollNo From"
-      .col-sm-4
-        = f.text_field :roll_to, :class => "form-control", :placeholder => "RollNo To"
-      .col-sm-4
-        = f.text_field :room_no, :class => "form-control", :placeholder => "Room Number"
-    - (1..4).each do |i|
-      .form-group
-        .col-sm-4
-          = f.text_field "roll_from_#{i}", :class => "form-control", :placeholder => "RollNo From"
-        .col-sm-4
-          = f.text_field "roll_to_#{i}", :class => "form-control", :placeholder => "RollNo To"
-        .col-sm-4
-          = f.text_field "room_no_#{i}", :class => "form-control", :placeholder => "Room Number"
-      
-    
+        %strong RollNo From
+      .col-sm-2
+        %strong RollNo To
+      .col-sm-1
+        %strong Room No
+      .col-sm-2
+        %strong Teacher
+    - (1..10).each do |i|
+      .row
+        .col-sm-2
+          = select_tag "seat_allotment[dept_#{i}]".to_sym, options_for_select(CoursesHelper::courses_belongs_user(current_user), params[:course_name]), :include_blank => '', :class => "form-control", :rel => "result-course", "data-target".to_sym => "result-sem-#{i}"
+        .col-sm-1
+          = select_tag "seat_allotment[semester_#{i}]".to_sym, options_for_select([], params[:semester]), :class => "form-control", :rel => "result-semester", :id => "result-sem-#{i}"
+        .col-sm-2
+          = text_field_tag "seat_allotment[exam_date_#{i}]".to_sym, params["exam_date_#{i}"], :class => "datepicker form-control"
+        .col-sm-2
+          = text_field_tag "seat_allotment[roll_from_#{i}]", params["roll_from_#{i}"], :class => "form-control"
+        .col-sm-2
+          = text_field_tag "seat_allotment[roll_to_#{i}]", params["roll_to_#{i}"], :class => "form-control"
+        .col-sm-1
+          = text_field_tag "seat_allotment[room_no_#{i}]", params["room_no_#{i}"], :class => "form-control"
+        .col-sm-2
+          = text_field_tag "seat_allotment[teacher_#{i}]", params["teacher_#{i}"], :class => "form-control"
+      %br
   .col-sm-8.pull-right
-    = f.submit "Save", :class => 'btn btn-primary'
+    = hidden_field_tag "seat_allotment[total_rows]", 10, :id => "total_rows"
+    = button_tag "Add More Rows", :type => "button", :class => 'btn btn-info', :rel => "add-more-rows"
+    = button_tag "Save", :type => "submit", :class => 'btn btn-primary'
+    = link_to "Back", seat_allotments_path, :class => 'btn btn-primary'

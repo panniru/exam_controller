@@ -54,3 +54,79 @@ en:
     upload:
       success: "Results has been uploaded"
       fail: "Results has not been uploaded"
+  how_to:
+    create:
+      success: "How to apply item  has been created"
+      fail: "How to apply item  not been created"
+    destroy:
+      success: "How to apply item  has been removed"
+      fail: "How to apply item  has not been removed"
+    update:
+      success: "How to apply item  has been updated"
+      fail: "How to apply item  not been updated"
+  seat_allotement:
+    create:
+      success: "Allotement has been created"
+      fail: "Allotement not been created"
+    destroy:
+      success: "Allotement has been removed"
+      fail: "Allotement has not been removed"
+    update:
+      success: "Allotement has been updated"
+      fail: "Allotement not been updated"
+    upload:
+      success: "Allotements has been uploaded"
+      fail: "Allotements has not been uploaded"
+  document:
+    create:
+      success: "Document has been created"
+      fail: "Document not been created"
+    destroy:
+      success: "Document has been removed"
+      fail: "Document has not been removed"
+    update:
+      success: "Document has been updated"
+      fail: "Document not been updated"
+    upload:
+      success: "Documents has been uploaded"
+      fail: "Documents has not been uploaded"
+  notification:
+    create:
+      success: "Notification has been added"
+      fail: "Notification not been added"
+    destroy:
+      success: "Notification has been removed"
+      fail: "Notification has not been removed"
+    update:
+      success: "Notification has been updated"
+      fail: "Notification not been updated"
+  welcome:
+    create:
+      success: "Welcome note has been added"
+      fail: "Welcome note not been added"
+    destroy:
+      success: "Welcome note has been removed"
+      fail: "Welcome note has not been removed"
+    update:
+      success: "Welcome note has been updated"
+      fail: "Welcome note not been updated"
+  calendar:
+    create:
+      success: "Calendar entry has been added"
+      fail: "Calendar entry not been added"
+    destroy:
+      success: "Calendar entry has been removed"
+      fail: "Calendar entry has not been removed"
+    update:
+      success: "Calendar entry has been updated"
+      fail: "Calendar entry not been updated"
+  exam:
+    create:
+      success: "Exam schedule has been added"
+      fail: "Exam schedule not been added"
+    destroy:
+      success: "Exam schedule has been removed"
+      fail: "Exam schedule has not been removed"
+    update:
+      success: "Exam schedule has been updated"
+      fail: "Exam schedule not been updated"

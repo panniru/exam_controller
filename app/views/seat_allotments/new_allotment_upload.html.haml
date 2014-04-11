@@ -1,0 +1,20 @@
+.page-header
+  %h2
+    = link_to "Upload Seat Allotments", "#"
+%p
+  A Csv or Exel can be uploaded. First row should have the column names
+= form_for @seat_allotment_uploader, :url => upload_seat_allotments_path, :multipart => true, :html => { :class => "form"} do |f|
+  = render "shared/error_messages", :object => f.object
+  .panel.panel-info
+    .panel-body
+      %strong Columns Required: &nbsp;
+      = SeatAllotment.columns_defined.join(",")
+      %strong.pull-right
+        = link_to "Download Template", new_allotment_upload_seat_allotments_path(:format => :xlsx)
+      %br
+      %br
+      .form-group
+        .col-sm-3
+          = f.file_field :file
+        .col-sm-2
+          = f.submit "Upload", :class => "btn btn-primary pull-right"

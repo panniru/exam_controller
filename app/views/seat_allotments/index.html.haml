@@ -1,6 +1,27 @@
-= render "courses/search"
-%br
-%br
-= render :partial => "courses/courses", :locals => {:courses => @courses}
-
-= will_paginate @courses, param_name: "page", previous_label: h("<"), next_label: h(">")
+.col-sm-3
+  %ul.list-group
+    %li.list-group-item.active 
+      = form_tag seat_allotments_path, :method => 'get' , :class => "form-inline", :id => "seatSearch" do
+        = label_tag "Sort By :", nil, :class => "control-label"
+        = select_tag :sort_by, options_for_select([["Deptartment", "dept"], ["Room Number", "room_no"]], params[:sort_by]), :class => "form-control" , :rel => "sortByChange"
+      - if can? :create, SeatAllotment
+        %i (Double click table cell content to edit)
+.col-sm-9
+  = render "search"
+  %br
+  %table.table.table-stripped
+    %thead
+      %th Department
+      %th Semester
+      %th Exam Date
+      %th RollNo From
+      %th RollNo To
+      %th Room Number
+      %th Teacher
+      - if can? :destroy, SeatAllotment
+        %th
+    %tbody
+      = render partial: "seats", collection: @seat_allotments, as: "seat_allotment"
+      
+  .pull-right
+    = will_paginate @courses, param_name: "page", previous_label: h("<"), next_label: h(">")

@@ -14,11 +14,11 @@ class Ability
       can :manage, :all
     elsif user.faculty?
       can :manage, [Result]
-      can :read, [Course, HowTo,Exam,Calendar]
+      can :read, [Course, HowTo,Exam,Calendar, SeatAllotment]
     elsif user.student?
-      can :read, [Result, Course, HowTo,Exam,Calendar]
+      can :read, [Result, Course, HowTo,Exam,Calendar, SeatAllotment]
     else
-      can :read, [Document,HowTo,Exam,Calendar]
+      can :read, [Document,HowTo,Exam,Calendar, SeatAllotment]
       can :create, [Feedback]
     end
 
