@@ -101,4 +101,7 @@ ExamController::Application.routes.draw do
     end
   end
 
+  resources :hall_of_fames
+
+
 end

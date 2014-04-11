@@ -1,0 +1,24 @@
+= form_for @hall_of_fame  do |f|
+  .form-group
+    = label_tag "Name",nil,:class => 'col-sm-4 control-label'
+    .col-sm-8
+      = text_field_tag "hall_of_fame[name]",nil, :class => 'form-control', :id => "hall_of_name-name"
+      %br
+      .form-group
+        = label_tag "Department",nil, :class => 'col-sm-4 control-label'
+        .col-sm-8
+          = text_field_tag "hall_of_fame[department]", nil, :class => 'form-control', :id => "hall_of_fame-departmenty"
+          %br
+          .form-group
+            = label_tag "Year_of_pass",nil, :class => 'col-sm-4 control-label'
+            .col-sm-8
+              = text_field_tag "hall_of_fame[year_of_passing]", nil, :class => 'form-control', :id => "hall_of_fame-year_of_passing"
+              %br
+              .form-group
+                .col-sm-8
+                  .form-group
+                    = f.file_field :avatar
+                    = f.submit "submit",:class => 'btn btn-primary'
+                    
+                    
+

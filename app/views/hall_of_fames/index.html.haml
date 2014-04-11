@@ -1,0 +1,18 @@
+%h2
+HallofFames
+%br
+- @hall_of_fames.each do |hall_of_fame,index|
+  = image_tag(hall_of_fame.avatar_url, :class => "img-thumbnail", :alt => "img-#{index}")
+  %br
+  = hall_of_fame.name
+  %br
+  = hall_of_fame.department
+  %br
+  = hall_of_fame.year_of_passing
+  
+ 
+
+   
+    
+     
+
