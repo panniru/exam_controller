@@ -340,41 +340,6 @@ CREATE SEQUENCE hall_of_fames_id_seq
 
 ALTER SEQUENCE hall_of_fames_id_seq OWNED BY hall_of_fames.id;
 
-
---
--- Name: how_tos; Type: TABLE; Schema: public; Owner: -; Tablespace: 
---
-
-CREATE TABLE hall_of_fames (
-    id integer NOT NULL,
-    name character varying(255),
-    department character varying(255),
-    year_of_passing integer,
-    avatar character varying(255),
-    created_at timestamp without time zone,
-    updated_at timestamp without time zone
-);
-
-
---
--- Name: hall_of_fames_id_seq; Type: SEQUENCE; Schema: public; Owner: -
---
-
-CREATE SEQUENCE hall_of_fames_id_seq
-    START WITH 1
-    INCREMENT BY 1
-    NO MINVALUE
-    NO MAXVALUE
-    CACHE 1;
-
-
---
--- Name: hall_of_fames_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: -
---
-
-ALTER SEQUENCE hall_of_fames_id_seq OWNED BY hall_of_fames.id;
-
-
 --
 -- Name: how_tos; Type: TABLE; Schema: public; Owner: -; Tablespace: 
 --
@@ -438,6 +403,7 @@ CREATE SEQUENCE notifications_id_seq
 --
 
 ALTER SEQUENCE notifications_id_seq OWNED BY notifications.id;
+
 
 
 
