@@ -6,8 +6,8 @@ class ResultsController < ApplicationController
     page = params[:page].present? ? params[:page] : 1
     if params[:course_name].present? and params[:semester].present?
       @course = Course.belongs_to_course(params[:course_name]).first
-      if params[:academic_year].present?
-        @results = @course.results.belongs_to_current_user(current_user).belongs_to_year.paginate(:page => page)
+      if params[:year].present?
+        @results = @course.results.belongs_to_current_user(current_user).belongs_to_year(params[:year]).paginate(:page => page)
       else
         @results = @course.results.belongs_to_current_user(current_user).paginate(:page => page)
       end

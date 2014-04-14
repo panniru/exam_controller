@@ -340,6 +340,7 @@ CREATE SEQUENCE hall_of_fames_id_seq
 
 ALTER SEQUENCE hall_of_fames_id_seq OWNED BY hall_of_fames.id;
 
+
 --
 -- Name: how_tos; Type: TABLE; Schema: public; Owner: -; Tablespace: 
 --
@@ -403,8 +404,6 @@ CREATE SEQUENCE notifications_id_seq
 --
 
 ALTER SEQUENCE notifications_id_seq OWNED BY notifications.id;
-
-
 
 
 --
@@ -549,7 +548,6 @@ CREATE TABLE users (
     current_sign_in_ip character varying(255),
     last_sign_in_ip character varying(255),
     user_id character varying(255),
-    resource_id integer,
     role character varying(255),
     created_at timestamp without time zone,
     updated_at timestamp without time zone
@@ -688,13 +686,6 @@ ALTER TABLE ONLY notifications ALTER COLUMN id SET DEFAULT nextval('notification
 -- Name: id; Type: DEFAULT; Schema: public; Owner: -
 --
 
-ALTER TABLE ONLY products ALTER COLUMN id SET DEFAULT nextval('products_id_seq'::regclass);
-
-
---
--- Name: id; Type: DEFAULT; Schema: public; Owner: -
---
-
 ALTER TABLE ONLY results ALTER COLUMN id SET DEFAULT nextval('results_id_seq'::regclass);
 
 
@@ -815,14 +806,6 @@ ALTER TABLE ONLY notifications
 
 
 --
--- Name: products_pkey; Type: CONSTRAINT; Schema: public; Owner: -; Tablespace: 
---
-
-ALTER TABLE ONLY products
-    ADD CONSTRAINT products_pkey PRIMARY KEY (id);
-
-
---
 -- Name: results_pkey; Type: CONSTRAINT; Schema: public; Owner: -; Tablespace: 
 --
 
@@ -895,12 +878,6 @@ INSERT INTO schema_migrations (version) VALUES ('20140329061840');
 
 INSERT INTO schema_migrations (version) VALUES ('20140401052120');
 
-INSERT INTO schema_migrations (version) VALUES ('20140401055855');
-
-INSERT INTO schema_migrations (version) VALUES ('20140401060807');
-
-INSERT INTO schema_migrations (version) VALUES ('20140401101057');
-
 INSERT INTO schema_migrations (version) VALUES ('20140402054703');
 
 INSERT INTO schema_migrations (version) VALUES ('20140402054917');
@@ -913,8 +890,6 @@ INSERT INTO schema_migrations (version) VALUES ('20140402122236');
 
 INSERT INTO schema_migrations (version) VALUES ('20140402124344');
 
-INSERT INTO schema_migrations (version) VALUES ('20140403061229');
-
 INSERT INTO schema_migrations (version) VALUES ('20140404050646');
 
 INSERT INTO schema_migrations (version) VALUES ('20140404051633');
@@ -924,8 +899,6 @@ INSERT INTO schema_migrations (version) VALUES ('20140404113827');
 INSERT INTO schema_migrations (version) VALUES ('20140404125645');
 
 INSERT INTO schema_migrations (version) VALUES ('20140404130322');
-
-INSERT INTO schema_migrations (version) VALUES ('20140405103818');
 
 INSERT INTO schema_migrations (version) VALUES ('20140408063625');
 
@@ -940,3 +913,5 @@ INSERT INTO schema_migrations (version) VALUES ('20140409110658');
 INSERT INTO schema_migrations (version) VALUES ('20140410103616');
 
 INSERT INTO schema_migrations (version) VALUES ('20140411073905');
+
+INSERT INTO schema_migrations (version) VALUES ('20140414114443');

@@ -5,7 +5,9 @@ class Student < ActiveRecord::Base
   validates :name, :presence => true
   validates :dept_name, :presence => true
 
-  belongs_to :user
+  belongs_to :user, :dependent => :destroy
+
+  has_many :results, :dependent => :destroy
   
   accepts_nested_attributes_for :user
 

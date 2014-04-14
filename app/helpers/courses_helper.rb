@@ -1,7 +1,7 @@
 module CoursesHelper
 
   def self.courses_belongs_user(current_user)
-    s = Set.new []
+    s = Set.new ['']
     if current_user.admin?
       Course.all.each{|c| s << c.name}
     elsif current_user.faculty? and current_user.faculty.courses.present?

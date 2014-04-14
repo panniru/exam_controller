@@ -1,12 +1,5 @@
 = form_for @exam, :html => { :class => "form-horizontal", :role => "form"} do |f|
-  - if @exam.errors.any?
-    #error_explanation
-      %h2
-        = pluralize(@exam.errors.count, "error")
-        prohibited this exam schedule from being saved:
-      %ul
-        - @exam.errors.full_messages.each do |msg|
-          %li= msg
+  = render "shared/error_messages", :object => f.object
   .col-sm-8
     .form-group
       = f.label "Department", :class => 'col-sm-2 control-label'

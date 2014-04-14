@@ -55,7 +55,7 @@ class FacultiesController < ApplicationController
   private
 
   def faculty_params
-    fac_params = params.require(:faculty).permit(:name , :designation, :user_attributes => [:user_id, :email, :password, :password_confirmation, :role_id], :department_names => [])
+    fac_params = params.require(:faculty).permit(:name , :designation, :user_attributes => [:user_id, :email, :password, :password_confirmation, :role], :department_names => [])
   end
 
   def faculty_update_params

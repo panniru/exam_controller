@@ -12,7 +12,7 @@
   .form-group
     = f.label "Course", :class => 'col-sm-2 control-label'
     .col-sm-5
-      = f.select :course_name, options_from_collection_for_select(Course.all, "name", "name"), {}, :class => "form-control", :rel => "result-course"
+      = f.select :course_name, options_for_select(CoursesHelper::courses_belongs_user(current_user)), {}, :class => "form-control", :rel => "result-course"
   .form-group
     = label_tag "Semester", nil, :class => "col-sm-2 control-label"
     .col-sm-5

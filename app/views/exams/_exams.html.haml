@@ -2,7 +2,6 @@
   .row
     .col-md-2
       #custom-left-panel
-        %br
         .list-group
           - Exam.grouped_depts.sort_by { |x| x.dept.downcase }.each_with_index do |object, index|
             - klass = ''

@@ -1,6 +1,6 @@
 $ ->
    $("a[rel = 'results-template']").on('click', ->
-        url = "/results/result_upload.xlsx?c="+$("#result-course").val()+"&s="+$("#result-semester").val()
+        url = "/results/result_upload.xlsx?c="+$("select[rel = 'result-course']").val()+"&s="+$("select[rel='result-semester']").val()
         window.location = url
     )
 

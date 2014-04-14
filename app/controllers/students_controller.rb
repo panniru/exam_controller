@@ -18,6 +18,7 @@ class StudentsController < ApplicationController
 
   def create
     @student = Student.new(student_params)
+    @student.user.role = Student.role
     if @student.save
       flash.now[:success] = I18n.t :success, :scope => [:student, :create]
       render "show"
@@ -58,7 +59,7 @@ class StudentsController < ApplicationController
   def edit
     unless @student.user.present?
       @student.build_user
-      @student.user.role_id = Role.student_role.id
+      @student.user.role = Student.role
     end
   end
 

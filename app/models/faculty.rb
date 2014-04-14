@@ -3,7 +3,7 @@ class Faculty < ActiveRecord::Base
   validates :name, :presence => true
   after_save :insert_faculty_course
 
-  belongs_to :user
+  belongs_to :user, :dependent => :destroy
   accepts_nested_attributes_for :user
 
   attr_accessor :department_names

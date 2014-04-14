@@ -2,7 +2,7 @@
   .form-group
     .col-sm-3
       = label_tag "Course", nil
-      = select_tag :course_name, options_for_select(CoursesHelper::courses_belongs_user(current_user), params[:course_name]), :include_blank => '', :class => "form-control", :rel => "result-course"
+      = select_tag :course_name, options_for_select(CoursesHelper::courses_belongs_user(current_user), params[:course_name]), :class => "form-control", :rel => "result-course"
     .col-sm-3
       = label_tag "Semester", nil
       = select_tag :semester, options_for_select([], params[:semester]), :class => "form-control", :rel => "result-semester"
