@@ -130,3 +130,16 @@ en:
     update:
       success: "Exam schedule has been updated"
       fail: "Exam schedule not been updated"
+  student:
+    create:
+      success: "Student has been created"
+      fail: "Student not been created"
+    destroy:
+      success: "Student has been removed"
+      fail: "Student has not been removed"
+    update:
+      success: "Student has been updated"
+      fail: "Student not been updated"
+    upload:
+      success: "Students has been uploaded"
+      fail: "Students has not been uploaded"

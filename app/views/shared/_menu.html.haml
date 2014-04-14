@@ -9,11 +9,11 @@
       = link_to "Home", root_path, :class => "navbar-brand brand"
     #bs-example-navbar-collapse-1.collapse.navbar-collapse
       %ul.nav.navbar-nav
-        %li{:class => controller.controller_name == "calendar" ? "active" : ""}
+        %li{:class => controller.controller_name == "calendars" ? "active" : ""}
           = link_to "Calendar", calendars_path, :class => "menu-item "
-        %li{:class => controller.controller_name == "employee" ? "active" : ""}
+        %li{:class => controller.controller_name == "employees" ? "active" : ""}
           = link_to "Org-chart", org_chart_path, :class => "menu-item"
-        %li{:class => controller.controller_name == "schedule" ? "active" : ""}
+        %li{:class => controller.controller_name == "exams" ? "active" : ""}
           = link_to "Exam Schedule", exams_path, :class => "menu-item"
         %li{:class => controller.controller_name == "notifications" ? "active" : ""}
           = link_to "Notifications", notifications_path, :class => "menu-item"

@@ -79,11 +79,11 @@ class StudentsController < ApplicationController
   private
 
   def student_params
-    params.require(:student).permit(:name, :dob, :joining_date, :email, :course_name, :roll_number, :user_attributes => [:user_id, :email, :password, :password_confirmation, :role_id])
+    params.require(:student).permit(:name, :dob, :joining_date, :email, :dept_name, :roll_number, :user_attributes => [:user_id, :email, :password, :password_confirmation, :role_id])
   end
 
   def student_update_params
-   params.require(:student).permit(:name, :dob, :joining_date, :email, :course_name, :roll_number)
+   params.require(:student).permit(:name, :dob, :joining_date, :email, :dept_name, :roll_number)
   end
 
 end
