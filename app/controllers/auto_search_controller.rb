@@ -4,7 +4,7 @@ class AutoSearchController < ApplicationController
   autocomplete :course, :name, :full => true
   autocomplete :how_to, :name, :full => true
   autocomplete :faculty, :name, :full => true
-  autocomplete :document,:filename, :full => true
+  autocomplete :document,:filename, :full => true, :scopes => [:document_types]
   autocomplete :calendar, :course, :full => true
   autocomplete :exam, :dept, :full => true
 

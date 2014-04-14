@@ -4,9 +4,14 @@
       #custom-left-panel
         %br
         .list-group
-          - Exam.grouped_depts.sort_by { |x| x.dept.downcase }.each do |object|
-            = link_to object.dept, exams_path(:dept => object.dept),:class => "list-group-item #{object.dept == params[:dept] ? "active" : ''}"
-    .col-md-10
+          - Exam.grouped_depts.sort_by { |x| x.dept.downcase }.each_with_index do |object, index|
+            - klass = ''
+            - if index == 0 and params[:dept].nil?
+              - klass = 'active'
+            - else
+              - klass = object.dept == params[:dept] ? "active" : ''
+            = link_to object.dept, exams_path(:dept => object.dept),:class => "list-group-item #{klass}"
+    .col-md-9
       %h3.custom-heading Exam Schedule
       - if current_user.present? and current_user.admin?
         .pull-right
@@ -22,7 +27,8 @@
             %theada
               %tr 
                 /%th Dept
-                %th semester
+                - if current_user.present? and current_user.admin?
+                  %th semester
                 %th Subject
                 %th Date
                 %th From
@@ -35,7 +41,8 @@
                   - if current_user.present? and current_user.admin?
                     %tr
                       /%td= best_in_place exam, :dept,html_attrs: { "data-autocomplete" => auto_search_autocomplete_exam_dept_path, :class => "form-control col-sm-3" } 
-                      %td= best_in_place exam, :semester,html_attrs: {:class => "form-control col-sm-3" } 
+                      - if current_user.present? and current_user.admin?
+                        %td= best_in_place exam, :semester,html_attrs: {:class => "form-control col-sm-3" } 
                       %td= best_in_place exam, :subject, type: :textarea,html_attrs: {:class => "form-control col-sm-3" } 
                       %td= best_in_place exam, :date,html_attrs: {:class => "datepicker form-control" } 
                       %td= best_in_place exam, :from,html_attrs: {:class => "form-control col-sm-3" } 
@@ -44,9 +51,9 @@
                   - else
                     %tr
                       /%td= exam.dept
-                      %td= exam.semester
+                      - if current_user.present? and current_user.admin?
+                        %td= exam.semester
                       %td= exam.subject
                       %td= exam.date
                       %td= exam.from
                       %td= exam.to
-                        

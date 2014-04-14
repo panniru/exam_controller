@@ -1,12 +1,18 @@
 = form_for @document, :multipart =>true, :class => "form-horizontal" do |f|
-  .form-group
-    = f.label :filename,:class => 'col-sm-2 control-label'
-    .col-sm-6
-      = f.text_field :filename,:class => 'form-control'
-  .form-group
-    = f.file_field :file_path
-    %br
-    = f.submit "submit",:class => 'btn btn-primary'
+  .col-sm-8
+    .row
+      .form-group
+        = f.label :filename,:class => 'col-sm-3 control-label'
+        .col-sm-6
+          = f.text_field :filename,:class => 'form-control'
+    .row
+      .form-group
+        = f.label :file,:class => 'col-sm-3 control-label'
+        .col-sm-6
+          = f.file_field :file_path
+    .row
+      .col-sm-6.col-sm-offset-5
+        = f.submit "submit",:class => 'btn btn-primary'
 
 
 
