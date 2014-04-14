@@ -3,7 +3,7 @@
     %li.list-group-item.active 
       = form_tag seat_allotments_path, :method => 'get' , :class => "form-inline", :id => "seatSearch" do
         = label_tag "Sort By :", nil, :class => "control-label"
-        = select_tag :sort_by, options_for_select([["Deptartment", "dept"], ["Room Number", "room_no"]], params[:sort_by]), :class => "form-control" , :rel => "sortByChange"
+        = select_tag :sort_by, options_for_select([["Department", "dept"], ["Room Number", "room_no"]], params[:sort_by]), :class => "form-control" , :rel => "sortByChange"
       - if can? :create, SeatAllotment
         %i (Double click table cell content to edit)
 .col-sm-9

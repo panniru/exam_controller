@@ -4,5 +4,6 @@
       = @welcome.heading
     %br
       = @welcome.message
-    - if can? :create, Welcome
-      = link_to raw("<span class= 'glyphicon glyphicon-edit'></span>"),welcomes_path, :class => "btn btn-warning btn-sm", :title => "Edit"
+      .pull-right
+        - if can? :create, Welcome
+          = link_to raw("<span class= 'glyphicon glyphicon-edit'></span>"),welcomes_path, :class => "btn btn-warning btn-sm", :title => "Edit"

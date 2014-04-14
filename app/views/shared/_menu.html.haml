@@ -10,7 +10,7 @@
     #bs-example-navbar-collapse-1.collapse.navbar-collapse
       %ul.nav.navbar-nav
         %li{:class => controller.controller_name == "calendar" ? "active" : ""}
-          = link_to "Calander", calendars_path, :class => "menu-item "
+          = link_to "Calendar", calendars_path, :class => "menu-item "
         %li{:class => controller.controller_name == "employee" ? "active" : ""}
           = link_to "Org-chart", org_chart_path, :class => "menu-item"
         %li{:class => controller.controller_name == "schedule" ? "active" : ""}
