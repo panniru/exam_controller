@@ -1,20 +1,20 @@
 class DocumentsController < ApplicationController
   load_resource :only => [:show, :update, :edit, :destroy, :new]
   authorize_resource
-
+  
   def index
-   # @documents = Document.all
+    # @documents = Document.all
     page = params[:page].present? ? params[:page] : 1
     if params[:search].present?
       @documents = Document.search(params[:search])
     else
-      @documents = Document.all.order("filename")
+      @documents = Document.document_types
     end
   end
   def new
     @document = Document.new
   end
-
+  
   def create
     @document = Document.new(document_params)
     if @document.save
@@ -32,28 +32,34 @@ class DocumentsController < ApplicationController
   
   def download
     @document = Document.find(params[:id])
-    send_file "#{Rails.root}/public"+@document.file_path_url
+    if @document.file_path.present?
+      send_file "#{Rails.root}/public"+@document.file_path_url
+    else
+      flash.now[:fail] = I18n.t :fail, :scope => [:document, :create]
+      redirect_to documents_path
+      #render "new"
+    end
     
   end
-
+  
   def edit
     @document = Document.find(params[:id]) 
     # @documentfilename = params[:file]
     # @document     = File.read(@documentfilename)
   end
-
+  
   def update
     @document = Document.find(params[:id])
     if @document.update(document_params)
     else
     end
   end
-
-
+  
+  
   def manage_gallery
     @images = Document.where(:file_type => 'image')
   end
-
+  
   def upload_gallery
     if params[:document].present?
       docs = []
@@ -74,9 +80,9 @@ class DocumentsController < ApplicationController
     end
     redirect_to manage_gallery_documents_path
   end
-
+  
   private
-    
+  
   def document_params
     params.require(:document).permit(:filename, :file_path)
   end
