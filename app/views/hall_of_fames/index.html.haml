@@ -1,5 +1,6 @@
 .pull-right
-  = link_to "Add Hall Of Fame", new_hall_of_fame_path, :class => "btn btn-primary"
+  - if can? :create, HallOfFame
+    = link_to "Add Hall Of Fame", new_hall_of_fame_path, :class => "btn btn-primary"
 - @hall_of_fames.each do |hall_of_fame|
   .col-sm-4
     .thumbnail

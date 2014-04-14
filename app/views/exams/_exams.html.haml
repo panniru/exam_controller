@@ -13,9 +13,10 @@
             = link_to object.dept, exams_path(:dept => object.dept),:class => "list-group-item #{klass}"
     .col-md-9
       %h3.custom-heading Exam Schedule
-      - if current_user.present? and current_user.admin?
-        .pull-right
-          = link_to 'Add Exam Schedule', new_exam_path,:class => 'btn btn-primary'
+      .pull-right
+        = link_to "Seat Allotments", seat_allotments_path, :class => 'btn btn-primary'
+        - if current_user.present? and current_user.admin?
+          = link_to 'Add Exam Schedule', new_exam_path, :class => 'btn btn-primary'
       - @exams.each do |exam|
         - exam_dept = Exam.where(:dept => exam.dept)
         - @s=exam_dept.map {|e| e.semester}.to_set.sort

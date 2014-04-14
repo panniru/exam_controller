@@ -143,3 +143,16 @@ en:
     upload:
       success: "Students has been uploaded"
       fail: "Students has not been uploaded"
+  faculty:
+    create:
+      success: "Faculty has been created"
+      fail: "Faculty not been created"
+    destroy:
+      success: "Faculty has been removed"
+      fail: "Faculty has not been removed"
+    update:
+      success: "Faculty has been updated"
+      fail: "Faculty not been updated"
+    upload:
+      success: "Facultys has been uploaded"
+      fail: "Facultys has not been uploaded"
