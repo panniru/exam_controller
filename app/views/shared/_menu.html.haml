@@ -23,7 +23,7 @@
           = link_to "Documents", documents_path, :class => "menu-item"
         - unless current_user.present? and current_user.admin?
           %li{:class => controller.controller_name == "hall_of_fames" ? "active" : ""}
-            = link_to "Hall Of Fames", hall_of_fames_path, :class => "menu-item"
+            = link_to "Hall Of Fame", hall_of_fames_path, :class => "menu-item"
         - if current_user.present?
           %li{:class => controller.controller_name == "results" ? "active" : ""}
             = link_to "Results", results_path, :class => "menu-item"
@@ -44,7 +44,7 @@
               -#   = link_to "Seat Allotments", seat_allotments_path
               %li.divider
               %li
-                = link_to "Hall Of Fames", hall_of_fames_path
+                = link_to "Hall Of Fame", hall_of_fames_path
           %li
             = link_to "Feedbacks", feedbacks_path, :class => "menu-item"
       - if current_user.present?
