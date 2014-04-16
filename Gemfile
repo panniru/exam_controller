@@ -38,6 +38,7 @@ gem 'draper'
 gem 'haml-rails'
 gem 'rails3-jquery-autocomplete'
 
+gem 'fog'
 gem 'carrierwave'
 
 gem 'will_paginate', '~> 3.0'
@@ -53,7 +54,6 @@ group :doc do
   # bundle exec rake doc:rails generates the API under doc/api.
   gem 'sdoc', require: false
 end
-
 
 
 # Use ActiveModel has_secure_password
