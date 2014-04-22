@@ -18,13 +18,16 @@
         %li{:class => controller.controller_name == "notifications" ? "active" : ""}
           = link_to "Notifications", notifications_path, :class => "menu-item"
         %li{:class => controller.controller_name == "how_tos" ? "active" : ""}
-          = link_to "How To Apply?", how_tos_path, :class => "menu-item"
+          = link_to "Guidelines", how_tos_path, :class => "menu-item"
         %li{:class => controller.controller_name == "documents" ? "active" : ""}
-          = link_to "Documents", documents_path, :class => "menu-item"
+          = link_to "Downloads", documents_path, :class => "menu-item"
         - unless current_user.present? and current_user.admin?
           %li{:class => controller.controller_name == "hall_of_fames" ? "active" : ""}
             = link_to "Hall Of Fame", hall_of_fames_path, :class => "menu-item"
-        - if current_user.present?
+        %li{:class => controller.controller_name == "contacts" ? "active" : ""}
+      
+          = link_to "Contact Us", contacts_path, :class => "menu-item"
+        - if current_user.present?  
           %li{:class => controller.controller_name == "results" ? "active" : ""}
             = link_to "Results", results_path, :class => "menu-item"
         - if current_user.present? and current_user.admin?

@@ -1,7 +1,19 @@
 ExamController::Application.routes.draw do
+  
+  get "newresults/index"
+  get "newresults/new"
+  get "newresults/edit"
+  get "newresults/show"
+  get "newresults/update"
+  get "newresults/destroy"
   devise_for :users, :controllers => { :sessions => 'sessions'}
   root to: "home#home_page"
   
+  resources :contacts do
+    collection do
+      
+    end
+  end
   resources :employees do
     collection do
 

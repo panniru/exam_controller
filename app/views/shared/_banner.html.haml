@@ -3,12 +3,18 @@
 .container5
   %h2
     %center Raja Bahadur Venkat Rama Reddy Women's College
-    %center Controller Of Examinations 
+    %center Examination Branch
   .col-sm-7
     .pull-right
       #under-text
         %center &nbsp;&nbsp;(Autonomous) Affiliated to Osmania University
         %center Reaccrediated with grade 'A' by NAAC
+  .pull-right
+    = link_to "Goto -> RBVRR","http://rbvrrwomenscollege.net/" , :class => "rbvrr"
   - unless current_user.present?
     .col-sm-3
       = render "shared/custom_login"
+ 
+ 
+ 
+    

@@ -1,0 +1,35 @@
+= render 'title'
+.col-sm-8
+  %table.table.table.striped
+    %thead
+      %tr
+        %th Designation
+        %th Contact Person
+        %th Telephone 
+        %th Email 
+        - if can? :create, Contact
+          %th
+            %th
+    %tbody
+      - Contact.all.each do |contact|
+        %tr
+          %td= contact.designation
+          %td= contact.person
+          %td= contact.telephone
+          %td= contact.email
+          - if can? :create, Contact
+            %td= link_to raw("<span class='glyphicon glyphicon-edit'></span>"), edit_contact_path(contact), :class => "btn btn-warning btn-sm", :title => "Edit"
+            %td= link_to raw("<span class='glyphicon glyphicon-trash'></span>"), contact, :class => "btn btn-danger btn-sm", :data=> {:confirm => "Are you sure?", method: :delete}, :title => "Delete"
+%center
+  %h5
+    %b
+      For any details you may kindly fill in the below form and we'll get back to you.
+%center
+.col-sm-4
+  .well
+    = render "feedbacks/form"
+%center
+  - if can? :create, Contact
+    = link_to 'Add', new_contact_path, :class => 'btn btn-primary'
+  = link_to 'Back', root_path, :class => 'btn btn-primary'
+

@@ -10,6 +10,7 @@
     = f.text_area "description", :placeholder => "Suggestion", :class => "form-control", :style => "height:100px"
     = label_tag "Cant be blank",nil, :id => "name_description", :style => "display:none;", :class => "error"
   .form-group
-    .col-sm-5.col-sm-offset-8
-      = button_tag "Submit", :type => "button", :class => 'btn btn-primary btn-sm', :id => "feedback-new"
+    .col-sm-12
+      %center
+        = button_tag "Submit Suggestion", :type => "button", :class => 'btn btn-primary btn-sm', :id => "feedback-new"
  

@@ -1,0 +1,34 @@
+
+= form_for @contact do |f|
+  = render "shared/error_messages", :object => f.object
+  .col-sm-10
+    .form-group
+      = f.label "Designation", :class => 'col-sm-2 control-label'
+      .col-sm-8
+        = f.text_field :designation, :class => 'form-control'
+    %br
+    .form-group
+      = f.label "Contact Person", :class => 'col-sm-2 control-label'
+      .col-sm-8
+        = f.text_field :person, :class => 'form-control'
+    %br
+    .form-group
+      = f.label "Telephone No", :class => 'col-sm-2 control-label'
+      .col-sm-8
+        = f.text_field :telephone, :class => 'form-control'
+    %br
+    .form-group
+      = f.label "Email", :class => 'col-sm-2 control-label'
+      .col-sm-8
+        = f.text_field :email, :class => 'form-control'
+
+
+    %br
+    %br
+    %center
+      = f.submit "Create", :class => 'btn btn-primary'
+      = link_to 'Back', root_path,:class => 'btn btn-primary'
+      
+    
+
+    
