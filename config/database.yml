@@ -8,6 +8,8 @@ development:
   database: exam_controller_development
   pool: 5
   timeout: 5000
+  username: exam_controller
+  password: welcome
 
 # Warning: The database defined as "test" will be erased and
 # re-generated from your development database when you run "rake".
@@ -17,9 +19,14 @@ test:
   database: exam_controller_test
   pool: 5
   timeout: 5000
-
+  username: exam_controller
+  password: welcome
+  
 production:
   adapter: postgresql
   database: exam_controller_production
   pool: 5
   timeout: 5000
+  username: exam_controller
+  password: welcome
+  
