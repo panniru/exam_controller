@@ -1,20 +1,28 @@
 = image_tag "index.jpeg", :height => '55', :width => '60', :align => 'left', :class => "img-circle img-thumbnail", :style => "margin-left:33px;"
 = image_tag "reddy.jpeg", :height => '55', :width => '60', :align => 'right', :class => "img-circle img-thumbnail"
+
 .container5
   %h2
     %center Raja Bahadur Venkat Rama Reddy Women's College
     %center Examination Branch
+  .pull-right
+    .time
+      
+      = render 'home/time'
+  .pull-right
+    .count
+      = render 'home/counter'
   .col-sm-7
     .pull-right
       #under-text
         %center &nbsp;&nbsp;(Autonomous) Affiliated to Osmania University
         %center Reaccrediated with grade 'A' by NAAC
-  .pull-right
-    = link_to "Goto -> RBVRR","http://rbvrrwomenscollege.net/" , :class => "rbvrr"
-  - unless current_user.present?
-    .col-sm-3
-      = render "shared/custom_login"
- 
+        
+    .pull-left
+      %h4
+        = link_to " RBVRR Homepage","http://rbvrrwomenscollege.net/" , :class => "rbvrr"
+         
+   
  
  
     

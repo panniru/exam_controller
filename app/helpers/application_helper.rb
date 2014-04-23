@@ -41,6 +41,8 @@ module ApplicationHelper
         list << Struct.new(:item, :class, :link).new("Results", controller.action_name != "result_upload"? "active" : "", results_path)
         list << Struct.new(:item, :class, :link).new("Upload Results", controller.action_name == "result_upload"? "active" : "", result_upload_results_path)
         
+         
+        
       end
     elsif current_user.present? and current_user.faculty? and controller.controller_name == "results"
       list << Struct.new(:item, :class, :link).new("Results", controller.action_name != "result_upload"? "active" : "", results_path)

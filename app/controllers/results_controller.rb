@@ -55,7 +55,7 @@ class ResultsController < ApplicationController
       format.xlsx { send_data @results_uploader.xls_template({col_sep: "\t"}, params) }
     end
   end
-
+ 
   def upload
     @results_uploader = ResultsUploader.new(params[:results_uploader])
     if @results_uploader.save
@@ -65,7 +65,8 @@ class ResultsController < ApplicationController
       render "new_upload"
     end
   end
-
+ 
+  
   private
 
   def result_params

@@ -1,11 +1,6 @@
 ExamController::Application.routes.draw do
-  
-  get "newresults/index"
-  get "newresults/new"
-  get "newresults/edit"
-  get "newresults/show"
-  get "newresults/update"
-  get "newresults/destroy"
+
+  resources :widgets 
   devise_for :users, :controllers => { :sessions => 'sessions'}
   root to: "home#home_page"
   

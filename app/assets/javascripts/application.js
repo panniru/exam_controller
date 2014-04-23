@@ -11,4 +11,3 @@
 //= require jquery.ui.all
 //= require best_in_place
 //= require_tree .
-

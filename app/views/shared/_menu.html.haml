@@ -50,6 +50,7 @@
                 = link_to "Hall Of Fame", hall_of_fames_path
           %li
             = link_to "Feedbacks", feedbacks_path, :class => "menu-item"
+      = link_to "Login", new_user_session_path, :class => "navbar-brand brand"
       - if current_user.present?
         %ul.nav.navbar-nav.navbar-right
           %li.dropdown
