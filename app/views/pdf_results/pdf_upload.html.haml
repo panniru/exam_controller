@@ -1,0 +1,19 @@
+.col-sm-3
+  = render "navigation"
+.col-sm-6
+  = form_for @upload_pdf, :url =>  upload_result_pdf_pdf_results_path(:pdf_id => @upload_pdf), :multipart =>true, :class => "form-horizontal", :method => "post"  do |f|
+    
+    .col-sm-8
+      .row
+        .form-group
+          = f.label :Department, :class => 'col-sm-3 control-label'
+          .col-sm-6
+            = f.text_field :department, :class => "form-control"
+      .row
+        .form-group
+          = f.label :file,:class => 'col-sm-3 control-label'
+          .col-sm-6
+            = f.file_field :file_path
+      .row
+        .col-sm-6.col-sm-offset-5
+          = f.submit "submit",:class => 'btn btn-primary'

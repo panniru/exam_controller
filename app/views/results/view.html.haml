@@ -1,0 +1,23 @@
+
+%table.table.table.striped
+  %thead
+    %tr
+      %th Results
+      %th
+      
+      
+     
+  %tbody
+    - UploadPdf.all.each do |upload_pdf|
+      %tr
+        %td= upload_pdf.department
+        
+        
+        %td
+          = link_to 'View', pdf_upload_results_path, :class => 'btn btn-success'
+          
+         
+  
+  
+
+ 
