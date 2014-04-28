@@ -3,15 +3,15 @@ ExamController::Application.routes.draw do
   resources :widgets 
   devise_for :users, :controllers => { :sessions => 'sessions'}
   root to: "home#home_page"
-  
+
   resources :contacts do
     collection do
       
     end
   end
+
   resources :employees do
     collection do
-
     end
   end
 
@@ -27,6 +27,7 @@ ExamController::Application.routes.draw do
   resources :results do
     collection do
       get "result_upload"
+      get "pdf_upload"
       post "upload"
     end
   end
@@ -73,6 +74,8 @@ ExamController::Application.routes.draw do
   get "home/adminhome"
   get "feedbacks/show"
 
+  post "results/upload_result_pdf" => "results#upload_result_pdf"
+
  resources :notifications do
     collection do 
      
@@ -109,6 +112,12 @@ ExamController::Application.routes.draw do
   end
 
   resources :hall_of_fames
-
-
+  
+  resources :pdf_results do
+    get :viewresult, :on => :member
+    collection do
+      get "pdf_upload"
+      post "upload_result_pdf"
+    end
+  end
 end

@@ -65,10 +65,8 @@ class ResultsController < ApplicationController
       render "new_upload"
     end
   end
- 
-  
-  private
 
+  private
   def result_params
     params.require(:result).permit(:student_id, :course_id, :year, :subject_1, :subject_2, :subject_3, :subject_4, :subject_5, :subject_6, :subject_7, :subject_8, :subject_9, :subject_10)
   end

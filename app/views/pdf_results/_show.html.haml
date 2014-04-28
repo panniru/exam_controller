@@ -1,0 +1,20 @@
+%table.table.table.striped
+  %thead
+    %tr
+      %center
+        %th 
+          %b
+            %center
+              Results
+    
+          
+.marquee-custom
+  %marquee{ direction: "up", height: "100%", loop: "true", onmouseout: "this.scrollAmount=2", onmouseover: "this.scrollAmount=0", scrollamount: "2", width: "100%"}
+    %tbody
+      - UploadPdf.all.each do |pdf|
+        %tr
+          %td
+            %h5
+              = link_to "#{ pdf.department }", viewresult_pdf_result_path(:id => pdf), :target => "_blank"
+              %br
+      

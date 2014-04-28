@@ -37,5 +37,8 @@ class PdfResultsController < ApplicationController
 def show
   @upload_pdf = UploadPdf.find(params[:pdf_id])
 end
+def new
+  @upload_pdf = UploadPdf.new
+end
 end
 

@@ -21,15 +21,15 @@
           = link_to "Guidelines", how_tos_path, :class => "menu-item"
         %li{:class => controller.controller_name == "documents" ? "active" : ""}
           = link_to "Downloads", documents_path, :class => "menu-item"
+        %li{:class => controller.controller_name == "pdf_results" ? "active" : ""}
+          = link_to "Results", pdf_results_path, :class => "menu-item"    
         - unless current_user.present? and current_user.admin?
           %li{:class => controller.controller_name == "hall_of_fames" ? "active" : ""}
             = link_to "Hall Of Fame", hall_of_fames_path, :class => "menu-item"
-        %li{:class => controller.controller_name == "contacts" ? "active" : ""}
-      
-          = link_to "Contact Us", contacts_path, :class => "menu-item"
+       
         - if current_user.present?  
           %li{:class => controller.controller_name == "results" ? "active" : ""}
-            = link_to "Results", results_path, :class => "menu-item"
+            = link_to "Marklist", results_path, :class => "menu-item"
         - if current_user.present? and current_user.admin?
           %li.dropdown
             = link_to raw("Uploads&nbsp;<b class= 'caret'></b>"), "#", :class => "dropdown-toggle menu-item", :data => {:toggle =>"dropdown"}
@@ -50,7 +50,11 @@
                 = link_to "Hall Of Fame", hall_of_fames_path
           %li
             = link_to "Feedbacks", feedbacks_path, :class => "menu-item"
-      = link_to "Login", new_user_session_path, :class => "navbar-brand brand"
+        %li{:class => controller.controller_name == "contacts" ? "active" : ""}
+          = link_to "Contact Us", contacts_path, :class => "menu-item"
+        - unless current_user.present?
+          %li
+            = link_to "Login", new_user_session_path, :class => "menu-item"
       - if current_user.present?
         %ul.nav.navbar-nav.navbar-right
           %li.dropdown
