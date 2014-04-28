@@ -34,9 +34,24 @@ def seed_employee
   end
 end
 
+def seed_results
+  results = UploadPdf.first
+  unless results.present?
+    UploadPdf.create!(:department => "B.A")
+    UploadPdf.create!(:department => "BBMT")
+    UploadPdf.create!(:department => "B.Com")
+    UploadPdf.create!(:department => "B.Sc")
+    UploadPdf.create!(:department => "M.Sc (Chemistry)")
+    UploadPdf.create!(:department => "M.Sc (Mathematics)")
+    UploadPdf.create!(:department => "M.Sc (Computer Science)")
+    UploadPdf.create!(:department => "MBA")
+  end
+end
+
 def seed_all
   seed_user
   seed_employee
+  seed_results
 end
 
 
