@@ -4,7 +4,7 @@
     = link_to pdf.department, "#"
     %ul.dropdown-menu
       %li
-        = link_to "View", pdf.file_path_url
+        = link_to "View", pdf.file_path_url, :target => "_blank"
         - if can? :create, Notification
           %li.divider
             %li
