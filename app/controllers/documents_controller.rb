@@ -34,6 +34,7 @@ class DocumentsController < ApplicationController
     @document = Document.find(params[:id])
     if @document.file_path.present?
       send_file "#{Rails.root}/public"+@document.file_path_url
+    
     else
       flash.now[:fail] = I18n.t :fail, :scope => [:document, :create]
       redirect_to documents_path

@@ -23,4 +23,3 @@ production:
   database: exam_controller_production
   pool: 5
   timeout: 5000
-  
